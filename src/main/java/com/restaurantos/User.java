@@ -1,4 +1,4 @@
-package com.restaurant_os.restaurantos;
+package com.restaurantos;
 
 import java.util.Date;
 import java.util.LinkedList;
@@ -7,12 +7,12 @@ public class User {
     public static LinkedList<User> users;
 
     int userId;
-    String firstName;
-    String lastName;
+    public String firstName;
+    public String lastName;
     Date bornDate;
-    String email;
+    public String email;
     String password;
-    UserRole userRole;
+    public UserRole userRole;
 
     public User(int userId, String firstName, String lastName, Date bornDate, String email, String password, UserRole userRole) {
         this.userId = userId;
@@ -26,7 +26,7 @@ public class User {
 
     public static class UserRole {
         int roleId;
-        String name;
+        public String name;
         String description;
 
         public UserRole(int roleId, String name, String description) {

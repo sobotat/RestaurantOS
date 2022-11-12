@@ -1,4 +1,4 @@
-package com.restaurant_os.restaurantos;
+package com.restaurantos;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -31,6 +31,7 @@ public class Settings {
                 winHeight = windowObj.getDouble("winHeight");
                 winCanResize = windowObj.getBoolean("winCanResize");
                 winIsMaximize = windowObj.getBoolean("winIsMaximize");
+                Main.useDarkMode = windowObj.getBoolean("useDarkMode");
 
                 logger.log(Level.INFO, "Load Settings Done");
             }catch (org.json.JSONException e){
@@ -50,6 +51,7 @@ public class Settings {
         windowObj.put("winHeightDefault", winHeightDefault);
         windowObj.put("winCanResize", winCanResize);
         windowObj.put("winIsMaximize", winIsMaximize);
+        windowObj.put("useDarkMode", Main.useDarkMode);
 
         settingsObj.put("window", windowObj);
 

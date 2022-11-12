@@ -1,11 +1,8 @@
-package com.restaurant_os.restaurantos;
+package com.restaurantos;
 
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
-import java.util.Calendar;
-import java.util.Date;
 
 public class AppSecurity {
     private static final Logger logger = LogManager.getLogger(AppSecurity.class.getName());

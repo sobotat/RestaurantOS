@@ -1,4 +1,4 @@
-package com.restaurant_os.restaurantos;
+package com.restaurantos;
 
 import java.io.*;
 

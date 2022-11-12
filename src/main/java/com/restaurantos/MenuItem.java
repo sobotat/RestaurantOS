@@ -1,9 +1,9 @@
-package com.restaurant_os.restaurantos;
+package com.restaurantos;
 
 public class MenuItem {
     int menuItemId;
     Menu menu;
-    Food food;
+    public Food food;
     int count;
 
     public MenuItem(int menuItemId, Menu menu, Food food, int count) {

@@ -1,17 +1,17 @@
-package com.restaurant_os.restaurantos;
+package com.restaurantos;
 
 import java.util.Date;
 import java.util.LinkedList;
 
 public class Order {
-    static LinkedList<Order> orders;
+    public static LinkedList<Order> orders;
 
-    int orderId;
-    int tableId;
+    public int orderId;
+    public int tableId;
     Date created_date;
-    String status;
+    public String status;
     boolean payed;
-    LinkedList<OrderItem> orderItems;
+    public LinkedList<OrderItem> orderItems;
 
     public Order(int orderId, int tableId, Date created_date, boolean payed) {
         if(orders == null)

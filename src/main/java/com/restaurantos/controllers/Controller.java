@@ -1,5 +1,9 @@
-package com.restaurant_os.restaurantos;
+package com.restaurantos.controllers;
 
+import com.restaurantos.AppSecurity;
+import com.restaurantos.Main;
+import com.restaurantos.Order;
+import com.restaurantos.User;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

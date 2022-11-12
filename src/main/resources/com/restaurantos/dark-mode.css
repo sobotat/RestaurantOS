@@ -4,15 +4,16 @@
 
 .root{
     /*-Colors-*/
-    colorDarkWhite: #e5eeec;
-    colorLightWhite: #f5fffd;
-    colorDarkGray: #4a4a4a;
-    colorLightGray: #717171;
+    colorDarkWhite: #0a0a0a;
+    colorLightWhite: #0f0f0f;
+    colorDarkGray: #2a2a2a;
+    colorLightGray: #4f4f4f;
     colorAccent: #4cbae3;
     colorBlue: #3d5a93;
     colorGreen: #519754;
     colorRed: #8c3936;
     colorOrange: #c78e4a;
+    colorText: "white";
 
     -fx-background-color: colorDarkWhite;
     /*-fx-font-family: 'Roboto', sans-serif;*/
@@ -22,7 +23,7 @@
 
 .button{
     -fx-background-color: colorDarkGray;
-    -fx-text-fill : "white";
+    -fx-fill: colorText;
     -fx-background-radius : 20;
 }
 
@@ -38,8 +39,12 @@
     -fx-background-color: colorAccent;
 }
 
+.text{
+    -fx-fill: colorText;
+}
+
 .text-field{
-    -fx-text-fill : "white";
+    -fx-text-fill: colorText;
     -fx-background-color: colorDarkGray;
     -fx-background-radius : 20;
 }

@@ -5,8 +5,37 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a554b88f-bf3e-4866-beec-f61e4d0b69a5" name="Changes" comment="v0.0.1">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/restaurantos/light-mode.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurant_os/restaurantos/AppSecurity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurantos/AppSecurity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurant_os/restaurantos/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurantos/controllers/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurant_os/restaurantos/Files.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurantos/Files.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurant_os/restaurantos/Food.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurantos/Food.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurant_os/restaurantos/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurantos/controllers/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurant_os/restaurantos/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurantos/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurant_os/restaurantos/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurantos/Menu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurant_os/restaurantos/MenuItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurantos/MenuItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurant_os/restaurantos/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurantos/Order.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurant_os/restaurantos/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurantos/controllers/OrderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurant_os/restaurantos/OrderItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurantos/OrderItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurant_os/restaurantos/OrderItemViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurantos/controllers/OrderItemViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurant_os/restaurantos/OrderViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurantos/controllers/OrderViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurant_os/restaurantos/Settings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurantos/Settings.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurant_os/restaurantos/Table.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurantos/Table.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurant_os/restaurantos/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurantos/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurant_os/restaurantos/UserItemViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurantos/controllers/UserItemViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurant_os/restaurantos/UserViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurantos/controllers/UserViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurant_os/restaurantos/ViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurantos/controllers/ViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/restaurant_os/restaurantos/login-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/restaurantos/login-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/restaurant_os/restaurantos/main-view.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/restaurantos/dark-mode.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/restaurant_os/restaurantos/main-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/restaurantos/main-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/restaurant_os/restaurantos/order-item.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/restaurantos/order-item.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/restaurant_os/restaurantos/orderitem-item.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/restaurantos/orderitem-item.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/restaurant_os/restaurantos/user-item.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/restaurantos/user-item.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/restaurant_os/restaurantos/view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/restaurantos/view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,22 +87,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_directory_selection&quot;: &quot;C:/Users/tomas/OneDrive - VSB-TUO/R2-S1/VIS/#Code/RestaurantOS/src/main/java/com/restaurant_os/restaurantos&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/tomas/OneDrive - VSB-TUO/R2-S1/VIS/#Code/RestaurantOS/src/main/resources/com/restaurant_os/restaurantos&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;org.jetbrains.plugins.github.ui.GithubSettingsConfigurable&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_directory_selection": "C:/Users/tomas/OneDrive - VSB-TUO/R2-S1/VIS/#Code/RestaurantOS/src/main/java/com/restaurant_os/restaurantos",
+    "last_opened_file_path": "C:/Users/tomas/OneDrive - VSB-TUO/R2-S1/VIS/#Code/RestaurantOS/src/main/resources/com/restaurantos",
+    "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\tomas\OneDrive - VSB-TUO\R2-S1\VIS\#Code\RestaurantOS\src\main\resources\com\restaurantos" />
       <recent name="C:\Users\tomas\OneDrive - VSB-TUO\R2-S1\VIS\#Code\RestaurantOS\src\main\resources\com\restaurant_os\restaurantos" />
       <recent name="C:\Users\tomas\OneDrive - VSB-TUO\R2-S1\VIS\#Code\RestaurantOS\src\main\resources\res\icons" />
       <recent name="C:\Users\tomas\OneDrive - VSB-TUO\R2-S1\VIS\#Code\RestaurantOS\src\main\resources\res" />
       <recent name="C:\Users\tomas\OneDrive - VSB-TUO\R2-S1\VIS\#Code\RestaurantOS\src\main\resources" />
-      <recent name="C:\Users\tomas\OneDrive - VSB-TUO\R2-S1\VIS\#Code\RestaurantOS" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\tomas\OneDrive - VSB-TUO\R2-S1\VIS\#Code\RestaurantOS\src\main\resources" />
@@ -82,7 +111,7 @@
       <recent name="com.restaurant_os.restaurantos" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.RestaurantOS [jpackage]">
+  <component name="RunManager" selected="Gradle.RestaurantOS [run]">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.restaurant_os.restaurantos.Main" />
       <module name="RestaurantOS.main" />
@@ -161,9 +190,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.RestaurantOS [run]" />
         <item itemvalue="Gradle.RestaurantOS [jpackage]" />
         <item itemvalue="Gradle.RestaurantOS [clean]" />
-        <item itemvalue="Gradle.RestaurantOS [run]" />
         <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
@@ -184,7 +213,21 @@
       <option name="project" value="LOCAL" />
       <updated>1668290384721</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="v0.0.1">
+      <created>1668290902674</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1668290902674</updated>
+    </task>
+    <task id="LOCAL-00003" summary="v0.0.1">
+      <created>1668290935624</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1668290935624</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

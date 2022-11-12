@@ -1,11 +1,11 @@
-package com.restaurant_os.restaurantos;
+package com.restaurantos;
 
 public class OrderItem {
     int orderItemId;
     Order order;
-    MenuItem menuItem;
-    int count;
-    String state;
+    public MenuItem menuItem;
+    public int count;
+    public String state;
 
     public OrderItem(int orderItemId, Order order, MenuItem menuItem, int count, String state) {
         this.orderItemId = orderItemId;

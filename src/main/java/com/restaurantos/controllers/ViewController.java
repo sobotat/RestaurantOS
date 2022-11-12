@@ -1,4 +1,4 @@
-package com.restaurant_os.restaurantos;
+package com.restaurantos.controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.layout.HBox;

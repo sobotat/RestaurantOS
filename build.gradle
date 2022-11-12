@@ -6,7 +6,7 @@ plugins {
     id 'java-library'
 }
 
-group 'com.restaurant_os'
+group 'com.restaurantos'
 version '0.0.1'
 
 repositories {
@@ -25,8 +25,8 @@ tasks.withType(JavaCompile) {
 }
 
 application {
-    mainModule = 'com.restaurant_os.restaurantos'
-    mainClass = 'com.restaurant_os.restaurantos.Main'
+    mainModule = 'com.restaurantos'
+    mainClass = 'com.restaurantos.Main'
 }
 
 javafx {

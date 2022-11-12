@@ -9,16 +9,16 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox id="box_DarkWhite" alignment="CENTER" prefHeight="675.0" prefWidth="1200.0" spacing="20.0" stylesheets="@main-view.css" xmlns="http://javafx.com/javafx/null" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.restaurant_os.restaurantos.LoginController">
+<VBox id="box_DarkWhite" alignment="CENTER" prefHeight="675.0" prefWidth="1200.0" spacing="20.0" xmlns="http://javafx.com/javafx/null" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.restaurantos.controllers.LoginController">
    <children>
       <VBox id="box_LightWhite" alignment="CENTER" maxWidth="-Infinity" prefHeight="557.0" prefWidth="526.0" style="-fx-background-radius: 20;">
          <children>
             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../app_logo.png" />
+                  <Image url="@../../app_logo.png" />
                </image>
             </ImageView>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="RestaurantOS">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="RestaurantOS">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
@@ -28,7 +28,7 @@
             </Text>
             <VBox maxWidth="-Infinity" prefHeight="200.0" prefWidth="350.0">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Email">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Email">
                      <VBox.margin>
                         <Insets bottom="5.0" left="15.0" top="15.0" />
                      </VBox.margin>
@@ -37,7 +37,7 @@
                      </font>
                   </Text>
                   <TextField fx:id="tf_Email" prefHeight="45.0" promptText="Email" />
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Password">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Password">
                      <VBox.margin>
                         <Insets bottom="5.0" left="15.0" top="15.0" />
                      </VBox.margin>

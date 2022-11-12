@@ -1,4 +1,4 @@
-package com.restaurant_os.restaurantos;
+package com.restaurantos;
 
 public class Table {
     int tableId;

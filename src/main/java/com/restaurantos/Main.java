@@ -1,16 +1,17 @@
-package com.restaurant_os.restaurantos;
+package com.restaurantos;
 
+import com.restaurantos.controllers.Controller;
+import com.restaurantos.controllers.LoginController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import java.io.IOException;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.Objects;
 
 public class Main extends Application {
@@ -21,13 +22,18 @@ public class Main extends Application {
     protected static Stage mainStage;
     protected static Scene mainScene, loginScene;
 
+    protected static boolean useDarkMode = true;
+    protected static String css;
+
     @Override
     public void start(Stage stage) throws IOException {
         logger.log(Level.INFO, "App Started\n-------------------------------------------------------------------------------------------------------------------");
         Settings.loadSettings();
 
-        String css = Objects.requireNonNull(this.getClass().getResource("main-view.css")).toExternalForm();
+        String lightMode_css = Objects.requireNonNull(this.getClass().getResource("light-mode.css")).toExternalForm();
+        String darkMode_css = Objects.requireNonNull(this.getClass().getResource("dark-mode.css")).toExternalForm();
 
+        css = useDarkMode ? darkMode_css : lightMode_css;
 
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("main-view.fxml"));
         mainScene = new Scene(fxmlLoader.load(), Settings.winWidth, Settings.winHeight);

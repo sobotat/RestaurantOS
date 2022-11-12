@@ -55,5 +55,7 @@ It's like with any software. I'll be glad for any reported bugs, and I'll also b
       - Working Order List and Order View
       - Inprogress Users View
       - Working Manager Auth
+    - v0.0.2
+      - Implemented Dark Mode
 
 </details>
