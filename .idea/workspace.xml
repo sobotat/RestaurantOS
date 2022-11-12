@@ -5,73 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a554b88f-bf3e-4866-beec-f61e4d0b69a5" name="Changes" comment="v0.0.1">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/discord.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/LICENSE" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradlew.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/restaurant_os/restaurantos/AppSecurity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/restaurant_os/restaurantos/Controller.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/restaurant_os/restaurantos/Files.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/restaurant_os/restaurantos/Food.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/restaurant_os/restaurantos/LoginController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/restaurant_os/restaurantos/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/restaurant_os/restaurantos/Menu.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/restaurant_os/restaurantos/MenuItem.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/restaurant_os/restaurantos/Order.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/restaurant_os/restaurantos/OrderController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/restaurant_os/restaurantos/OrderItem.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/restaurant_os/restaurantos/OrderItemViewController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/restaurant_os/restaurantos/OrderViewController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/restaurant_os/restaurantos/Settings.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/restaurant_os/restaurantos/Table.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/restaurant_os/restaurantos/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/restaurant_os/restaurantos/UserItemViewController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/restaurant_os/restaurantos/UserViewController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/restaurant_os/restaurantos/ViewController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/app_logo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/restaurant_os/restaurantos/login-view.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/restaurant_os/restaurantos/main-view.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/restaurant_os/restaurantos/main-view.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/restaurant_os/restaurantos/order-item.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/restaurant_os/restaurantos/orderitem-item.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/restaurant_os/restaurantos/user-item.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/restaurant_os/restaurantos/view.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/log4j2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/res/app_logo.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/res/icons/icon_add_white.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/res/icons/icon_chevronLeft_white.png.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/res/icons/icon_chevronRight_white.png.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/res/icons/icon_copy_white.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/res/icons/icon_cross_white.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/res/icons/icon_distance_white.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/res/icons/icon_folder_white.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/res/icons/icon_home_white.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/res/icons/icon_load_white.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/res/icons/icon_logout_white.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/res/icons/icon_manager_white.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/res/icons/icon_map_pinpoint_white.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/res/icons/icon_remove_white.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/res/icons/icon_save_white.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/res/icons/icon_settings_white.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/res/icons/icon_size_white.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/res/icons/icon_speed_white.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/res/icons/icon_stop_white.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/res/icons/icon_user2_white.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/res/icons/icon_user_white.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/res/icons/icon_view_white.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -243,6 +177,14 @@
       <option name="presentableId" value="Default" />
       <updated>1667219982115</updated>
     </task>
+    <task id="LOCAL-00001" summary="v0.0.1">
+      <created>1668290384721</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1668290384721</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
