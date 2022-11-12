@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<VBox id="box_Black" fx:id="vbox_Root" prefHeight="640.0" prefWidth="800.0" style="-fx-background-radius: 20;" xmlns="http://javafx.com/javafx/null" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <HBox id="box_Gray" fx:id="hbox_Top" alignment="CENTER_LEFT" prefHeight="307.0" prefWidth="800.0" style="-fx-background-radius: 20;">
+         <children>
+            <Text fx:id="tv_LeftTitle" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="L Title">
+               <font>
+                  <Font size="32.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="15.0" />
+               </HBox.margin>
+            </Text>
+            <HBox alignment="CENTER_RIGHT" prefHeight="81.0" prefWidth="1920.0">
+               <children>
+                  <Text fx:id="tv_RightTitle" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="R Title">
+                     <font>
+                        <Font size="32.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets right="15.0" />
+                     </HBox.margin>
+                  </Text>
+               </children>
+            </HBox>
+         </children>
+      </HBox>
+      <Text fx:id="tv_Text" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+         <font>
+            <Font size="18.0" />
+         </font>
+         <VBox.margin>
+            <Insets bottom="10.0" left="15.0" top="20.0" />
+         </VBox.margin>
+      </Text>
+      <VBox id="box_LightWhite" fx:id="vbox_List" prefHeight="713.0" prefWidth="800.0" style="-fx-background-radius: 20;">
+         <VBox.margin>
+            <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+         </VBox.margin>
+         <padding>
+            <Insets bottom="20.0" left="5.0" right="5.0" top="20.0" />
+         </padding>
+      </VBox>
+   </children>
+</VBox>

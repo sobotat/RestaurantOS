@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="a554b88f-bf3e-4866-beec-f61e4d0b69a5" name="Changes" comment="v0.0.1">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/discord.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gradlew.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/restaurant_os/restaurantos/AppSecurity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/restaurant_os/restaurantos/Controller.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/restaurant_os/restaurantos/Files.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/restaurant_os/restaurantos/Food.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/restaurant_os/restaurantos/LoginController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/restaurant_os/restaurantos/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/restaurant_os/restaurantos/Menu.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/restaurant_os/restaurantos/MenuItem.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/restaurant_os/restaurantos/Order.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/restaurant_os/restaurantos/OrderController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/restaurant_os/restaurantos/OrderItem.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/restaurant_os/restaurantos/OrderItemViewController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/restaurant_os/restaurantos/OrderViewController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/restaurant_os/restaurantos/Settings.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/restaurant_os/restaurantos/Table.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/restaurant_os/restaurantos/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/restaurant_os/restaurantos/UserItemViewController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/restaurant_os/restaurantos/UserViewController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/restaurant_os/restaurantos/ViewController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/app_logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/restaurant_os/restaurantos/login-view.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/restaurant_os/restaurantos/main-view.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/restaurant_os/restaurantos/main-view.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/restaurant_os/restaurantos/order-item.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/restaurant_os/restaurantos/orderitem-item.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/restaurant_os/restaurantos/user-item.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/restaurant_os/restaurantos/view.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/log4j2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/res/app_logo.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/res/icons/icon_add_white.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/res/icons/icon_chevronLeft_white.png.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/res/icons/icon_chevronRight_white.png.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/res/icons/icon_copy_white.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/res/icons/icon_cross_white.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/res/icons/icon_distance_white.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/res/icons/icon_folder_white.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/res/icons/icon_home_white.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/res/icons/icon_load_white.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/res/icons/icon_logout_white.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/res/icons/icon_manager_white.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/res/icons/icon_map_pinpoint_white.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/res/icons/icon_remove_white.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/res/icons/icon_save_white.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/res/icons/icon_settings_white.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/res/icons/icon_size_white.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/res/icons/icon_speed_white.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/res/icons/icon_stop_white.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/res/icons/icon_user2_white.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/res/icons/icon_user_white.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/res/icons/icon_view_white.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="RestaurantOS" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="FxmlFile" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2Gtu0nhG18SNRhe4L80B2jnLQQz" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_directory_selection&quot;: &quot;C:/Users/tomas/OneDrive - VSB-TUO/R2-S1/VIS/#Code/RestaurantOS/src/main/java/com/restaurant_os/restaurantos&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/tomas/OneDrive - VSB-TUO/R2-S1/VIS/#Code/RestaurantOS/src/main/resources/com/restaurant_os/restaurantos&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;org.jetbrains.plugins.github.ui.GithubSettingsConfigurable&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\tomas\OneDrive - VSB-TUO\R2-S1\VIS\#Code\RestaurantOS\src\main\resources\com\restaurant_os\restaurantos" />
+      <recent name="C:\Users\tomas\OneDrive - VSB-TUO\R2-S1\VIS\#Code\RestaurantOS\src\main\resources\res\icons" />
+      <recent name="C:\Users\tomas\OneDrive - VSB-TUO\R2-S1\VIS\#Code\RestaurantOS\src\main\resources\res" />
+      <recent name="C:\Users\tomas\OneDrive - VSB-TUO\R2-S1\VIS\#Code\RestaurantOS\src\main\resources" />
+      <recent name="C:\Users\tomas\OneDrive - VSB-TUO\R2-S1\VIS\#Code\RestaurantOS" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\tomas\OneDrive - VSB-TUO\R2-S1\VIS\#Code\RestaurantOS\src\main\resources" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.restaurant_os.restaurantos" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Gradle.RestaurantOS [jpackage]">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.restaurant_os.restaurantos.Main" />
+      <module name="RestaurantOS.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.restaurant_os.restaurantos.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RestaurantOS [clean]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="clean" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="RestaurantOS [jpackage]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="jpackage" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="RestaurantOS [run]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="run" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Gradle.RestaurantOS [jpackage]" />
+        <item itemvalue="Gradle.RestaurantOS [clean]" />
+        <item itemvalue="Gradle.RestaurantOS [run]" />
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a554b88f-bf3e-4866-beec-f61e4d0b69a5" name="Changes" comment="" />
+      <created>1667219982115</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1667219982115</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="v0.0.1" />
+    <option name="LAST_COMMIT_MESSAGE" value="v0.0.1" />
+  </component>
+</project>

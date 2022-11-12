@@ -1,0 +1,154 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cantarell&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Monda&display=swap');
+
+.root{
+    /*-Colors-*/
+    colorDarkWhite: #e5eeec;
+    colorLightWhite: #f5fffd;
+    colorDarkGray: #4a4a4a;
+    colorLightGray: #717171;
+    colorAccent: #4cbae3;
+    colorBlue: #3d5a93;
+    colorGreen: #519754;
+    colorRed: #8c3936;
+    colorOrange: #c78e4a;
+
+    -fx-background-color: colorDarkWhite;
+    /*-fx-font-family: 'Roboto', sans-serif;*/
+    /*-fx-font-family: 'Cantarell', sans-serif;*/
+    -fx-font-family: 'Monda', sans-serif;
+}
+
+.button{
+    -fx-background-color: colorDarkGray;
+    -fx-text-fill : "white";
+    -fx-background-radius : 20;
+}
+
+.check-box .box{
+    -fx-background-color: white;
+}
+
+.check-box:selected .mark {
+    -fx-background-color: white;
+}
+
+.check-box:selected .box {
+    -fx-background-color: colorAccent;
+}
+
+.text-field{
+    -fx-text-fill : "white";
+    -fx-background-color: colorDarkGray;
+    -fx-background-radius : 20;
+}
+
+.progress-bar > .track {
+  -fx-text-box-border: colorLightGray;
+  -fx-control-inner-background: colorLightGray;
+}
+
+.progress-bar .bar {
+    -fx-padding: 1px;
+    -fx-background-insets: 0;
+    -fx-background-color: colorAccent;
+}
+
+.scroll-pane {
+    -fx-background-color: colorLightWhite;
+}
+
+.scroll-pane > .corner {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar:horizontal, .scroll-bar:vertical{
+    -fx-background-color: transparent;
+}
+
+.increment-button, .decrement-button {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.scroll-bar:horizontal .track,
+.scroll-bar:vertical .track{
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-background-radius: 0em;
+}
+
+.scroll-bar:horizontal .thumb,
+.scroll-bar:vertical .thumb {
+    -fx-background-color: colorAccent;
+    -fx-background-radius: 5em;
+}
+
+#box_LightWhite {
+    -fx-background-color: colorLightWhite;
+}
+
+#box_DarkWhite {
+    -fx-background-color: colorDarkWhite;
+}
+
+#box_Black {
+    -fx-background-color: colorDarkGray;
+}
+
+#box_Gray {
+    -fx-background-color: colorLightGray;
+}
+
+#btn_LightWhite {
+    -fx-background-color: colorLightWhite;
+    -fx-background-radius: 20;
+}
+
+#btn_LightWhite:hover {
+    -fx-background-color: colorLightWhite;
+    -fx-background-radius: 20;
+    -fx-border-color: colorDarkWhite;
+    -fx-border-radius: 20;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 3, 0, 0, 0);
+}
+
+#btn_DarkWhite {
+    -fx-background-color: colorDarkWhite;
+    -fx-background-radius: 20;
+}
+
+#btn_DarkWhite:hover {
+    -fx-background-color: colorDarkWhite;
+    -fx-background-radius: 20;
+    -fx-border-color: colorLightWhite;
+    -fx-border-radius: 20;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 3, 0, 0, 0);
+}
+
+#btn_Black {
+    -fx-background-color: colorDarkGray;
+    -fx-background-radius: 20;
+}
+
+#btn_Black:hover {
+    -fx-background-color: colorLightGray;
+    -fx-background-radius: 20;
+    -fx-border-color: colorDarkGray;
+    -fx-border-radius: 20;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 3, 0, 0, 0);
+}
+
+#btn_Gray {
+    -fx-background-color: colorLightGray;
+    -fx-background-radius: 20;
+}
+
+#btn_Gray:hover {
+    -fx-background-color: colorDarkGray;
+    -fx-background-radius: 20;
+    -fx-border-color: colorLightGray;
+    -fx-border-radius: 20;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 3, 0, 0, 0);
+}

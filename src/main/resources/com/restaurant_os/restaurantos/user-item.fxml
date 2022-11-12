@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<HBox id="box_LightWhite" fx:id="hbox_Root" alignment="CENTER_LEFT" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="650.0" stylesheets="@main-view.css" xmlns="http://javafx.com/javafx/null" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.restaurant_os.restaurantos.UserItemViewController">
+   <BorderPane prefHeight="30.0" prefWidth="1920.0">
+      <right>
+         <HBox fx:id="hbox_btn" alignment="CENTER_RIGHT" minWidth="-Infinity" prefHeight="31.0" prefWidth="190.0" BorderPane.alignment="CENTER_RIGHT">
+            <Button id="btn_Gray" fx:id="btn_Edit" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" mnemonicParsing="false" onMouseClicked="#editClicked" prefHeight="30.0" prefWidth="30.0" text="Edit">
+               <padding>
+                  <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" />
+               </padding>
+               <HBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </HBox.margin>
+               <graphic>
+                  <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                     <Image url="@../../../res/icons/icon_settings_white.png" />
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button id="btn_Gray" fx:id="btn_Remove1" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" mnemonicParsing="false" onMouseClicked="#removeClicked" prefHeight="30.0" prefWidth="30.0" text="Remove">
+               <padding>
+                  <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" />
+               </padding>
+               <graphic>
+                  <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../res/icons/icon_cross_white.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <HBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </HBox.margin>
+            </Button>
+         </HBox>
+      </right>
+      <left>
+         <HBox alignment="CENTER_LEFT" prefHeight="32.0" prefWidth="200.0" BorderPane.alignment="CENTER_LEFT">
+            <Circle fx:id="dot_State" fill="#0084ff" radius="7.0" stroke="TRANSPARENT" strokeType="INSIDE" strokeWidth="0.0" style="-fx-fill: colorDarkGray;">
+               <HBox.margin>
+                  <Insets left="15.0" right="15.0" />
+               </HBox.margin>
+            </Circle>
+            <Text fx:id="tv_Name" strokeType="OUTSIDE" strokeWidth="0.0" text="Name" wrappingWidth="159.60003662109375" />
+            <HBox alignment="CENTER" minWidth="255.0" prefHeight="31.0" prefWidth="1078.0">
+               <HBox alignment="CENTER_LEFT" prefHeight="30.0" prefWidth="100.0">
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: colorAccent;" text="Role: ">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="tv_Role" strokeType="OUTSIDE" strokeWidth="0.0" text="role">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Text>
+               </HBox>
+               <HBox alignment="CENTER_LEFT" prefHeight="30.0" prefWidth="100.0">
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: colorAccent;" text="Email:">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="tv_Email" strokeType="OUTSIDE" strokeWidth="0.0" text="user.mail@gmail.com">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Text>
+               </HBox>
+            </HBox>
+         </HBox>
+      </left>
+   </BorderPane>
+</HBox>

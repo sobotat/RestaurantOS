@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<VBox prefHeight="675.0" prefWidth="1200.0" spacing="20.0" stylesheets="@main-view.css" xmlns="http://javafx.com/javafx/null" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.restaurant_os.restaurantos.Controller">
+   <BorderPane id="box_DarkWhite" fx:id="bPane_screen" nodeOrientation="LEFT_TO_RIGHT" prefHeight="1080.0" prefWidth="1920.0">
+      <center>
+          <HBox id="box_DarkWhite" prefHeight="500.0" prefWidth="796.0" BorderPane.alignment="CENTER">
+              <VBox id="box_LightWhite" fx:id="vBox_Table" alignment="CENTER" prefHeight="655.0" prefWidth="1545.0" style="-fx-background-radius: 20;">
+                  <HBox.margin>
+                      <Insets />
+                  </HBox.margin>
+                  <padding>
+                      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                  </padding>
+                  <ScrollPane fx:id="scl_List" hbarPolicy="NEVER" prefHeight="1080.0" prefWidth="575.0">
+                      <VBox id="box_LightWhite" fx:id="vBox_List" alignment="TOP_CENTER" prefHeight="633.0" prefWidth="1106.0" />
+                  </ScrollPane>
+              </VBox>
+            <padding>
+               <Insets bottom="10.0" left="10.0" right="10.0" top="25.0" />
+            </padding>
+          </HBox>
+      </center>
+      <right>
+           <VBox id="box_DarkWhite" prefHeight="500.0" prefWidth="308.0" BorderPane.alignment="CENTER">
+               <VBox alignment="TOP_CENTER" prefHeight="1000.0" prefWidth="294.0">
+                   <VBox.margin>
+                       <Insets left="15.0" right="5.0" />
+                   </VBox.margin>
+               <VBox alignment="CENTER" prefHeight="107.0" prefWidth="288.0">
+                  <children>
+                         <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="45.0" prefWidth="210.0" style="-fx-background-radius: 45;">
+                        <VBox.margin>
+                           <Insets bottom="5.0" right="5.0" top="10.0" />
+                        </VBox.margin>
+                        <children>
+                           <HBox id="box_Black" alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="80.0" style="-fx-background-radius: 45;">
+                              <HBox.margin>
+                                 <Insets right="5.0" />
+                              </HBox.margin>
+                              <children>
+                                 <Text fx:id="tv_Role" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Service" textAlignment="CENTER">
+                                    <font>
+                                       <Font name="System Bold" size="14.0" />
+                                    </font>
+                                 </Text>
+                              </children>
+                           </HBox>
+                           <HBox id="box_Black" alignment="CENTER_LEFT" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="40.0" prefWidth="210.0" style="-fx-background-radius: 45;">
+                              <children>
+                                 <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                       <Image url="@../../../res/icons/icon_user2_white.png" />
+                                    </image>
+                                    <HBox.margin>
+                                       <Insets left="20.0" right="10.0" />
+                                    </HBox.margin>
+                                 </ImageView>
+                                 <Text fx:id="tv_UserName" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
+                                    <font>
+                                       <Font name="System Bold" size="14.0" />
+                                    </font>
+                                 </Text>
+                              </children></HBox>
+                        </children>
+                         </HBox>
+                     <HBox id="box_Gray" alignment="CENTER_LEFT" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="45.0" prefWidth="210.0" style="-fx-background-radius: 18;">
+                        <children>
+                           <HBox id="btn_Black" fx:id="hbox_ManagerAuth" alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onManagerAuthClicked" prefHeight="40.0" prefWidth="40.0" style="-fx-background-radius: 45;">
+                              <children>
+                                 <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                       <Image url="@../../../res/icons/icon_manager_white.png" />
+                                    </image>
+                                    <HBox.margin>
+                                       <Insets />
+                                    </HBox.margin>
+                                 </ImageView>
+                              </children>
+                              <HBox.margin>
+                                 <Insets left="10.0" right="5.0" />
+                              </HBox.margin>
+                           </HBox>
+                           <HBox id="btn_Black" alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onUsersClicked" prefHeight="40.0" prefWidth="40.0" style="-fx-background-radius: 45;">
+                              <children>
+                                 <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                       <Image url="@../../../res/icons/icon_user_white.png" />
+                                    </image>
+                                    <HBox.margin>
+                                       <Insets />
+                                    </HBox.margin>
+                                 </ImageView>
+                              </children>
+                              <HBox.margin>
+                                 <Insets left="5.0" right="5.0" />
+                              </HBox.margin>
+                           </HBox>
+                           <HBox alignment="CENTER_RIGHT" prefHeight="45.0" prefWidth="411.0">
+                              <children>
+                                 <HBox id="btn_Black" alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onLogoutClicked" prefHeight="40.0" prefWidth="40.0" style="-fx-background-radius: 45;">
+                                    <children>
+                                       <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                          <image>
+                                             <Image url="@../../../res/icons/icon_logout_white.png" />
+                                          </image>
+                                          <HBox.margin>
+                                             <Insets left="2.0" />
+                                          </HBox.margin>
+                                       </ImageView>
+                                    </children>
+                                    <HBox.margin>
+                                       <Insets left="5.0" right="10.0" />
+                                    </HBox.margin>
+                                 </HBox>
+                              </children>
+                           </HBox>
+                        </children></HBox>
+                  </children>
+                  <padding>
+                     <Insets left="20.0" right="10.0" />
+                  </padding>
+               </VBox>
+                   <VBox alignment="CENTER" maxWidth="-Infinity" prefHeight="724.0" prefWidth="220.0">
+                  <VBox id="box_LightWhite" alignment="TOP_CENTER" prefHeight="700.0" prefWidth="220.0" style="-fx-background-radius: 20;">
+                     <children>
+                             <HBox id="btn_Black" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="40.0" prefWidth="195.0">
+                                 <VBox.margin>
+                                     <Insets top="10.0" />
+                                 </VBox.margin>
+                                 <ImageView fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                                     <HBox.margin>
+                                         <Insets left="30.0" />
+                                     </HBox.margin>
+                                     <Image url="@../../../res/icons/icon_chevronRight_white.png.png" />
+                                 </ImageView>
+                                 <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Show Menu">
+                                     <HBox.margin>
+                                         <Insets left="10.0" />
+                                     </HBox.margin>
+                                 </Text>
+                             </HBox>
+                             <HBox id="btn_Black" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" onMouseClicked="#onAddOrderClicked" prefHeight="40.0" prefWidth="195.0">
+                                 <VBox.margin>
+                                     <Insets top="8.0" />
+                                 </VBox.margin>
+                                 <ImageView fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                                     <HBox.margin>
+                                         <Insets left="30.0" />
+                                     </HBox.margin>
+                                     <Image url="@../../../res/icons/icon_chevronRight_white.png.png" />
+                                 </ImageView>
+                                 <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Add Order">
+                                     <HBox.margin>
+                                         <Insets left="10.0" />
+                                     </HBox.margin>
+                                 </Text>
+                             </HBox>
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="10.0" top="20.0" />
+                     </VBox.margin>
+                  </VBox>
+                  <VBox.margin>
+                     <Insets top="12.0" />
+                  </VBox.margin>
+                   </VBox>
+               <padding>
+                  <Insets top="15.0" />
+               </padding>
+               </VBox>
+           </VBox>
+      </right>
+   </BorderPane>
+</VBox>
