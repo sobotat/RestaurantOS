@@ -5,22 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a554b88f-bf3e-4866-beec-f61e4d0b69a5" name="Changes" comment="v0.0.2 - Dark Mode">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/app_logo_white.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/art/restaurantos_0.0.2_login.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/art/restaurantos_0.0.2_main.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/res/icons/icon_darkmode_white.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurantos/AppSecurity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurantos/AppSecurity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurantos/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurantos/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurantos/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurantos/Order.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurantos/controllers/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurantos/controllers/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurantos/controllers/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurantos/controllers/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurantos/controllers/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurantos/controllers/OrderController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurantos/controllers/OrderItemViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurantos/controllers/OrderItemViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurantos/controllers/OrderViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurantos/controllers/OrderViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/restaurantos/login-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/restaurantos/login-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/restaurantos/main-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/restaurantos/main-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/art/restaurantos_0.0.2_login.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/art/restaurantos_0.1_login.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/art/restaurantos_0.0.2_main.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/art/restaurantos_0.1_main.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -177,8 +167,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.RestaurantOS [run]" />
         <item itemvalue="Gradle.RestaurantOS [jpackage]" />
+        <item itemvalue="Gradle.RestaurantOS [run]" />
         <item itemvalue="Gradle.RestaurantOS [clean]" />
         <item itemvalue="Application.Main" />
       </list>
@@ -221,7 +211,14 @@
       <option name="project" value="LOCAL" />
       <updated>1668294689750</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="v0.0.2 - Dark Mode">
+      <created>1668332726979</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1668332726979</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

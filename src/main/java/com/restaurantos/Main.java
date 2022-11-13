@@ -20,7 +20,7 @@ public class Main extends Application {
     protected static Stage mainStage;
     protected static Scene mainScene, loginScene;
 
-    public static boolean useDarkMode = true;
+    public static boolean useDarkMode = false;
     protected static String lightMode_css, darkMode_css;
 
     @Override
