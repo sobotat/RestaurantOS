@@ -13,7 +13,7 @@
    <children>
       <VBox id="box_LightWhite" alignment="CENTER" maxWidth="-Infinity" prefHeight="557.0" prefWidth="526.0" style="-fx-background-radius: 20;">
          <children>
-            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="iv_Logo" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../app_logo.png" />
                </image>

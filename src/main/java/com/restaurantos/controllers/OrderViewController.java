@@ -20,15 +20,7 @@ public class OrderViewController extends ViewController {
         tv_LeftTitle.setText("Order " + order.orderId);
         tv_RightTitle.setText("at Table " + order.tableId);
 
-        String css = " -fx-background-radius: 20;";
-        switch (order.status){
-            case "Ordered"      -> hbox_Top.setStyle("-fx-background-color: colorLightGray;" + css);
-            case "Preparing"    -> hbox_Top.setStyle("-fx-background-color: colorBlue;" + css);
-            case "Prepared"     -> hbox_Top.setStyle("-fx-background-color: colorOrange;" + css);
-            case "Served"       -> hbox_Top.setStyle("-fx-background-color: colorGreen;" + css);
-            case "Payed"        -> hbox_Top.setStyle("-fx-background-color: colorRed;" + css);
-        }
-
+        updateStatus();
         loadOrderItems();
     }
 
@@ -68,5 +60,16 @@ public class OrderViewController extends ViewController {
 
     public void updateCost(){
         tv_Text.setText("Cost: " + order.getCost());
+    }
+
+    public void updateStatus() {
+        String css = " -fx-background-radius: 20;";
+        switch (order.getStatus()){
+            case "Ordered"      -> hbox_Top.setStyle("-fx-background-color: colorLightGray;" + css);
+            case "Preparing"    -> hbox_Top.setStyle("-fx-background-color: colorBlue;" + css);
+            case "Prepared"     -> hbox_Top.setStyle("-fx-background-color: colorOrange;" + css);
+            case "Served"       -> hbox_Top.setStyle("-fx-background-color: colorGreen;" + css);
+            case "Payed", "Canceled" -> hbox_Top.setStyle("-fx-background-color: colorRed;" + css);
+        }
     }
 }

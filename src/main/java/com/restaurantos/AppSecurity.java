@@ -1,5 +1,6 @@
 package com.restaurantos;
 
+import com.restaurantos.controllers.Controller;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -14,7 +15,7 @@ public class AppSecurity {
                 signInUser = user;
 
                 Main.switchScene(Main.mainScene);
-                Main.controller.updateUserInfo();
+                Controller.controller.updateUserInfo();
 
                 logger.log(Level.INFO, "User Logged in App");
                 return true;

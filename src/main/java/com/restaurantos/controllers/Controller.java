@@ -13,12 +13,17 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicReference;
 
 public class Controller {
+    private static final Logger logger = LogManager.getLogger(Controller.class.getName());
+    public static Controller controller = null;
 
     @FXML
     VBox vBox_List, vBox_Table;
@@ -104,7 +109,6 @@ public class Controller {
 
     public void onOrderClicked(int index){
         OrderController orderController = OrderController.orderControllers.get(index);
-        System.out.println(orderController.order.status);
 
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
@@ -142,13 +146,14 @@ public class Controller {
     public void onLogoutClicked(){
         backToOrdersList();
         managerAuth = null;
+        LoginController.loginController.initialize();
         AppSecurity.logout();
         updateUserInfo();
     }
 
     @FXML
     public void onAddOrderClicked(){
-        Order.orders.add(new Order(Order.orders.getLast().orderId + 1, 1, new Date(), false)); Order.orders.getLast().status = "Served";
+        Order.orders.add(new Order(Order.orders.getLast().orderId + 1, 1, new Date(), false));
         loadListView();
     }
 
@@ -210,29 +215,41 @@ public class Controller {
         }
     }
 
+    @FXML
+    public void onDarkModeClicked(){
+        Main.setDarkMode(!Main.useDarkMode);
+        logger.log(Level.INFO, Main.useDarkMode ? "DarkMode Enabled" : "DarkMode Disabled");
+    }
+
+    @FXML
+    public void onBackClicked(){
+        if(!(currentViewNode instanceof ScrollPane))
+            backToOrdersList();
+    }
+
     public void start(){
         updateUserInfo();
         ordersList = scl_List;
         currentViewNode = vBox_Table.getChildren().get(0);
 
         Order.orders = new LinkedList<>();
-        Order.orders.add(new Order(1, 1, new Date(2000, Calendar.MARCH, 1), false)); Order.orders.getLast().status = "Served";
-        Order.orders.add(new Order(2, 2, new Date(2000, Calendar.MARCH, 1), false)); Order.orders.getLast().status = "Preparing";
-        Order.orders.add(new Order(3, 3, new Date(2000, Calendar.MARCH, 1), false)); Order.orders.getLast().status = "Prepared";
-        Order.orders.add(new Order(4, 1, new Date(2000, Calendar.MARCH, 1), false)); Order.orders.getLast().status = "Payed";
-        Order.orders.add(new Order(5, 2, new Date(2000, Calendar.MARCH, 1), false)); Order.orders.getLast().status = "Preparing";
-        Order.orders.add(new Order(6, 3, new Date(2000, Calendar.MARCH, 1), false)); Order.orders.getLast().status = "Served";
-        Order.orders.add(new Order(7, 1, new Date(2000, Calendar.MARCH, 1), false)); Order.orders.getLast().status = "Prepared";
-        Order.orders.add(new Order(8, 2, new Date(2000, Calendar.MARCH, 1), false)); Order.orders.getLast().status = "Preparing";
+        Order.orders.add(new Order(1, 1, new Date(2000, Calendar.MARCH, 1), false));
+        Order.orders.add(new Order(2, 2, new Date(2000, Calendar.MARCH, 1), false));
+        Order.orders.add(new Order(3, 3, new Date(2000, Calendar.MARCH, 1), false));
+        Order.orders.add(new Order(4, 1, new Date(2000, Calendar.MARCH, 1), false));
+        Order.orders.add(new Order(5, 2, new Date(2000, Calendar.MARCH, 1), false));
+        Order.orders.add(new Order(6, 3, new Date(2000, Calendar.MARCH, 1), false));
+        Order.orders.add(new Order(7, 1, new Date(2000, Calendar.MARCH, 1), false));
+        Order.orders.add(new Order(8, 2, new Date(2000, Calendar.MARCH, 1), false));
         Order.orders.add(new Order(9, 3, new Date(2000, Calendar.MARCH, 1), false));
-        Order.orders.add(new Order(10, 1, new Date(2000, Calendar.MARCH, 1), false)); Order.orders.getLast().status = "Served";
-        Order.orders.add(new Order(11, 2, new Date(2000, Calendar.MARCH, 1), false)); Order.orders.getLast().status = "Preparing";
-        Order.orders.add(new Order(12, 3, new Date(2000, Calendar.MARCH, 1), false)); Order.orders.getLast().status = "Prepared";
-        Order.orders.add(new Order(13, 1, new Date(2000, Calendar.MARCH, 1), false)); Order.orders.getLast().status = "Payed";
-        Order.orders.add(new Order(14, 2, new Date(2000, Calendar.MARCH, 1), false)); Order.orders.getLast().status = "Preparing";
-        Order.orders.add(new Order(15, 3, new Date(2000, Calendar.MARCH, 1), false)); Order.orders.getLast().status = "Served";
-        Order.orders.add(new Order(16, 1, new Date(2000, Calendar.MARCH, 1), false)); Order.orders.getLast().status = "Prepared";
-        Order.orders.add(new Order(17, 2, new Date(2000, Calendar.MARCH, 1), false)); Order.orders.getLast().status = "Preparing";
+        Order.orders.add(new Order(10, 1, new Date(2000, Calendar.MARCH, 1), false));
+        Order.orders.add(new Order(11, 2, new Date(2000, Calendar.MARCH, 1), false));
+        Order.orders.add(new Order(12, 3, new Date(2000, Calendar.MARCH, 1), false));
+        Order.orders.add(new Order(13, 1, new Date(2000, Calendar.MARCH, 1), false));
+        Order.orders.add(new Order(14, 2, new Date(2000, Calendar.MARCH, 1), false));
+        Order.orders.add(new Order(15, 3, new Date(2000, Calendar.MARCH, 1), false));
+        Order.orders.add(new Order(16, 1, new Date(2000, Calendar.MARCH, 1), false));
+        Order.orders.add(new Order(17, 2, new Date(2000, Calendar.MARCH, 1), false));
         Order.orders.add(new Order(18, 3, new Date(2000, Calendar.MARCH, 1), false));
 
         User.users = new LinkedList<>();
@@ -278,6 +295,8 @@ public class Controller {
                 vBox_List.setMinHeight(vBox_List.getChildren().size() * OrderController.orderControllers.getFirst().vbox_Root.getHeight());
             }
         });
+
+
 
     }
 }

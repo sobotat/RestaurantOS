@@ -54,6 +54,7 @@ public class OrderItemViewController {
 
         orderItem.state = "Canceled";
 
+        updateState();
         updateCost();
         updateState();
     }
@@ -86,6 +87,7 @@ public class OrderItemViewController {
         }
 
         btn_State.setText(orderItem.state);
+        OrderViewController.orderViewController.updateStatus();
     }
 
     private void updateCost(){

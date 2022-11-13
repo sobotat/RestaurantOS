@@ -26,15 +26,15 @@ public class OrderController {
     public void updateItem(){
         tv_OrderId.setText("Order " + order.orderId);
         tv_Table.setText("Table" + order.tableId);
-        tv_Status.setText(order.status);
+        tv_Status.setText(order.getStatus());
 
         String css = " -fx-background-radius: 20;";
-        switch (order.status){
+        switch (order.getStatus()){
             case "Ordered"      -> vbox_Background.setStyle("-fx-background-color: colorLightGray;" + css);
             case "Preparing"    -> vbox_Background.setStyle("-fx-background-color: colorBlue;" + css);
             case "Prepared"     -> vbox_Background.setStyle("-fx-background-color: colorOrange;" + css);
             case "Served"       -> vbox_Background.setStyle("-fx-background-color: colorGreen;" + css);
-            case "Payed"        -> vbox_Background.setStyle("-fx-background-color: colorRed;" + css);
+            case "Payed", "Canceled" -> vbox_Background.setStyle("-fx-background-color: colorRed;" + css);
         }
     }
 }

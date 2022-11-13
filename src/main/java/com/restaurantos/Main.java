@@ -17,31 +17,26 @@ import java.util.Objects;
 public class Main extends Application {
     private static final Logger logger = LogManager.getLogger(Main.class.getName());
 
-    protected static Controller controller = null;
-    protected static LoginController loginController = null;
     protected static Stage mainStage;
     protected static Scene mainScene, loginScene;
 
-    protected static boolean useDarkMode = true;
-    protected static String css;
+    public static boolean useDarkMode = true;
+    protected static String lightMode_css, darkMode_css;
 
     @Override
     public void start(Stage stage) throws IOException {
         logger.log(Level.INFO, "App Started\n-------------------------------------------------------------------------------------------------------------------");
         Settings.loadSettings();
 
-        String lightMode_css = Objects.requireNonNull(this.getClass().getResource("light-mode.css")).toExternalForm();
-        String darkMode_css = Objects.requireNonNull(this.getClass().getResource("dark-mode.css")).toExternalForm();
-
-        css = useDarkMode ? darkMode_css : lightMode_css;
+        lightMode_css = Objects.requireNonNull(this.getClass().getResource("light-mode.css")).toExternalForm();
+        darkMode_css = Objects.requireNonNull(this.getClass().getResource("dark-mode.css")).toExternalForm();
 
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("main-view.fxml"));
         mainScene = new Scene(fxmlLoader.load(), Settings.winWidth, Settings.winHeight);
-        mainScene.getStylesheets().add(css);
 
         FXMLLoader fxmlLoginLoader = new FXMLLoader(Main.class.getResource("login-view.fxml"));
         loginScene = new Scene(fxmlLoginLoader.load(), Settings.winWidth, Settings.winHeight);
-        loginScene.getStylesheets().add(css);
+        setDarkMode(useDarkMode);
 
         mainStage = stage;
         stage.setTitle("RestaurantOS");
@@ -58,10 +53,10 @@ public class Main extends Application {
         stage.setMaximized(Settings.winIsMaximize);
         stage.show();
 
-        controller = fxmlLoader.getController();
-        loginController = fxmlLoginLoader.getController();
-        controller.initialize();
-        controller.start();
+        Controller.controller = fxmlLoader.getController();
+        LoginController.loginController = fxmlLoginLoader.getController();
+        Controller.controller.initialize();
+        Controller.controller.start();
 
         stage.setOnCloseRequest(e -> {
             logger.log(Level.INFO, "Shutting down");
@@ -73,6 +68,17 @@ public class Main extends Application {
 
             System.exit(0);
         });
+    }
+
+    public static void setDarkMode(boolean useDarkMode){
+        Main.useDarkMode = useDarkMode;
+        String css = useDarkMode ? darkMode_css : lightMode_css;
+
+        mainScene.getStylesheets().clear();
+        mainScene.getStylesheets().add(css);
+
+        loginScene.getStylesheets().clear();
+        loginScene.getStylesheets().add(css);
     }
 
     public static void switchScene(Scene scene){

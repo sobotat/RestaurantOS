@@ -21,7 +21,8 @@ Application was made only for school purpose.
 
 ---
 ### <span style="color:#96c8ff">UI</span>
-![UI](src/main/resources/art/restaurantos_0.0.1.png)
+![UI](src/main/resources/art/restaurantos_0.0.2_login.png)
+![UI](src/main/resources/art/restaurantos_0.0.2_main.png)
 
 ---
 ### <span style="color:#96c8ff">Install</span>
@@ -57,5 +58,6 @@ It's like with any software. I'll be glad for any reported bugs, and I'll also b
       - Working Manager Auth
     - v0.0.2
       - Implemented Dark Mode
+      - Implemented Automatic Order Status
 
 </details>
