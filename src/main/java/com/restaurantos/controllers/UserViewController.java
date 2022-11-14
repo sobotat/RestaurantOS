@@ -2,6 +2,7 @@ package com.restaurantos.controllers;
 
 import com.restaurantos.Main;
 import com.restaurantos.User;
+import com.restaurantos.gateways.UserGateway;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 
@@ -36,7 +37,10 @@ public class UserViewController extends ViewController {
 
     public void loadUserItems(){
         UserItemViewController.userItemViewControllers = new LinkedList<>();
-        Node[] nodes = new Node[User.users.size()];
+
+        UserGateway userGateway = new UserGateway();
+        LinkedList<User> users = userGateway.findAllUsers();
+        Node[] nodes = new Node[users.size()];
 
         try {
             for (int i = 0; i < nodes.length; i++){
@@ -45,7 +49,7 @@ public class UserViewController extends ViewController {
                 nodes[i] = fxmlLoader.load();
 
                 UserItemViewController userItemViewController = fxmlLoader.getController();
-                userItemViewController.setItem(User.users.get(i));
+                userItemViewController.setItem(users.get(i));
 
                 int h = i;
                 nodes[i].setOnMouseEntered(event -> nodes[h].setStyle("-fx-background-color: colorDarkWhite"));

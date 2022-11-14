@@ -1,8 +1,8 @@
 package com.restaurantos;
 
 public class OrderItem {
-    int orderItemId;
-    Order order;
+    public int orderItemId;
+    public Order order;
     public MenuItem menuItem;
     public int count;
     public String state;

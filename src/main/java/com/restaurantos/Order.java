@@ -1,27 +1,24 @@
 package com.restaurantos;
 
+import com.restaurantos.gateways.OrderGateway;
+import com.restaurantos.gateways.OrderItemGateway;
+
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.Random;
 
 public class Order {
-    public static LinkedList<Order> orders;
 
     public int orderId;
     public int tableId;
     Date created_date;
     boolean payed;
-    public LinkedList<OrderItem> orderItems;
 
     public Order(int orderId, int tableId, Date created_date, boolean payed) {
-        if(orders == null)
-            orders = new LinkedList<>();
-
         this.orderId = orderId;
         this.tableId = tableId;
         this.created_date = created_date;
         this.payed = payed;
-        this.orderItems = new LinkedList<>();
 
         Food food = new Food(1, new Food.FoodType(0, "Food"), "Name", "Description", "ABC", 120);
         MenuItem menuItem = new MenuItem(1, new Menu(1, new Date(), new Date()), food, 40);
@@ -33,13 +30,18 @@ public class Order {
         ritems.add(new OrderItem(1, this, menuItem, 4, "Preparing"));
         ritems.add(new OrderItem(1, this, menuItem, 5, "Served"));
 
+        OrderItemGateway orderItemGateway = new OrderItemGateway();
         for(int i = 0; i < new Random().nextInt(3, 6); i++){
-            orderItems.add(ritems.get(new Random().nextInt(0, ritems.size())));
+            orderItemGateway.create(ritems.get(new Random().nextInt(0, ritems.size())));
         }
     }
 
     public double getCost(){
         double cost = 0;
+
+        OrderItemGateway orderItemGateway = new OrderItemGateway();
+        LinkedList<OrderItem> orderItems = orderItemGateway.findAllForOrder(orderId);
+
         for (OrderItem item : orderItems){
             if(!item.state.equals("Canceled"))
                 cost += item.menuItem.food.cost * item.count;
@@ -48,6 +50,9 @@ public class Order {
     }
 
     public String getStatus(){
+        OrderItemGateway orderItemGateway = new OrderItemGateway();
+        LinkedList<OrderItem> orderItems = orderItemGateway.findAllForOrder(orderId);
+
         int numOfOrdered = 0;
         int numOfPreparing = 0;
         int numOfPrepared = 0;
@@ -79,18 +84,20 @@ public class Order {
     }
 
     public void addOrderItem(OrderItem orderItem){
-        this.orderItems.add(orderItem);
+        orderItem.order = this;
+
+        OrderItemGateway orderItemGateway = new OrderItemGateway();
+        orderItemGateway.create(orderItem);
     }
 
     public OrderItem getOrderItem(int index){
-        return this.orderItems.get(index);
+        OrderItemGateway orderItemGateway = new OrderItemGateway();
+        LinkedList<OrderItem> orderItems = orderItemGateway.findAllForOrder(orderId);
+
+        return orderItems.get(index);
     }
 
     public OrderItem getOrderItemById(int id){
-        for (OrderItem item : this.orderItems){
-            if(id == item.orderItemId)
-                return item;
-        }
-        return null;
+        return new OrderItemGateway().find(id);
     }
 }

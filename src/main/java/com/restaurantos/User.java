@@ -4,14 +4,13 @@ import java.util.Date;
 import java.util.LinkedList;
 
 public class User {
-    public static LinkedList<User> users;
 
-    int userId;
+    public int userId;
     public String firstName;
     public String lastName;
     Date bornDate;
     public String email;
-    String password;
+    public String password;
     public UserRole userRole;
 
     public User(int userId, String firstName, String lastName, Date bornDate, String email, String password, UserRole userRole) {

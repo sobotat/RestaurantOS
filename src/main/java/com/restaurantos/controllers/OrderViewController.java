@@ -2,6 +2,8 @@ package com.restaurantos.controllers;
 
 import com.restaurantos.Main;
 import com.restaurantos.Order;
+import com.restaurantos.OrderItem;
+import com.restaurantos.gateways.OrderItemGateway;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 
@@ -35,7 +37,11 @@ public class OrderViewController extends ViewController {
 
     public void loadOrderItems(){
         OrderItemViewController.orderItemViewControllers = new LinkedList<>();
-        Node[] nodes = new Node[order.orderItems.size()];
+
+        OrderItemGateway orderItemGateway = new OrderItemGateway();
+        LinkedList<OrderItem> orderItems = orderItemGateway.findAllForOrder(order.orderId);
+
+        Node[] nodes = new Node[orderItems.size()];
 
         try {
             for (int i = 0; i < nodes.length; i++){
@@ -44,7 +50,7 @@ public class OrderViewController extends ViewController {
                 nodes[i] = fxmlLoader.load();
 
                 OrderItemViewController orderItemViewController = fxmlLoader.getController();
-                orderItemViewController.setItem(order.orderItems.get(i));
+                orderItemViewController.setItem(orderItems.get(i));
 
                 int h = i;
                 nodes[i].setOnMouseEntered(event -> nodes[h].setStyle("-fx-background-color: colorDarkWhite"));

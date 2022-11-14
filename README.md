@@ -59,5 +59,8 @@ It's like with any software. I'll be glad for any reported bugs, and I'll also b
     - 0.1
       - Implemented Dark Mode
       - Implemented Automatic Order Status
+    - 0.2
+      - Implemented Gateways with Lists for now
+
 
 </details>

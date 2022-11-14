@@ -4,6 +4,8 @@ import com.restaurantos.AppSecurity;
 import com.restaurantos.Main;
 import com.restaurantos.Order;
 import com.restaurantos.User;
+import com.restaurantos.gateways.OrderGateway;
+import com.restaurantos.gateways.UserGateway;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -38,13 +40,16 @@ public class Controller {
     AppSecurity.ManagerAuth managerAuth;
 
     public void loadListView(){
-        if(Order.orders.isEmpty() || !(currentViewNode instanceof ScrollPane))
+        OrderGateway orderGateway = new OrderGateway();
+        LinkedList<Order> orders = orderGateway.findAllForDay();
+
+        if(orders.isEmpty() || !(currentViewNode instanceof ScrollPane))
             return;
 
         double curVValue = scl_List.getVvalue();
         vBox_List.getChildren().clear();
         OrderController.orderControllers = new LinkedList<>();
-        Node[] nodes = new Node[Order.orders.size()];
+        Node[] nodes = new Node[orders.size()];
 
         double prefHeight = 0;
         try {
@@ -60,7 +65,7 @@ public class Controller {
                 nodes[i] = fxmlLoader.load();
 
                 OrderController orderController = fxmlLoader.getController();
-                orderController.setItem(Order.orders.get(i));
+                orderController.setItem(orders.get(i));
 
                 //nodes[i].setOnMouseEntered(event -> nodes[h].setStyle("-fx-background-color: colorLightGray"));
                 //nodes[i].setOnMouseExited(event -> nodes[h].setStyle("-fx-background-color: colorDarkGray"));
@@ -153,7 +158,8 @@ public class Controller {
 
     @FXML
     public void onAddOrderClicked(){
-        Order.orders.add(new Order(Order.orders.getLast().orderId + 1, 1, new Date(), false));
+        OrderGateway orderGateway = new OrderGateway();
+        orderGateway.create(new Order(0, 1, new Date(), false));
         loadListView();
     }
 
@@ -232,33 +238,19 @@ public class Controller {
         ordersList = scl_List;
         currentViewNode = vBox_Table.getChildren().get(0);
 
-        Order.orders = new LinkedList<>();
-        Order.orders.add(new Order(1, 1, new Date(2000, Calendar.MARCH, 1), false));
-        Order.orders.add(new Order(2, 2, new Date(2000, Calendar.MARCH, 1), false));
-        Order.orders.add(new Order(3, 3, new Date(2000, Calendar.MARCH, 1), false));
-        Order.orders.add(new Order(4, 1, new Date(2000, Calendar.MARCH, 1), false));
-        Order.orders.add(new Order(5, 2, new Date(2000, Calendar.MARCH, 1), false));
-        Order.orders.add(new Order(6, 3, new Date(2000, Calendar.MARCH, 1), false));
-        Order.orders.add(new Order(7, 1, new Date(2000, Calendar.MARCH, 1), false));
-        Order.orders.add(new Order(8, 2, new Date(2000, Calendar.MARCH, 1), false));
-        Order.orders.add(new Order(9, 3, new Date(2000, Calendar.MARCH, 1), false));
-        Order.orders.add(new Order(10, 1, new Date(2000, Calendar.MARCH, 1), false));
-        Order.orders.add(new Order(11, 2, new Date(2000, Calendar.MARCH, 1), false));
-        Order.orders.add(new Order(12, 3, new Date(2000, Calendar.MARCH, 1), false));
-        Order.orders.add(new Order(13, 1, new Date(2000, Calendar.MARCH, 1), false));
-        Order.orders.add(new Order(14, 2, new Date(2000, Calendar.MARCH, 1), false));
-        Order.orders.add(new Order(15, 3, new Date(2000, Calendar.MARCH, 1), false));
-        Order.orders.add(new Order(16, 1, new Date(2000, Calendar.MARCH, 1), false));
-        Order.orders.add(new Order(17, 2, new Date(2000, Calendar.MARCH, 1), false));
-        Order.orders.add(new Order(18, 3, new Date(2000, Calendar.MARCH, 1), false));
+        OrderGateway orderGateway = new OrderGateway();
+        for(int i = 0; i < 15; i++){
+            orderGateway.create(new Order(0, new Random().nextInt(3), new Date(), false));
+        }
 
-        User.users = new LinkedList<>();
-        User.users.add(new User(1, "Karel", "Novak", new Date(2000, Calendar.MARCH, 10), "manager@gmail.com", "1234", new User.UserRole(0, "Manager", "description")));
-        User.users.add(new User(2, "Michal", "Novak", new Date(2000, Calendar.MARCH, 10), "email@gmail.com", "1234", new User.UserRole(2, "Chef", "description")));
-        User.users.add(new User(3, "Karel", "Novak", new Date(2000, Calendar.MARCH, 10), "email2@gmail.com", "1234", new User.UserRole(1, "Service", "description")));
-        User.users.add(new User(4, "Karel", "Novak", new Date(2000, Calendar.MARCH, 10), "email3@gmail.com", "1234", new User.UserRole(1, "Service", "description")));
-        User.users.add(new User(5, "Karel", "Novak", new Date(2000, Calendar.MARCH, 10), "email4@gmail.com", "1234", new User.UserRole(1, "Service", "description")));
-        User.users.add(new User(6, "Karel", "Novak", new Date(2000, Calendar.MARCH, 10), "email5@gmail.com", "1234", new User.UserRole(1, "Service", "description")));
+        LinkedList<User> users = new LinkedList<>();
+        users.add(new User(1, "Karel", "Novak", new Date(2000, Calendar.MARCH, 10), "manager@gmail.com", "1234", new User.UserRole(0, "Manager", "description")));
+        users.add(new User(2, "Michal", "Novak", new Date(2000, Calendar.MARCH, 10), "email@gmail.com", "1234", new User.UserRole(2, "Chef", "description")));
+        users.add(new User(3, "Karel", "Novak", new Date(2000, Calendar.MARCH, 10), "email2@gmail.com", "1234", new User.UserRole(1, "Service", "description")));
+        users.add(new User(4, "Karel", "Novak", new Date(2000, Calendar.MARCH, 10), "email3@gmail.com", "1234", new User.UserRole(1, "Service", "description")));
+        users.add(new User(5, "Karel", "Novak", new Date(2000, Calendar.MARCH, 10), "email4@gmail.com", "1234", new User.UserRole(1, "Service", "description")));
+        users.add(new User(6, "Karel", "Novak", new Date(2000, Calendar.MARCH, 10), "email5@gmail.com", "1234", new User.UserRole(1, "Service", "description")));
+        UserGateway.fakeSetOfDatabase(users);
     }
 
     // On Start

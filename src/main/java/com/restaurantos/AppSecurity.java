@@ -1,6 +1,7 @@
 package com.restaurantos;
 
 import com.restaurantos.controllers.Controller;
+import com.restaurantos.gateways.UserGateway;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -10,16 +11,18 @@ public class AppSecurity {
     private static User signInUser = null;
 
     public static boolean login(String email, String password){
-        for(User user: User.users){
-            if(user.email.equals(email) && user.password.equals(password)){
-                signInUser = user;
 
-                Main.switchScene(Main.mainScene);
-                Controller.controller.updateUserInfo();
+        UserGateway userGateway = new UserGateway();
+        User user = userGateway.findByEmailAndPassword(email, password);
 
-                logger.log(Level.INFO, "User Logged in App");
-                return true;
-            }
+        if(user != null){
+            signInUser = user;
+
+            Main.switchScene(Main.mainScene);
+            Controller.controller.updateUserInfo();
+
+            logger.log(Level.INFO, "User Logged in App");
+            return true;
         }
 
         logger.log(Level.ERROR, "User not found");
