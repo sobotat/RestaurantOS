@@ -57,6 +57,11 @@
                   </Text>
                </children>
             </VBox>
+            <Text fill="#646464" onMouseClicked="#changePasswordClicked" strokeType="OUTSIDE" strokeWidth="0.0" text="Change Password" textAlignment="CENTER" wrappingWidth="117.374755859375">
+               <VBox.margin>
+                  <Insets bottom="-10.0" top="10.0" />
+               </VBox.margin>
+            </Text>
          </children>
          <padding>
             <Insets bottom="40.0" left="40.0" right="40.0" top="40.0" />

@@ -1,15 +1,14 @@
 package com.restaurantos.controllers;
 
 import com.restaurantos.Main;
-import com.restaurantos.Menu;
-import com.restaurantos.MenuItem;
-import com.restaurantos.OrderItem;
-import com.restaurantos.gateways.MenuItemGateway;
-import com.restaurantos.gateways.OrderItemGateway;
+import com.restaurantos_domain.Menu;
+import com.restaurantos_domain.MenuItem;
+import com.restaurantos_db.MenuItemGateway;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 
 import java.io.IOException;
+import java.time.format.DateTimeFormatter;
 import java.util.LinkedList;
 
 public class MenuViewController extends ViewController {
@@ -22,7 +21,9 @@ public class MenuViewController extends ViewController {
         menuViewController = this;
 
         tv_LeftTitle.setText("Menu");
-        tv_RightTitle.setText(menu.getDate().toString());
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.YYYY");
+        tv_RightTitle.setText(formatter.format(menu.getDate()));
         tv_Text.setText("");
 
         loadMenuItems();
@@ -44,7 +45,7 @@ public class MenuViewController extends ViewController {
         LinkedList<MenuItem> menuItems = menuItemGateway.findAllForMenu(menu);
 
         Node[] nodes = new Node[menuItems.size()];
-
+        vbox_List.getChildren().clear();
         try {
             for (int i = 0; i < nodes.length; i++){
                 FXMLLoader fxmlLoader = new FXMLLoader();

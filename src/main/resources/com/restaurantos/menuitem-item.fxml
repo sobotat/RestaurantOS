@@ -14,15 +14,7 @@
    <BorderPane prefHeight="30.0" prefWidth="1920.0">
       <right>
          <HBox fx:id="hbox_btn" alignment="CENTER_RIGHT" minWidth="-Infinity" prefHeight="31.0" prefWidth="190.0" BorderPane.alignment="CENTER_RIGHT">
-            <Button id="btn_Gray" fx:id="btn_State" contentDisplay="CENTER" graphicTextGap="0.0" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#changeStateClicked" prefHeight="30.0" prefWidth="80.0" text="Served" textFill="WHITE">
-               <padding>
-                  <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" />
-               </padding>
-               <HBox.margin>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </HBox.margin>
-            </Button>
-            <Button id="btn_Gray" fx:id="btn_Select" contentDisplay="CENTER" graphicTextGap="0.0" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#selectItemClicked" prefHeight="30.0" prefWidth="50.0" text="Select" textFill="WHITE">
+            <Button id="btn_Gray" contentDisplay="CENTER" graphicTextGap="0.0" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#editItemClicked" prefHeight="30.0" prefWidth="50.0" text="Edit" textFill="WHITE">
                <HBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </HBox.margin>
@@ -30,7 +22,7 @@
                   <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" />
                </padding>
             </Button>
-            <Button id="btn_Gray" fx:id="btn_Remove" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" mnemonicParsing="false" onMouseClicked="#cancelItemClicked" prefHeight="30.0" prefWidth="30.0" text="Remove">
+            <Button id="btn_Gray" fx:id="btn_Delete" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" mnemonicParsing="false" onMouseClicked="#deleteItemClicked" prefHeight="30.0" prefWidth="30.0" text="Remove">
                <padding>
                   <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" />
                </padding>

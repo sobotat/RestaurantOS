@@ -1,10 +1,5 @@
-package com.restaurantos.gateways.unit_of_works;
+package com.restaurantos_db.unit_of_works;
 
-import org.apache.logging.log4j.Level;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
-import java.util.LinkedList;
 import java.util.Timer;
 import java.util.TimerTask;
 

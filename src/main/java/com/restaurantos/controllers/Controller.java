@@ -1,10 +1,10 @@
 package com.restaurantos.controllers;
 
+import com.restaurantos_db.*;
+import com.restaurantos_domain.*;
 import com.restaurantos.*;
-import com.restaurantos.gateways.*;
-import com.restaurantos.gateways.identity_maps.IdentityMapsHandler;
-import com.restaurantos.gateways.unit_of_works.OrderItemUnitOfWork;
-import com.restaurantos.gateways.unit_of_works.UnitOfWork;
+import com.restaurantos_db.identity_maps.IdentityMapsHandler;
+import com.restaurantos_db.unit_of_works.OrderItemUnitOfWork;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -35,7 +35,7 @@ public class Controller {
     @FXML
     ScrollPane scl_List;
     @FXML
-    Text tv_Role, tv_UserName, tv_OrderButton;
+    Text tv_Role, tv_UserName, tv_Show, tv_OrderButton, tv_MenuButton;
 
     Node currentViewNode, ordersList;
     AppSecurity.ManagerAuth managerAuth;
@@ -224,6 +224,7 @@ public class Controller {
 
     public void onMenuClicked(int index){
         MenuController menuController = MenuController.menuControllers.get(index);
+        tv_MenuButton.setText("Create Menu Item");
 
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
@@ -252,8 +253,9 @@ public class Controller {
     @FXML
     public void onShowTodayMenuClicked(){
 
+        backToMain();
         MenuGateway menuGateway = new MenuGateway();
-        Menu menu = menuGateway.find(0);
+        Menu menu = menuGateway.findForDay(LocalDate.now());
 
         if(menu == null){
             logger.log(Level.ERROR, "Menu Not Found");
@@ -261,6 +263,8 @@ public class Controller {
         }
 
         try {
+            tv_MenuButton.setText("Create Menu Item");
+
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(Main.class.getResource("view.fxml"));
             MenuViewController menuViewController = new MenuViewController();
@@ -292,6 +296,7 @@ public class Controller {
         loadListView();
 
         tv_OrderButton.setText("Create Order");
+        tv_MenuButton.setText("Create Menu");
     }
 
     @FXML
@@ -306,13 +311,44 @@ public class Controller {
     @FXML
     public void onShowMenuClicked(){
         showMenu = !showMenu;
+        tv_Show.setText((showMenu ? "Show Order" : "Show Menu"));
         loadListView();
     }
 
     @FXML
     public void onCreateMenuClicked(){
-        MenuGateway menuGateway = new MenuGateway();
-        menuGateway.create(new Menu(0, new Date(), new Date()));
+        if(currentViewNode instanceof ScrollPane) {
+            MenuGateway menuGateway = new MenuGateway();
+            if(menuGateway.findForDay(LocalDate.now()) == null) {
+                menuGateway.create(new Menu(0, LocalDate.now(), LocalDate.now()));
+                loadListView();
+            }else{
+                if(MenuController.menuControllers.isEmpty())
+                    return;
+
+                for (MenuController menuController : MenuController.menuControllers) {
+                    Menu menu = menuController.menu;
+                    if(menu.getDate().equals(LocalDate.now())){
+                        menuController.flash();
+                    }
+                }
+            }
+        }else{
+            Menu menu = MenuViewController.menuViewController.menu;
+            if(menu == null)
+                return;
+
+            FoodGateway foodGateway = new FoodGateway();
+            LinkedList<Food> foods = foodGateway.findAllFoods();
+            if(foods.isEmpty())
+                return;
+
+            MenuItem menuItem = new MenuItem( 0, menu, foods.get(new Random().nextInt(0, foods.size())), new Random().nextInt(5, 40));
+
+            MenuItemGateway menuItemGateway = new MenuItemGateway();
+            menuItemGateway.create(menuItem);
+            MenuViewController.menuViewController.loadMenuItems();
+        }
     }
 
     @FXML
@@ -323,19 +359,31 @@ public class Controller {
             loadListView();
         }else{
             Order order = OrderViewController.orderViewController.order;
-            if(order == null)
+
+            MenuGateway menuGateway = new MenuGateway();
+            Menu menu = menuGateway.findForDay(LocalDate.now());
+
+            if(order == null || menu == null) {
+                logger.log(Level.ERROR, "Order or Menu not found");
                 return;
+            }
 
             MenuItemGateway menuItemGateway = new MenuItemGateway();
-            MenuItem menuItem = menuItemGateway.find(new Random().nextInt(1, 4));
-            if(menuItem == null)
-                return;
+            LinkedList<MenuItem> menuItems = menuItemGateway.findAllForMenu(menu);
 
+            if(menuItems.isEmpty()) {
+                logger.log(Level.ERROR, "Menu is Empty");
+                return;
+            }
+
+            MenuItem menuItem = menuItems.get(new Random().nextInt(0, menuItems.size()));
             OrderItem orderItem = new OrderItem( 0 , order, menuItem, new Random().nextInt(1, 5), "Ordered");
 
             // Unit of Work
             OrderItemUnitOfWork orderItemUnitOfWork = new OrderItemUnitOfWork();
             orderItemUnitOfWork.addToCreate(orderItem);
+
+            OrderViewController.orderViewController.addOrderItem(orderItem);
 
             orderItemUnitOfWork.committedCallBack = () -> {
                 Platform.runLater(() -> {
@@ -452,6 +500,8 @@ public class Controller {
     @FXML
     public void onRefreshClicked(){
         IdentityMapsHandler.refresh();
+        backToMain();
+        loadListView();
         logger.log(Level.INFO, "IdentityMaps were refreshed");
     }
 

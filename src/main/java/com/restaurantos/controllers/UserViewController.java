@@ -1,8 +1,8 @@
 package com.restaurantos.controllers;
 
 import com.restaurantos.Main;
-import com.restaurantos.User;
-import com.restaurantos.gateways.UserGateway;
+import com.restaurantos_domain.User;
+import com.restaurantos_db.UserGateway;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 

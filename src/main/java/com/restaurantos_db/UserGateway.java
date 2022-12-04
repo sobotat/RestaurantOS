@@ -1,8 +1,7 @@
-package com.restaurantos.gateways;
+package com.restaurantos_db;
 
 import com.lambdaworks.crypto.SCryptUtil;
-import com.restaurantos.User;
-import com.restaurantos.controllers.Controller;
+import com.restaurantos_domain.User;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -12,7 +11,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Date;
-import java.time.LocalDate;
 import java.util.LinkedList;
 
 public class UserGateway implements Gateway<User> {
@@ -121,8 +119,7 @@ public class UserGateway implements Gateway<User> {
     }
 
     @Override
-    public void create(User obj) {
-
+    public boolean create(User obj) {
         try (PreparedStatement preparedStatement = Gateway.DBConnection.getConnection().prepareStatement("INSERT INTO `restaurantos-db`.`user` ( `first_name`, `last_name`, `born_date`, `email`, `password`, `role_id`) VALUES (?, ?, ?, ?, ?, ?);", Statement.RETURN_GENERATED_KEYS)){
             preparedStatement.setString( 1, obj.getFirstName());
             preparedStatement.setString( 2, obj.getLastName());
@@ -140,15 +137,16 @@ public class UserGateway implements Gateway<User> {
                 }
                 preparedStatement.close();
             }
+            return true;
         } catch (SQLException e) {
             logger.log(Level.ERROR, "User DB exception :> " + e.getSQLState());
             e.printStackTrace();
         }
+        return false;
     }
 
     @Override
-    public void update(User obj) {
-
+    public boolean update(User obj) {
         try (PreparedStatement preparedStatement = Gateway.DBConnection.getConnection().prepareStatement("UPDATE `restaurantos-db`.`user` SET `first_name` = ?, `last_name` = ?, `born_date` = ?, `email` = ?, `password` = ?, `role_id` = ? WHERE `user_id` = ?;")){
             preparedStatement.setString( 1, obj.getFirstName());
             preparedStatement.setString( 2, obj.getLastName());
@@ -159,19 +157,38 @@ public class UserGateway implements Gateway<User> {
             preparedStatement.setInt(7, obj.getUserId());
 
             preparedStatement.execute();
+            return true;
         } catch (SQLException e) {
             logger.log(Level.ERROR, "User DB exception :> " + e.getSQLState());
         }
+        return true;
+    }
+
+    public boolean updatePassword(String email, String password) {
+        try (PreparedStatement preparedStatement = Gateway.DBConnection.getConnection().prepareStatement("UPDATE `restaurantos-db`.`user` SET `password` = ? WHERE `email` = ?;")){
+
+            String hashPassword = User.hashPassword(password);
+            preparedStatement.setString( 1, hashPassword);
+            preparedStatement.setString( 2, email);
+
+            preparedStatement.execute();
+            return true;
+        } catch (SQLException e) {
+            logger.log(Level.ERROR, "User DB exception :> " + e.getSQLState());
+        }
+        return false;
     }
 
     @Override
-    public void delete(User obj) {
-
+    public boolean delete(User obj) {
         try (PreparedStatement preparedStatement = Gateway.DBConnection.getConnection().prepareStatement("DELETE FROM `restaurantos-db`.`user` WHERE `user_id` = ?")){
             preparedStatement.setInt(1, obj.getUserId());
+
             preparedStatement.execute();
+            return true;
         } catch (SQLException e) {
             logger.log(Level.ERROR, "User DB exception :> " + e.getSQLState());
         }
+        return false;
     }
 }

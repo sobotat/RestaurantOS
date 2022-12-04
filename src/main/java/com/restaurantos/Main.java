@@ -1,13 +1,13 @@
 package com.restaurantos;
 
+import com.restaurantos_domain.Settings;
 import com.restaurantos.controllers.Controller;
 import com.restaurantos.controllers.LoginController;
-import com.restaurantos.gateways.Gateway;
+import com.restaurantos_db.Gateway;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
@@ -19,7 +19,8 @@ public class Main extends Application {
     private static final Logger logger = LogManager.getLogger(Main.class.getName());
 
     protected static Stage mainStage;
-    protected static Scene mainScene, loginScene;
+    public static Scene mainScene;
+    public static Scene loginScene;
 
     public static boolean useDarkMode = false;
     protected static String lightMode_css, darkMode_css;

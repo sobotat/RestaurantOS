@@ -4,50 +4,49 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a554b88f-bf3e-4866-beec-f61e4d0b69a5" name="Changes" comment="v0.1 - Dark Mode">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/restaurantos/controllers/MenuController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/restaurantos/controllers/MenuItemViewController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/restaurantos/controllers/MenuViewController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/restaurantos/gateways/FoodGateway.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/restaurantos/gateways/identity_maps/IdentityMap.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/restaurantos/gateways/identity_maps/IdentityMapsHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/restaurantos/gateways/identity_maps/OrderIdentityMap.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/restaurantos/gateways/identity_maps/OrderItemIdentityMap.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/restaurantos/gateways/identity_maps/UserIdentityMap.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/restaurantos/gateways/unit_of_works/OrderItemUnitOfWork.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/restaurantos/menu-item.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/restaurantos/menuitem-item.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="a554b88f-bf3e-4866-beec-f61e4d0b69a5" name="Changes" comment="v0.2">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/restaurantos_db/MenuGateway.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurantos/AppSecurity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurantos/AppSecurity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurantos/Food.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurantos/Food.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurantos/AppSecurity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurantos_domain/AppSecurity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurantos/Files.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurantos_domain/Files.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurantos/Food.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurantos_domain/Food.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurantos/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurantos/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurantos/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurantos/Menu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurantos/MenuItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurantos/MenuItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurantos/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurantos/Order.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurantos/OrderItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurantos/OrderItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurantos/Table.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurantos/Table.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurantos/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurantos/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurantos/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurantos_domain/Menu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurantos/MenuItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurantos_domain/MenuItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurantos/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurantos_domain/Order.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurantos/OrderItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurantos_domain/OrderItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurantos/Settings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurantos_domain/Settings.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurantos/Table.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurantos_domain/Table.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurantos/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurantos_domain/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurantos/controllers/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurantos/controllers/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurantos/controllers/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurantos/controllers/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurantos/controllers/MenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurantos/controllers/MenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurantos/controllers/MenuItemViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurantos/controllers/MenuItemViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurantos/controllers/MenuViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurantos/controllers/MenuViewController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurantos/controllers/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurantos/controllers/OrderController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurantos/controllers/OrderItemViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurantos/controllers/OrderItemViewController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurantos/controllers/OrderViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurantos/controllers/OrderViewController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurantos/controllers/UserItemViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurantos/controllers/UserItemViewController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurantos/controllers/UserViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurantos/controllers/UserViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurantos/gateways/Gateway.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurantos/gateways/Gateway.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurantos/gateways/MenuGateway.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurantos/gateways/MenuGateway.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurantos/gateways/MenuItemGateway.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurantos/gateways/MenuItemGateway.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurantos/gateways/OrderGateway.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurantos/gateways/OrderGateway.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurantos/gateways/OrderItemGateway.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurantos/gateways/OrderItemGateway.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurantos/gateways/OrderUnitOfWork.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurantos/gateways/TableGateway.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurantos/gateways/TableGateway.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurantos/gateways/UnitOfWork.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurantos/gateways/unit_of_works/UnitOfWork.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurantos/gateways/UserGateway.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurantos/gateways/UserGateway.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurantos/gateways/FoodGateway.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurantos_db/FoodGateway.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurantos/gateways/Gateway.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurantos_db/Gateway.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurantos/gateways/MenuGateway.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurantos/gateways/MenuItemGateway.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurantos_db/MenuItemGateway.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurantos/gateways/OrderGateway.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurantos_db/OrderGateway.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurantos/gateways/OrderItemGateway.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurantos_db/OrderItemGateway.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurantos/gateways/TableGateway.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurantos_db/TableGateway.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurantos/gateways/UserGateway.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurantos_db/UserGateway.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurantos/gateways/identity_maps/IdentityMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurantos_db/identity_maps/IdentityMap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurantos/gateways/identity_maps/IdentityMapsHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurantos_db/identity_maps/IdentityMapsHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurantos/gateways/identity_maps/OrderIdentityMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurantos_db/identity_maps/OrderIdentityMap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurantos/gateways/identity_maps/OrderItemIdentityMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurantos_db/identity_maps/OrderItemIdentityMap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurantos/gateways/identity_maps/UserIdentityMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurantos_db/identity_maps/UserIdentityMap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurantos/gateways/unit_of_works/OrderItemUnitOfWork.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurantos_db/unit_of_works/OrderItemUnitOfWork.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurantos/gateways/unit_of_works/UnitOfWork.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurantos_db/unit_of_works/UnitOfWork.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/restaurantos/login-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/restaurantos/login-view.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/restaurantos/main-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/restaurantos/main-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/restaurantos/menuitem-item.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/restaurantos/menuitem-item.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -146,6 +145,9 @@
       <recent name="C:\Users\tomas\OneDrive - VSB-TUO\R2-S1\VIS\#Code\RestaurantOS\src\main\resources\res\icons" />
       <recent name="C:\Users\tomas\OneDrive - VSB-TUO\R2-S1\VIS\#Code\RestaurantOS\src\main\resources\com\restaurantos" />
       <recent name="C:\Users\tomas\OneDrive - VSB-TUO\R2-S1\VIS\#Code\RestaurantOS\src\main\resources" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.restaurantos.gateways" />
@@ -273,7 +275,7 @@
       <workItem from="1669801089430" duration="308000" />
       <workItem from="1669803213865" duration="829000" />
       <workItem from="1669848047028" duration="12000" />
-      <workItem from="1670144539385" duration="5878000" />
+      <workItem from="1670144539385" duration="17826000" />
     </task>
     <task id="LOCAL-00001" summary="v0.0.1">
       <created>1668290384721</created>
@@ -317,7 +319,14 @@
       <option name="project" value="LOCAL" />
       <updated>1668333267466</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="v0.2">
+      <created>1670150743976</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1670150743976</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -338,7 +347,8 @@
     <MESSAGE value="v0.0.1" />
     <MESSAGE value="v0.0.2 - Dark Mode" />
     <MESSAGE value="v0.1 - Dark Mode" />
-    <option name="LAST_COMMIT_MESSAGE" value="v0.1 - Dark Mode" />
+    <MESSAGE value="v0.2" />
+    <option name="LAST_COMMIT_MESSAGE" value="v0.2" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

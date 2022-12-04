@@ -1,10 +1,8 @@
-package com.restaurantos;
+package com.restaurantos_domain;
 
 import com.lambdaworks.crypto.SCryptUtil;
 
 import java.time.LocalDate;
-import java.util.Date;
-import java.util.LinkedList;
 
 public class User {
 
@@ -26,7 +24,7 @@ public class User {
         this.userRole = userRole;
     }
 
-    protected static String hashPassword(String password){
+    public static String hashPassword(String password){
         return SCryptUtil.scrypt(password, 16, 16, 16);
     }
 

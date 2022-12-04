@@ -1,22 +1,27 @@
 package com.restaurantos.controllers;
 
-import com.restaurantos.AppSecurity;
-import com.restaurantos.MenuItem;
+import com.restaurantos_db.MenuItemGateway;
+import com.restaurantos_domain.AppSecurity;
+import com.restaurantos_domain.MenuItem;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.LinkedList;
 import java.util.Timer;
 import java.util.TimerTask;
 
 public class MenuItemViewController {
+    private static final Logger logger = LogManager.getLogger(MenuItemViewController.class.getName());
 
     @FXML
-    Button btn_State, btn_Select, btn_Remove;
+    Button btn_Delete;
     @FXML
     Circle dot_State;
     @FXML
@@ -41,15 +46,36 @@ public class MenuItemViewController {
         }
     }
 
-    public void cancelItemClicked(){
+    public void deleteItemClicked(){
+        if(!AppSecurity.haveAuthForDelete()){
+            warning(btn_Delete);
+            return;
+        }
 
+        MenuItemGateway menuItemGateway = new MenuItemGateway();
+        boolean status = menuItemGateway.delete(menuItem);
+
+        if(status){
+            MenuViewController.menuViewController.loadMenuItems();
+            logger.log(Level.INFO, "MenuItem was deleted");
+        }else{
+            warning(btn_Delete);
+        }
     }
 
-    public void selectItemClicked(){
-
+    public void editItemClicked(){
+        logger.log(Level.WARN, "Not Implemented");
     }
 
-    public void changeStateClicked() {
+    private void warning(Node node){
+        String orgStyle = btn_Delete.getStyle();
+        node.setStyle(orgStyle + "-fx-background-color: colorRed;");
 
-    }
-}
+        Timer timer = new Timer(true);
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                node.setStyle(orgStyle);
+            }
+        }, 1000);
+    }}

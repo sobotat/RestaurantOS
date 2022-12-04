@@ -1,6 +1,6 @@
-package com.restaurantos;
+package com.restaurantos_domain;
 
-import com.restaurantos.gateways.OrderItemGateway;
+import com.restaurantos_db.OrderItemGateway;
 
 import java.time.LocalDate;
 import java.util.LinkedList;

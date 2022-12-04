@@ -193,7 +193,7 @@
                                      </HBox.margin>
                                      <Image url="@../../res/icons/icon_chevronRight_white.png.png" />
                                  </ImageView>
-                                 <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Show Menu">
+                                 <Text fx:id="tv_Show" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Show Menu">
                                      <HBox.margin>
                                          <Insets left="10.0" />
                                      </HBox.margin>
@@ -229,7 +229,7 @@
                                     <Image url="@../../res/icons/icon_chevronRight_white.png.png" />
                                  </image>
                               </ImageView>
-                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Create Menu">
+                              <Text fx:id="tv_MenuButton" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Create Menu">
                                  <HBox.margin>
                                     <Insets left="10.0" />
                                  </HBox.margin>

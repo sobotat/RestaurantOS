@@ -1,12 +1,8 @@
-package com.restaurantos.gateways.unit_of_works;
+package com.restaurantos_db.unit_of_works;
 
-import com.restaurantos.Order;
-import com.restaurantos.OrderItem;
-import com.restaurantos.gateways.Gateway;
-import com.restaurantos.gateways.OrderGateway;
-import com.restaurantos.gateways.OrderItemGateway;
-import com.restaurantos.gateways.identity_maps.OrderIdentityMap;
-import com.restaurantos.gateways.identity_maps.OrderItemIdentityMap;
+import com.restaurantos_db.Gateway;
+import com.restaurantos_db.identity_maps.OrderItemIdentityMap;
+import com.restaurantos_domain.OrderItem;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

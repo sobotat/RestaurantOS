@@ -1,6 +1,6 @@
-package com.restaurantos;
+package com.restaurantos_domain;
 
-import com.restaurantos.gateways.FoodGateway;
+import com.restaurantos_db.FoodGateway;
 
 public class MenuItem {
     private int menuItemId;
@@ -39,6 +39,9 @@ public class MenuItem {
     }
 
     // Setters
+    public void setMenuItemId(int menuItemId) {
+        this.menuItemId = menuItemId;
+    }
     public void setMenu(Menu menu) {
         this.menu = menu;
     }

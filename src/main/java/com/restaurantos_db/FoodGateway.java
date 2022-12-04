@@ -1,7 +1,6 @@
-package com.restaurantos.gateways;
+package com.restaurantos_db;
 
-import com.restaurantos.Food;
-import com.restaurantos.User;
+import com.restaurantos_domain.Food;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -10,7 +9,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.Date;
 import java.util.LinkedList;
 
 public class FoodGateway implements Gateway<Food> {
@@ -52,7 +50,7 @@ public class FoodGateway implements Gateway<Food> {
         LinkedList<Food> foods = new LinkedList<>();
 
         try (Statement statement = Gateway.DBConnection.getConnection().createStatement()){
-            try(ResultSet resultSet = statement.executeQuery("SELECT food.food_id, food.name, food.description, food.allergens, food.cost, type.type_id, type.name"
+            try(ResultSet resultSet = statement.executeQuery("SELECT food.food_id, food.name, food.description, food.allergens, food.cost, type.type_id, type.name "
                                                                + "FROM food JOIN type ON type.type_id = food.type_id;")){
 
                 while (resultSet.next()) {
@@ -79,17 +77,20 @@ public class FoodGateway implements Gateway<Food> {
     }
 
     @Override
-    public void create(Food obj) {
+    public boolean create(Food obj) {
         logger.log(Level.WARN, "Not Implemented");
+        return false;
     }
 
     @Override
-    public void update(Food obj) {
+    public boolean update(Food obj) {
         logger.log(Level.WARN, "Not Implemented");
+        return false;
     }
 
     @Override
-    public void delete(Food obj) {
+    public boolean delete(Food obj) {
         logger.log(Level.WARN, "Not Implemented");
+        return false;
     }
 }

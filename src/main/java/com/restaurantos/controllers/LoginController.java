@@ -1,6 +1,6 @@
 package com.restaurantos.controllers;
 
-import com.restaurantos.AppSecurity;
+import com.restaurantos_domain.AppSecurity;
 import com.restaurantos.Main;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
@@ -48,6 +48,17 @@ public class LoginController {
     void enterPressed(KeyEvent event) {
         if(event.getCode() == KeyCode.ENTER)
             loginClicked();
+    }
+
+    @FXML
+    public void changePasswordClicked(){
+        if(!(tf_Email.getText().equals("") || tf_Password.getText().equals(""))) {
+            AppSecurity.changePassword(tf_Email.getText(), tf_Password.getText());
+            return;
+        }
+
+        System.out.println("Fill email and password");
+        badEmailOrPassword();
     }
 
     private void badEmailOrPassword(){

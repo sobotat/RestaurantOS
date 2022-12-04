@@ -1,4 +1,4 @@
-package com.restaurantos.gateways.identity_maps;
+package com.restaurantos_db.identity_maps;
 
 public class IdentityMapsHandler {
 

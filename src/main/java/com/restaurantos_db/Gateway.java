@@ -1,4 +1,4 @@
-package com.restaurantos.gateways;
+package com.restaurantos_db;
 
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
@@ -13,9 +13,9 @@ import java.util.TimerTask;
 public interface Gateway<T> {
 
     T find(int id);
-    void create(T obj);
-    void update(T obj);
-    void delete(T obj);
+    boolean create(T obj);
+    boolean update(T obj);
+    boolean delete(T obj);
 
     class DBConnection{
         private static final Logger logger = LogManager.getLogger(DBConnection.class.getName());

@@ -1,6 +1,6 @@
 package com.restaurantos.controllers;
 
-import com.restaurantos.Order;
+import com.restaurantos_domain.Order;
 import javafx.fxml.FXML;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;

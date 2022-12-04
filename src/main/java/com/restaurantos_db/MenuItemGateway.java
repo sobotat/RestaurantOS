@@ -1,9 +1,7 @@
-package com.restaurantos.gateways;
+package com.restaurantos_db;
 
-import com.restaurantos.Food;
-import com.restaurantos.Menu;
-import com.restaurantos.MenuItem;
-import com.restaurantos.OrderItem;
+import com.restaurantos_domain.Menu;
+import com.restaurantos_domain.MenuItem;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -11,7 +9,7 @@ import org.apache.logging.log4j.Logger;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Date;
+import java.sql.Statement;
 import java.util.LinkedList;
 
 public class MenuItemGateway implements Gateway<MenuItem> {
@@ -70,17 +68,54 @@ public class MenuItemGateway implements Gateway<MenuItem> {
     }
 
     @Override
-    public void create(MenuItem obj) {
-        logger.log(Level.WARN, "Not Implemented");
+    public boolean create(MenuItem obj) {
+        try (PreparedStatement preparedStatement = Gateway.DBConnection.getConnection().prepareStatement("INSERT INTO `menu_item` ( `menu_id`, `food_id`, `count`) VALUES (?, ?, ?);", Statement.RETURN_GENERATED_KEYS)){
+            preparedStatement.setInt( 1, obj.getMenu().getMenuId());
+            preparedStatement.setInt(2, obj.getFood().getFoodId());
+            preparedStatement.setInt( 3, obj.getCount());
+
+            preparedStatement.execute();
+            try(ResultSet resultSet = preparedStatement.getGeneratedKeys()){
+
+                if (resultSet.next()) {
+                    // Order
+                    obj.setMenuItemId(resultSet.getInt(1));
+                }
+                preparedStatement.close();
+                return true;
+            }
+        } catch (SQLException e) {
+            logger.log(Level.ERROR, "MenuItem DB exception :> " + e.getSQLState());
+        }
+        return false;
     }
 
     @Override
-    public void update(MenuItem obj) {
-        logger.log(Level.WARN, "Not Implemented");
+    public boolean update(MenuItem obj) {
+        try (PreparedStatement preparedStatement = Gateway.DBConnection.getConnection().prepareStatement("UPDATE `menu_item` SET `menu_id` = ?, `food_id` = ?, `count` = ? WHERE `menu_item_id` = ?;")){
+            preparedStatement.setInt( 1, obj.getMenu().getMenuId());
+            preparedStatement.setInt(2, obj.getFood().getFoodId());
+            preparedStatement.setInt( 3, obj.getCount());
+            preparedStatement.setInt(4, obj.getMenuItemId());
+
+            preparedStatement.execute();
+            return true;
+        } catch (SQLException e) {
+            logger.log(Level.ERROR, "MenuItem DB exception :> " + e.getSQLState());
+        }
+        return false;
     }
 
     @Override
-    public void delete(MenuItem obj) {
-        logger.log(Level.WARN, "Not Implemented");
+    public boolean delete(MenuItem obj) {
+        try (PreparedStatement preparedStatement = Gateway.DBConnection.getConnection().prepareStatement("DELETE FROM `menu_item` WHERE `menu_item_id` = ?")){
+            preparedStatement.setInt(1, obj.getMenuItemId());
+
+            preparedStatement.execute();
+            return true;
+        } catch (SQLException e) {
+            logger.log(Level.ERROR, "MenuItem DB exception :> " + e.getSQLState());
+        }
+        return false;
     }
 }

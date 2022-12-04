@@ -1,6 +1,6 @@
-package com.restaurantos.gateways.identity_maps;
+package com.restaurantos_db.identity_maps;
 
-import com.restaurantos.User;
+import com.restaurantos_domain.User;
 
 import java.util.HashMap;
 

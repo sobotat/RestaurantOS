@@ -1,20 +1,19 @@
-package com.restaurantos;
+package com.restaurantos_domain;
 
-import com.restaurantos.gateways.FoodGateway;
-import com.restaurantos.gateways.MenuItemGateway;
+import com.restaurantos_db.MenuItemGateway;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.LinkedList;
 
 public class Menu {
     private int menuId;
-    private Date date;
-    private Date created_date;
+    private LocalDate date;
+    private LocalDate createdDate;
 
-    public Menu(int menuId, Date date, Date created_date) {
+    public Menu(int menuId, LocalDate date, LocalDate createdDate) {
         this.menuId = menuId;
         this.date = date;
-        this.created_date = created_date;
+        this.createdDate = createdDate;
     }
 
     public void addMenuItem(MenuItem menuItem){
@@ -35,14 +34,19 @@ public class Menu {
         return new MenuItemGateway().find(id);
     }
 
+    // Setters
+    public void setMenuId(int menuId) {
+        this.menuId = menuId;
+    }
+
     // Getters
     public int getMenuId() {
         return menuId;
     }
-    public Date getDate() {
+    public LocalDate getDate() {
         return date;
     }
-    public Date getCreated_date() {
-        return created_date;
+    public LocalDate getCreatedDate() {
+        return createdDate;
     }
 }

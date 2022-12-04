@@ -1,9 +1,10 @@
-package com.restaurantos;
+package com.restaurantos_domain;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
+import com.restaurantos.Main;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -14,10 +15,10 @@ public class Settings {
 
     protected static double winWidthDefault = 1200;
     protected static double winHeightDefault = 675;
-    protected static double winWidth = winWidthDefault;
-    protected static double winHeight = winHeightDefault;
-    protected static boolean winCanResize = true;
-    protected static boolean winIsMaximize = false;
+    public static double winWidth = winWidthDefault;
+    public static double winHeight = winHeightDefault;
+    public static boolean winCanResize = true;
+    public static boolean winIsMaximize = false;
 
     public static void loadSettings(){
         logger.log(Level.INFO, "Load Settings Started");

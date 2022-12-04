@@ -1,6 +1,6 @@
-package com.restaurantos;
+package com.restaurantos_domain;
 
-import com.restaurantos.gateways.MenuItemGateway;
+import com.restaurantos_db.MenuItemGateway;
 
 public class OrderItem {
     private int orderItemId;

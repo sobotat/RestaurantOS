@@ -1,7 +1,7 @@
-package com.restaurantos.gateways.identity_maps;
+package com.restaurantos_db.identity_maps;
 
-import com.restaurantos.Order;
-import com.restaurantos.OrderItem;
+import com.restaurantos_domain.Order;
+import com.restaurantos_domain.OrderItem;
 
 import java.util.HashMap;
 import java.util.LinkedList;

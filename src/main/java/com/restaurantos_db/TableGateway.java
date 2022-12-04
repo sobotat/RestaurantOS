@@ -1,8 +1,6 @@
-package com.restaurantos.gateways;
+package com.restaurantos_db;
 
-import com.restaurantos.Food;
-import com.restaurantos.Table;
-import com.restaurantos.User;
+import com.restaurantos_domain.Table;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -62,7 +60,7 @@ public class TableGateway implements Gateway<Table> {
     }
 
     @Override
-    public void create(Table obj) {
+    public boolean create(Table obj) {
 
         try (PreparedStatement preparedStatement = Gateway.DBConnection.getConnection().prepareStatement("INSERT INTO `restaurantos-db`.`table` ( `capacity`, `reserved`) VALUES (?, ?);", Statement.RETURN_GENERATED_KEYS)){
             preparedStatement.setInt( 1, obj.getCapacity());
@@ -77,33 +75,37 @@ public class TableGateway implements Gateway<Table> {
                 }
                 preparedStatement.close();
             }
+            return true;
         } catch (SQLException e) {
             logger.log(Level.ERROR, "Table DB exception :> " + e.getSQLState());
         }
+        return false;
     }
 
     @Override
-    public void update(Table obj) {
-
+    public boolean update(Table obj) {
         try (PreparedStatement preparedStatement = Gateway.DBConnection.getConnection().prepareStatement("UPDATE `restaurantos-db`.`table` SET `capacity` = ?, `reserved` = ? WHERE `table_id` = ?;")){
             preparedStatement.setInt( 1, obj.getCapacity());
             preparedStatement.setBoolean(2, obj.isReserved());
             preparedStatement.setInt(3, obj.getTableId());
 
             preparedStatement.execute();
+            return true;
         } catch (SQLException e) {
             logger.log(Level.ERROR, "Table DB exception :> " + e.getSQLState());
         }
+        return false;
     }
 
     @Override
-    public void delete(Table obj) {
-
+    public boolean delete(Table obj) {
         try (PreparedStatement preparedStatement = Gateway.DBConnection.getConnection().prepareStatement("DELETE FROM `restaurantos-db`.`table` WHERE `table_id` = ?")){
             preparedStatement.setInt(1, obj.getTableId());
             preparedStatement.execute();
+            return true;
         } catch (SQLException e) {
             logger.log(Level.ERROR, "Table DB exception :> " + e.getSQLState());
         }
+        return false;
     }
 }

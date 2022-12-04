@@ -1,9 +1,9 @@
 package com.restaurantos.controllers;
 
 import com.restaurantos.Main;
-import com.restaurantos.Order;
-import com.restaurantos.OrderItem;
-import com.restaurantos.gateways.OrderItemGateway;
+import com.restaurantos_domain.Order;
+import com.restaurantos_domain.OrderItem;
+import com.restaurantos_db.OrderItemGateway;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 
@@ -33,6 +33,25 @@ public class OrderViewController extends ViewController {
         vbox_Root.setPrefHeight(height);
         vbox_Root.setMaxHeight(height);
         vbox_Root.setMinHeight(height);
+    }
+
+    public void addOrderItem(OrderItem orderItem){
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(Main.class.getResource("orderitem-item.fxml"));
+            Node node = fxmlLoader.load();
+
+            OrderItemViewController orderItemViewController = fxmlLoader.getController();
+            orderItemViewController.setItem(orderItem);
+
+            node.setOnMouseEntered(event -> node.setStyle("-fx-background-color: colorDarkWhite"));
+            node.setOnMouseExited(event -> node.setStyle("-fx-background-color: colorLightWhite"));
+
+            OrderItemViewController.orderItemViewControllers.add(orderItemViewController);
+            vbox_List.getChildren().add(node);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void loadOrderItems(){

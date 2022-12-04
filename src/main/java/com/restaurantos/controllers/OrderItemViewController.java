@@ -1,10 +1,9 @@
 package com.restaurantos.controllers;
 
-import com.restaurantos.AppSecurity;
-import com.restaurantos.Food;
-import com.restaurantos.OrderItem;
-import com.restaurantos.gateways.OrderItemGateway;
-import com.restaurantos.gateways.unit_of_works.OrderItemUnitOfWork;
+import com.restaurantos_domain.AppSecurity;
+import com.restaurantos_domain.Food;
+import com.restaurantos_domain.OrderItem;
+import com.restaurantos_db.unit_of_works.OrderItemUnitOfWork;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
@@ -44,7 +43,7 @@ public class OrderItemViewController {
     }
 
     public void cancelItemClicked(){
-        if(!AppSecurity.getSignInUser().getUserRole().getName().equals("Manager")){
+        if(!AppSecurity.haveAuthForDelete()){
             String orgStyle = btn_Remove.getStyle();
             btn_Remove.setStyle(orgStyle + "-fx-background-color: colorRed;");
 

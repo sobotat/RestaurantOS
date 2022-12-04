@@ -1,8 +1,8 @@
 package com.restaurantos.controllers;
 
-import com.restaurantos.AppSecurity;
-import com.restaurantos.User;
-import com.restaurantos.gateways.UserGateway;
+import com.restaurantos_domain.AppSecurity;
+import com.restaurantos_domain.User;
+import com.restaurantos_db.UserGateway;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;

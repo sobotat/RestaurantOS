@@ -1,8 +1,8 @@
-package com.restaurantos.gateways;
+package com.restaurantos_db;
 
-import com.restaurantos.Order;
-import com.restaurantos.Table;
-import com.restaurantos.gateways.identity_maps.OrderIdentityMap;
+import com.restaurantos_db.identity_maps.OrderIdentityMap;
+import com.restaurantos_domain.Order;
+import com.restaurantos_domain.Table;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -102,7 +102,7 @@ public class OrderGateway implements Gateway<Order> {
     }
 
     @Override
-    public void create(Order obj) {
+    public boolean create(Order obj) {
 
         try (PreparedStatement preparedStatement = Gateway.DBConnection.getConnection().prepareStatement("INSERT INTO `order` ( `table_id`, `created_date`, `payed`) VALUES (?, ?, ?);", Statement.RETURN_GENERATED_KEYS)){
             preparedStatement.setInt( 1, obj.getTable().getTableId());
@@ -121,15 +121,16 @@ public class OrderGateway implements Gateway<Order> {
                 OrderIdentityMap orderIdentityMap = new OrderIdentityMap();
                 orderIdentityMap.clear();
             }
+            return true;
         } catch (SQLException e) {
             logger.log(Level.ERROR, "Order DB exception :> " + e.getSQLState());
             e.printStackTrace();
         }
+        return false;
     }
 
     @Override
-    public void update(Order obj) {
-
+    public boolean update(Order obj) {
         try (PreparedStatement preparedStatement = Gateway.DBConnection.getConnection().prepareStatement("UPDATE `order` SET `table_id` = ?, `created_date` = ?, `played` = ? WHERE `order_id` = ?;")){
             preparedStatement.setInt( 1, obj.getTable().getTableId());
             preparedStatement.setDate(2, Date.valueOf(obj.getCreatedDate()));
@@ -137,22 +138,25 @@ public class OrderGateway implements Gateway<Order> {
             preparedStatement.setInt(4, obj.getOrderId());
 
             preparedStatement.execute();
+            return true;
         } catch (SQLException e) {
             logger.log(Level.ERROR, "Order DB exception :> " + e.getSQLState());
         }
+        return false;
     }
 
     @Override
-    public void delete(Order obj) {
-
+    public boolean delete(Order obj) {
         try (PreparedStatement preparedStatement = Gateway.DBConnection.getConnection().prepareStatement("DELETE FROM `order` WHERE `order_id` = ?")){
             preparedStatement.setInt(1, obj.getOrderId());
             preparedStatement.execute();
 
             OrderIdentityMap orderIdentityMap = new OrderIdentityMap();
             orderIdentityMap.clear();
+            return true;
         } catch (SQLException e) {
             logger.log(Level.ERROR, "Order DB exception :> " + e.getSQLState());
         }
+        return false;
     }
 }

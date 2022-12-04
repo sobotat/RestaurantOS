@@ -1,8 +1,8 @@
-package com.restaurantos;
+package com.restaurantos_domain;
 
-import com.lambdaworks.crypto.SCryptUtil;
+import com.restaurantos.Main;
 import com.restaurantos.controllers.Controller;
-import com.restaurantos.gateways.UserGateway;
+import com.restaurantos_db.UserGateway;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -42,6 +42,20 @@ public class AppSecurity {
 
     public static User getSignInUser() {
         return signInUser;
+    }
+
+    public static boolean haveAuthForDelete(){
+        return signInUser.getUserRole().getName().equals("Manager");
+    }
+
+    public static void changePassword(String email, String password){
+        UserGateway userGateway = new UserGateway();
+        boolean status = userGateway.updatePassword(email, password);
+
+        if(status)
+            System.out.println("Password was changed");
+        else
+            System.out.println("Password change failed");
     }
 
     public static class ManagerAuth{
