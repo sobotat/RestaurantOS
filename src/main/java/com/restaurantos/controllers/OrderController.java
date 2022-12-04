@@ -24,8 +24,8 @@ public class OrderController {
     }
 
     public void updateItem(){
-        tv_OrderId.setText("Order " + order.orderId);
-        tv_Table.setText("Table" + order.tableId);
+        tv_OrderId.setText("Order " + order.getOrderId());
+        tv_Table.setText("Table" + order.getTable().getTableId());
         tv_Status.setText(order.getStatus());
 
         String css = " -fx-background-radius: 20;";

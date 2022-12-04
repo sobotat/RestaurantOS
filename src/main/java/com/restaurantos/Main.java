@@ -2,6 +2,7 @@ package com.restaurantos;
 
 import com.restaurantos.controllers.Controller;
 import com.restaurantos.controllers.LoginController;
+import com.restaurantos.gateways.Gateway;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -65,6 +66,8 @@ public class Main extends Application {
             Settings.winWidth = Math.round((mainScene.getWidth() * 1000)) / (double) 1000;
             Settings.winHeight = Math.round((mainScene.getHeight() * 1000)) / (double) 1000;
             Settings.saveSettings();
+
+            Gateway.DBConnection.close();
 
             System.exit(0);
         });

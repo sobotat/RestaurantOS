@@ -1,6 +1,8 @@
 package com.restaurantos.controllers;
 
+import com.restaurantos.AppSecurity;
 import com.restaurantos.User;
+import com.restaurantos.gateways.UserGateway;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
@@ -26,9 +28,9 @@ public class UserItemViewController {
     public void setItem(User user) {
         this.user = user;
 
-        tv_Name.setText(user.firstName + " " + user.lastName);
-        tv_Role.setText(user.userRole.name);
-        tv_Email.setText(user.email);
+        tv_Name.setText(user.getFirstName() + " " + user.getLastName());
+        tv_Role.setText(user.getUserRole().getName());
+        tv_Email.setText(user.getEmail());
     }
 
     @FXML
@@ -38,6 +40,13 @@ public class UserItemViewController {
 
     @FXML
     void removeClicked() {
-        System.out.println("Remove Clicked");
+
+        if(user.equals(AppSecurity.getSignInUser()))
+            return;
+
+        UserGateway userGateway = new UserGateway();
+        userGateway.delete(user);
+
+        UserViewController.userViewController.loadUserItems();
     }
 }

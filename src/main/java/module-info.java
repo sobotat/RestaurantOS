@@ -3,11 +3,15 @@ module com.restaurantos {
     requires javafx.fxml;
     requires java.desktop;
 
+    requires scrypt;
+
     requires com.google.gson;
     requires org.json;
 
     requires org.apache.logging.log4j;
     requires aparapi;
+
+    requires java.sql;
 
     opens com.restaurantos to javafx.fxml;
     exports com.restaurantos;

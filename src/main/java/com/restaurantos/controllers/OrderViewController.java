@@ -19,8 +19,8 @@ public class OrderViewController extends ViewController {
         this.order = order;
         orderViewController = this;
 
-        tv_LeftTitle.setText("Order " + order.orderId);
-        tv_RightTitle.setText("at Table " + order.tableId);
+        tv_LeftTitle.setText("Order " + order.getOrderId());
+        tv_RightTitle.setText("at Table " + order.getTable().getTableId());
 
         updateStatus();
         loadOrderItems();
@@ -39,10 +39,10 @@ public class OrderViewController extends ViewController {
         OrderItemViewController.orderItemViewControllers = new LinkedList<>();
 
         OrderItemGateway orderItemGateway = new OrderItemGateway();
-        LinkedList<OrderItem> orderItems = orderItemGateway.findAllForOrder(order.orderId);
+        LinkedList<OrderItem> orderItems = orderItemGateway.findAllForOrder(order);
 
         Node[] nodes = new Node[orderItems.size()];
-
+        vbox_List.getChildren().clear();
         try {
             for (int i = 0; i < nodes.length; i++){
                 FXMLLoader fxmlLoader = new FXMLLoader();
@@ -71,7 +71,7 @@ public class OrderViewController extends ViewController {
     public void updateStatus() {
         String css = " -fx-background-radius: 20;";
         switch (order.getStatus()){
-            case "Ordered"      -> hbox_Top.setStyle("-fx-background-color: colorLightGray;" + css);
+            case "Ordered", "Empty"  -> hbox_Top.setStyle("-fx-background-color: colorLightGray;" + css);
             case "Preparing"    -> hbox_Top.setStyle("-fx-background-color: colorBlue;" + css);
             case "Prepared"     -> hbox_Top.setStyle("-fx-background-color: colorOrange;" + css);
             case "Served"       -> hbox_Top.setStyle("-fx-background-color: colorGreen;" + css);

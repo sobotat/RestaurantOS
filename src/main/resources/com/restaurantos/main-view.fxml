@@ -90,7 +90,7 @@
                                  <Insets left="10.0" right="5.0" />
                               </HBox.margin>
                            </HBox>
-                           <HBox id="btn_Black" alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onUsersClicked" prefHeight="40.0" prefWidth="40.0" style="-fx-background-radius: 45;">
+                           <HBox id="btn_Black" fx:id="hbox_UserButton" alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onUsersClicked" prefHeight="40.0" prefWidth="40.0" style="-fx-background-radius: 45;">
                               <children>
                                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
@@ -120,7 +120,7 @@
                                  <Insets left="5.0" right="5.0" />
                               </HBox.margin>
                            </HBox>
-                           <HBox id="btn_Black" alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onBackClicked" prefHeight="40.0" prefWidth="40.0" style="-fx-background-radius: 45;">
+                           <HBox id="btn_Black" fx:id="hbox_BackButton" alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onBackClicked" prefHeight="40.0" prefWidth="40.0" style="-fx-background-radius: 45;">
                               <children>
                                  <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
@@ -163,9 +163,29 @@
                    <VBox alignment="CENTER" maxWidth="-Infinity" prefHeight="724.0" prefWidth="220.0">
                   <VBox id="box_LightWhite" alignment="TOP_CENTER" prefHeight="700.0" prefWidth="220.0" style="-fx-background-radius: 20;">
                      <children>
-                             <HBox id="btn_Black" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="40.0" prefWidth="195.0">
+                        <HBox id="btn_Black" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" onMouseClicked="#onRefreshClicked" prefHeight="40.0" prefWidth="195.0">
+                           <children>
+                              <ImageView fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                                 <HBox.margin>
+                                    <Insets left="30.0" />
+                                 </HBox.margin>
+                                 <image>
+                                    <Image url="@../../res/icons/icon_chevronRight_white.png.png" />
+                                 </image>
+                              </ImageView>
+                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Refresh">
+                                 <HBox.margin>
+                                    <Insets left="10.0" />
+                                 </HBox.margin>
+                              </Text>
+                           </children>
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
+                        </HBox>
+                             <HBox id="btn_Black" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" onMouseClicked="#onShowMenuClicked" prefHeight="40.0" prefWidth="195.0">
                                  <VBox.margin>
-                                     <Insets top="10.0" />
+                                     <Insets top="8.0" />
                                  </VBox.margin>
                                  <ImageView fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                                      <HBox.margin>
@@ -179,7 +199,47 @@
                                      </HBox.margin>
                                  </Text>
                              </HBox>
-                             <HBox id="btn_Black" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" onMouseClicked="#onAddOrderClicked" prefHeight="40.0" prefWidth="195.0">
+                        <HBox id="btn_Black" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" onMouseClicked="#onShowTodayMenuClicked" prefHeight="40.0" prefWidth="195.0">
+                           <children>
+                              <ImageView fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                                 <HBox.margin>
+                                    <Insets left="30.0" />
+                                 </HBox.margin>
+                                 <image>
+                                    <Image url="@../../res/icons/icon_chevronRight_white.png.png" />
+                                 </image>
+                              </ImageView>
+                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Show Today Menu">
+                                 <HBox.margin>
+                                    <Insets left="10.0" />
+                                 </HBox.margin>
+                              </Text>
+                           </children>
+                           <VBox.margin>
+                              <Insets top="8.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox id="btn_Black" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" onMouseClicked="#onCreateMenuClicked" prefHeight="40.0" prefWidth="195.0">
+                           <children>
+                              <ImageView fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                                 <HBox.margin>
+                                    <Insets left="30.0" />
+                                 </HBox.margin>
+                                 <image>
+                                    <Image url="@../../res/icons/icon_chevronRight_white.png.png" />
+                                 </image>
+                              </ImageView>
+                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Create Menu">
+                                 <HBox.margin>
+                                    <Insets left="10.0" />
+                                 </HBox.margin>
+                              </Text>
+                           </children>
+                           <VBox.margin>
+                              <Insets top="8.0" />
+                           </VBox.margin>
+                        </HBox>
+                             <HBox id="btn_Black" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" onMouseClicked="#onCreateOrderClicked" prefHeight="40.0" prefWidth="195.0">
                                  <VBox.margin>
                                      <Insets top="8.0" />
                                  </VBox.margin>
@@ -189,12 +249,32 @@
                                      </HBox.margin>
                                      <Image url="@../../res/icons/icon_chevronRight_white.png.png" />
                                  </ImageView>
-                                 <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Add Order">
+                                 <Text fx:id="tv_OrderButton" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Create Order">
                                      <HBox.margin>
                                          <Insets left="10.0" />
                                      </HBox.margin>
                                  </Text>
                              </HBox>
+                        <HBox id="btn_Black" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" onMouseClicked="#onCreateUserClicked" prefHeight="40.0" prefWidth="195.0">
+                           <children>
+                              <ImageView fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                                 <HBox.margin>
+                                    <Insets left="30.0" />
+                                 </HBox.margin>
+                                 <image>
+                                    <Image url="@../../res/icons/icon_chevronRight_white.png.png" />
+                                 </image>
+                              </ImageView>
+                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Create User">
+                                 <HBox.margin>
+                                    <Insets left="10.0" />
+                                 </HBox.margin>
+                              </Text>
+                           </children>
+                           <VBox.margin>
+                              <Insets top="8.0" />
+                           </VBox.margin>
+                        </HBox>
                      </children>
                      <VBox.margin>
                         <Insets bottom="10.0" top="20.0" />

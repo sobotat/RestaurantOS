@@ -61,6 +61,11 @@ It's like with any software. I'll be glad for any reported bugs, and I'll also b
       - Implemented Automatic Order Status
     - 0.2
       - Implemented Gateways with Lists for now
+    - 0.3
+      - Added warning on User and Back button
+      - Implemented Menu, MenuItem, Table and Food gateway
+      - Implemented Menu and MenuItem view
+      - Implemented Order Unit Of Work
 
 
 </details>

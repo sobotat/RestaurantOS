@@ -1,57 +1,43 @@
 package com.restaurantos;
 
-import com.restaurantos.gateways.OrderGateway;
 import com.restaurantos.gateways.OrderItemGateway;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.LinkedList;
-import java.util.Random;
 
 public class Order {
 
-    public int orderId;
-    public int tableId;
-    Date created_date;
-    boolean payed;
+    private int orderId;
+    private Table table;
+    private LocalDate createdDate;
+    private boolean payed;
 
-    public Order(int orderId, int tableId, Date created_date, boolean payed) {
+    public Order(int orderId, Table table, LocalDate createdDate, boolean payed) {
         this.orderId = orderId;
-        this.tableId = tableId;
-        this.created_date = created_date;
+        this.table = table;
+        this.createdDate = createdDate;
         this.payed = payed;
-
-        Food food = new Food(1, new Food.FoodType(0, "Food"), "Name", "Description", "ABC", 120);
-        MenuItem menuItem = new MenuItem(1, new Menu(1, new Date(), new Date()), food, 40);
-
-        LinkedList<OrderItem> ritems = new LinkedList<>();
-        ritems.add(new OrderItem(1, this, menuItem, 2, "Ordered"));
-        ritems.add(new OrderItem(1, this, menuItem, 3, "Prepared"));
-        ritems.add(new OrderItem(1, this, menuItem, 5, "Served"));
-        ritems.add(new OrderItem(1, this, menuItem, 4, "Preparing"));
-        ritems.add(new OrderItem(1, this, menuItem, 5, "Served"));
-
-        OrderItemGateway orderItemGateway = new OrderItemGateway();
-        for(int i = 0; i < new Random().nextInt(3, 6); i++){
-            orderItemGateway.create(ritems.get(new Random().nextInt(0, ritems.size())));
-        }
     }
 
     public double getCost(){
         double cost = 0;
 
         OrderItemGateway orderItemGateway = new OrderItemGateway();
-        LinkedList<OrderItem> orderItems = orderItemGateway.findAllForOrder(orderId);
+        LinkedList<OrderItem> orderItems = orderItemGateway.findAllForOrder(this);
 
         for (OrderItem item : orderItems){
-            if(!item.state.equals("Canceled"))
-                cost += item.menuItem.food.cost * item.count;
+            if(!item.getState().equals("Canceled"))
+                cost += item.getMenuItem().getFood().getCost() * item.getCount();
         }
         return cost;
     }
 
     public String getStatus(){
         OrderItemGateway orderItemGateway = new OrderItemGateway();
-        LinkedList<OrderItem> orderItems = orderItemGateway.findAllForOrder(orderId);
+        LinkedList<OrderItem> orderItems = orderItemGateway.findAllForOrder(this);
+
+        if(orderItems.isEmpty())
+            return "Empty";
 
         int numOfOrdered = 0;
         int numOfPreparing = 0;
@@ -61,7 +47,7 @@ public class Order {
         int numOfActive = orderItems.size();
 
         for(OrderItem item: orderItems){
-            switch (item.state){
+            switch (item.getState()){
                 case "Ordered"      -> numOfOrdered++;
                 case "Preparing"    -> numOfPreparing++;
                 case "Prepared"     -> numOfPrepared++;
@@ -84,7 +70,7 @@ public class Order {
     }
 
     public void addOrderItem(OrderItem orderItem){
-        orderItem.order = this;
+        orderItem.setOrder(this);
 
         OrderItemGateway orderItemGateway = new OrderItemGateway();
         orderItemGateway.create(orderItem);
@@ -92,12 +78,34 @@ public class Order {
 
     public OrderItem getOrderItem(int index){
         OrderItemGateway orderItemGateway = new OrderItemGateway();
-        LinkedList<OrderItem> orderItems = orderItemGateway.findAllForOrder(orderId);
+        LinkedList<OrderItem> orderItems = orderItemGateway.findAllForOrder(this);
 
         return orderItems.get(index);
     }
 
     public OrderItem getOrderItemById(int id){
         return new OrderItemGateway().find(id);
+    }
+
+    // Setters
+    public void setOrderId(int orderId) {
+        this.orderId = orderId;
+    }
+    public void setPayed(boolean payed) {
+        this.payed = payed;
+    }
+
+    // Getters
+    public int getOrderId() {
+        return orderId;
+    }
+    public Table getTable() {
+        return table;
+    }
+    public LocalDate getCreatedDate() {
+        return createdDate;
+    }
+    public boolean isPayed() {
+        return payed;
     }
 }

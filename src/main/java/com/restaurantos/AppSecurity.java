@@ -1,5 +1,6 @@
 package com.restaurantos;
 
+import com.lambdaworks.crypto.SCryptUtil;
 import com.restaurantos.controllers.Controller;
 import com.restaurantos.gateways.UserGateway;
 import org.apache.logging.log4j.Level;
@@ -11,6 +12,8 @@ public class AppSecurity {
     private static User signInUser = null;
 
     public static boolean login(String email, String password){
+        email = email.trim();
+        password = password.trim();
 
         UserGateway userGateway = new UserGateway();
         User user = userGateway.findByEmailAndPassword(email, password);
@@ -55,7 +58,7 @@ public class AppSecurity {
         public void logoutManager(){
             logger.log(Level.INFO, "Logout Auth Manager");
 
-            AppSecurity.login(orgUser.email, orgUser.password);
+            AppSecurity.login(orgUser.getEmail(), orgUser.getPassword());
             orgUser = null;
         }
     }

@@ -11,10 +11,10 @@ import java.util.LinkedList;
 
 public class UserViewController extends ViewController {
 
-    public static UserViewController orderViewController;
+    public static UserViewController userViewController;
 
     public void setUp(){
-        orderViewController = this;
+        userViewController = this;
 
         tv_LeftTitle.setText("Users");
         tv_RightTitle.setText("");
@@ -41,6 +41,7 @@ public class UserViewController extends ViewController {
         UserGateway userGateway = new UserGateway();
         LinkedList<User> users = userGateway.findAllUsers();
         Node[] nodes = new Node[users.size()];
+        vbox_List.getChildren().clear();
 
         try {
             for (int i = 0; i < nodes.length; i++){

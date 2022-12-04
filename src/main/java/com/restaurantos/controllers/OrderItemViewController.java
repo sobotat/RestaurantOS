@@ -1,7 +1,10 @@
 package com.restaurantos.controllers;
 
 import com.restaurantos.AppSecurity;
+import com.restaurantos.Food;
 import com.restaurantos.OrderItem;
+import com.restaurantos.gateways.OrderItemGateway;
+import com.restaurantos.gateways.unit_of_works.OrderItemUnitOfWork;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
@@ -29,15 +32,19 @@ public class OrderItemViewController {
     public void setItem(OrderItem orderItem){
         this.orderItem = orderItem;
 
-        tv_ItemName.setText(orderItem.menuItem.food.name);
-        tv_Num.setText(String.valueOf(orderItem.count));
+        if(orderItem.getMenuItem() == null || orderItem.getMenuItem().getFood() == null)
+            return;
+
+        tv_ItemName.setText(orderItem.getMenuItem().getFood().getName());
+
+        tv_Num.setText(String.valueOf(orderItem.getCount()));
 
         updateCost();
         updateState();
     }
 
     public void cancelItemClicked(){
-        if(!AppSecurity.getSignInUser().userRole.name.equals("Manager")){
+        if(!AppSecurity.getSignInUser().getUserRole().getName().equals("Manager")){
             String orgStyle = btn_Remove.getStyle();
             btn_Remove.setStyle(orgStyle + "-fx-background-color: colorRed;");
 
@@ -52,7 +59,17 @@ public class OrderItemViewController {
             return;
         }
 
-        orderItem.state = "Canceled";
+        orderItem.setState("Canceled");
+
+        // Unit Of Work
+        OrderItemUnitOfWork orderItemUnitOfWork = new OrderItemUnitOfWork();
+        orderItemUnitOfWork.addToUpdate(orderItem);
+
+        // OLD
+        /*
+        OrderItemGateway orderItemGateway = new OrderItemGateway();
+        orderItemGateway.update(orderItem);
+        */
 
         updateState();
         updateCost();
@@ -64,17 +81,26 @@ public class OrderItemViewController {
     }
 
     public void changeStateClicked(){
-        switch (orderItem.state){
-            case "Ordered"      -> orderItem.state = "Preparing";
-            case "Preparing"    -> orderItem.state = "Prepared";
-            case "Prepared"     -> orderItem.state = "Served";
+        switch (orderItem.getState()){
+            case "Ordered"      -> orderItem.setState("Preparing");
+            case "Preparing"    -> orderItem.setState("Prepared");
+            case "Prepared"     -> orderItem.setState("Served");
         }
 
+        // Unit of Work
+        OrderItemUnitOfWork orderItemUnitOfWork = new OrderItemUnitOfWork();
+        orderItemUnitOfWork.addToUpdate(orderItem);
+
+        // OLD
+        /*
+        OrderItemGateway orderItemGateway = new OrderItemGateway();
+        orderItemGateway.update(orderItem);
+        */
         updateState();
     }
 
     private void updateState(){
-        switch (orderItem.state){
+        switch (orderItem.getState()){
             case "Ordered"      -> dot_State.setStyle("-fx-fill: colorLightGray;");
             case "Preparing"    -> dot_State.setStyle("-fx-fill: colorBlue;");
             case "Prepared"     -> dot_State.setStyle("-fx-fill: colorOrange;");
@@ -86,14 +112,16 @@ public class OrderItemViewController {
             }
         }
 
-        btn_State.setText(orderItem.state);
+        btn_State.setText(orderItem.getState());
         OrderViewController.orderViewController.updateStatus();
     }
 
     private void updateCost(){
-        if(!orderItem.state.equals("Canceled"))
-            tv_Cost.setText(String.valueOf((orderItem.menuItem.food.cost * orderItem.count)));
-        else
+        if(!orderItem.getState().equals("Canceled")) {
+            Food food;
+            if ((food = orderItem.getMenuItem().getFood()) != null)
+                tv_Cost.setText(String.valueOf((food.getCost() * orderItem.getCount())));
+        }else
             tv_Cost.setText(String.valueOf((0)));
 
         OrderViewController.orderViewController.updateCost();
