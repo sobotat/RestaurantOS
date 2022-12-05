@@ -8,7 +8,7 @@
 
 <VBox id="box_Black" fx:id="vbox_Root" prefHeight="640.0" prefWidth="800.0" style="-fx-background-radius: 20;" xmlns="http://javafx.com/javafx/null" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <HBox id="box_Gray" fx:id="hbox_Top" alignment="CENTER_LEFT" prefHeight="307.0" prefWidth="800.0" style="-fx-background-radius: 20;">
+      <HBox id="box_Gray" fx:id="hbox_Top" alignment="CENTER_LEFT" prefHeight="307.0" prefWidth="800.0" style="-fx-background-radius: 20 20 0 0;">
          <children>
             <Text id="text_Light" fx:id="tv_LeftTitle" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="L Title">
                <font>

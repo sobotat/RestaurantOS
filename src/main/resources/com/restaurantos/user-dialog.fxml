@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -157,7 +158,7 @@
                                     <Insets bottom="3.0" left="10.0" />
                                  </VBox.margin>
                               </Text>
-                              <TextField fx:id="tf_Role" promptText="Manager/Service/Chef" />
+                              <ComboBox fx:id="cb_Role" prefHeight="25.0" prefWidth="593.0" visibleRowCount="3" />
                            </children>
                            <padding>
                               <Insets left="5.0" right="5.0" />

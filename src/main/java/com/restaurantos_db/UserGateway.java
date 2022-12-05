@@ -162,6 +162,28 @@ public class UserGateway implements Gateway<User> {
         return role;
     }
 
+    public LinkedList<User.UserRole> findAllUserRoles() {
+        LinkedList<User.UserRole> userRoles = new LinkedList<>();
+
+        try (Statement statement = Gateway.DBConnection.getConnection().createStatement()){
+            try(ResultSet resultSet = statement.executeQuery("SELECT `role_id`, `name`, `description` FROM `restaurantos-db`.`role`")){
+
+                while (resultSet.next()) {
+                    // Role
+                    int roleId = resultSet.getInt(1);
+                    String roleName = resultSet.getString(2);
+                    String roleDescription = resultSet.getString(3);
+
+                    userRoles.add( new User.UserRole(roleId, roleName, roleDescription));
+                }
+            }
+        } catch (SQLException e) {
+            logger.log(Level.ERROR, "User DB exception :> " + e.getSQLState());
+        }
+
+        return userRoles;
+    }
+
     @Override
     public boolean create(User obj) {
         try (PreparedStatement preparedStatement = Gateway.DBConnection.getConnection().prepareStatement("INSERT INTO `restaurantos-db`.`user` ( `first_name`, `last_name`, `born_date`, `email`, `password`, `role_id`) VALUES (?, ?, ?, ?, ?, ?);", Statement.RETURN_GENERATED_KEYS)){

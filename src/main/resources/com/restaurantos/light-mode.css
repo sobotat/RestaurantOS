@@ -104,6 +104,29 @@
     -fx-background-radius: 5em;
 }
 
+.combo-box {
+    -fx-background-color: colorDarkGray;
+    -fx-background-radius: 20;
+}
+
+.combo-box .list-cell {
+    -fx-background: colorDarkGray;
+    -fx-background-color: transparent;
+    -fx-text-fill: -fx-text-base-color;
+}
+
+.combo-box-popup .list-view
+{
+    -fx-background-color: colorDarkGray, colorDarkGray;
+    -fx-background-insets: 0, 1;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 8, 0.0 , 0 , 0 );
+}
+
+.combo-box-popup .list-view .list-cell
+{
+    -fx-background-color: colorDarkGray;
+}
+
 #text_Light {
     -fx-fill: #FFFFFF;
 }

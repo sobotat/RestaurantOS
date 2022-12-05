@@ -44,6 +44,8 @@ public class Controller {
     @FXML
     Text tv_Role, tv_UserName, tv_Show, tv_OrderButton, tv_MenuButton;
 
+    Timer timerRefresh;
+    TimerTask timerTask;
     Node currentViewNode, ordersList;
     AppSecurity.ManagerAuth managerAuth;
     LinkedList<HBox> buttons = new LinkedList<>();
@@ -608,10 +610,27 @@ public class Controller {
 
     @FXML
     public void onRefreshClicked(){
-        IdentityMapsHandler.refresh();
+        refresh();
         backToMain();
-        loadListView();
+    }
+
+    private void refresh(){
+        IdentityMapsHandler.refresh();
         logger.log(Level.INFO, "IdentityMaps were refreshed");
+
+        loadListView();
+
+        if(timerRefresh != null)
+            timerRefresh.cancel();
+
+        timerRefresh = new Timer(true);
+        timerRefresh.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                Platform.runLater(() -> refresh());
+            }
+        }, 15000);
+
     }
 
     @FXML
@@ -691,6 +710,14 @@ public class Controller {
     public void initialize(){
 
         buttons.addAll(List.of(new HBox[]{ btn_Show, btn_ShowTodayMenu, btn_CreateOrder, btn_CreateMenu, btn_CreateUser, btn_Payment}));
+
+        timerRefresh = new Timer(true);
+        timerRefresh.schedule( new TimerTask() {
+            @Override
+            public void run() {
+                Platform.runLater(() -> refresh());
+            }
+        }, 15000);
 
         vBox_List.setPrefWidth(scl_List.widthProperty().get());
         vBox_List.setMaxWidth(scl_List.widthProperty().get());

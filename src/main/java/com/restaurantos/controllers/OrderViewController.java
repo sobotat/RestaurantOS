@@ -88,7 +88,7 @@ public class OrderViewController extends ViewController {
     }
 
     public void updateStatus() {
-        String css = " -fx-background-radius: 20;";
+        String css = " -fx-background-radius: 20 20 0 0;";
         switch (order.getStatus()){
             case "Ordered", "Empty"  -> hbox_Top.setStyle("-fx-background-color: colorLightGray;" + css);
             case "Preparing"    -> hbox_Top.setStyle("-fx-background-color: colorBlue;" + css);

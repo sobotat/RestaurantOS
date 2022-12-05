@@ -23,7 +23,7 @@ public class UserViewController extends ViewController {
         tv_RightTitle.setText("");
         tv_Text.setText("");
 
-        String css = " -fx-background-radius: 20;";
+        String css = " -fx-background-radius: 20 20 0 0;";
         hbox_Top.setStyle("-fx-background-color: colorRed;" + css);
 
         loadUserItems();

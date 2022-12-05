@@ -3,7 +3,9 @@ package com.restaurantos.controllers;
 import com.restaurantos_db.UserGateway;
 import com.restaurantos_domain.AppSecurity;
 import com.restaurantos_domain.User;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -13,14 +15,15 @@ import org.apache.logging.log4j.Logger;
 import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.LinkedList;
 
 public class UserDialogController {
     private static final Logger logger = LogManager.getLogger(UserDialogController.class.getName());
 
     @FXML
-    TextField tf_FirstName, tf_LastName, tf_Email, tf_Password;
+    TextField tf_FirstName, tf_LastName, tf_Email, tf_Password, tf_BornDate;
     @FXML
-    TextField tf_Role, tf_BornDate;
+    ComboBox<String> cb_Role;
     @FXML
     Text tv_ActionButton;
 
@@ -40,7 +43,7 @@ public class UserDialogController {
         String lastName = tf_LastName.getText();
         String email = tf_Email.getText();
         String password = tf_Password.getText();
-        String roleName = tf_Role.getText();
+        String roleName = cb_Role.getValue();
         LocalDate bornDate;
         try {
             bornDate = LocalDate.parse(tf_BornDate.getText(),
@@ -108,9 +111,12 @@ public class UserDialogController {
         tf_LastName.setText(user.getLastName());
         tf_Email.setText(user.getEmail());
 
+        loadComboBox();
+
         if(!AppSecurity.haveAuthForCreateUser())
-            tf_Role.setEditable(false);
-        tf_Role.setText(user.getUserRole().getName());
+            cb_Role.setEditable(false);
+
+        cb_Role.setValue(user.getUserRole().getName());
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
         tf_BornDate.setText(formatter.format(user.getBornDate()));
@@ -122,5 +128,18 @@ public class UserDialogController {
         this.stage = stage;
 
         tv_ActionButton.setText("Create");
+        loadComboBox();
+    }
+
+    private void loadComboBox(){
+        UserGateway userGateway = new UserGateway();
+        LinkedList<User.UserRole> userRoles = userGateway.findAllUserRoles();
+        LinkedList<String> userRolesStrings = new LinkedList<>();
+
+        for(User.UserRole role : userRoles){
+            userRolesStrings.add(role.getName());
+        }
+
+        cb_Role.getItems().addAll(userRolesStrings);
     }
 }
