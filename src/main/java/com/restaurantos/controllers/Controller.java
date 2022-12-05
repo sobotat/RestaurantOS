@@ -10,10 +10,15 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.image.Image;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -29,9 +34,11 @@ public class Controller {
     boolean showMenu = false;
 
     @FXML
-    VBox vBox_List, vBox_Table;
+    VBox vBox_List, vBox_Table, vBox_Buttons;
     @FXML
     HBox hbox_ManagerAuth, hbox_BackButton, hbox_UserButton;
+    @FXML
+    HBox btn_Show, btn_ShowTodayMenu, btn_CreateMenu, btn_CreateOrder, btn_CreateUser, btn_Payment;
     @FXML
     ScrollPane scl_List;
     @FXML
@@ -39,6 +46,7 @@ public class Controller {
 
     Node currentViewNode, ordersList;
     AppSecurity.ManagerAuth managerAuth;
+    LinkedList<HBox> buttons = new LinkedList<>();
 
     public void loadListView(){
         if(!showMenu)
@@ -206,6 +214,9 @@ public class Controller {
             VBox root = fxmlLoader.load();
 
             root.getChildren().get(0).setOnMouseClicked(event -> {
+                OrderItemUnitOfWork orderItemUnitOfWork = new OrderItemUnitOfWork();
+                orderItemUnitOfWork.forceCommit();
+
                 backToMain();
             });
 
@@ -317,14 +328,21 @@ public class Controller {
 
     @FXML
     public void onCreateMenuClicked(){
+        if(!AppSecurity.haveAuthForCreateMenu()) {
+            logger.log(Level.INFO, "User dont have Authority");
+            showWarning(btn_CreateMenu);
+            return;
+        }
+
         if(currentViewNode instanceof ScrollPane) {
             MenuGateway menuGateway = new MenuGateway();
             if(menuGateway.findForDay(LocalDate.now()) == null) {
                 menuGateway.create(new Menu(0, LocalDate.now(), LocalDate.now()));
                 loadListView();
             }else{
-                if(MenuController.menuControllers.isEmpty())
+                if(MenuController.menuControllers.isEmpty()) {
                     return;
+                }
 
                 for (MenuController menuController : MenuController.menuControllers) {
                     Menu menu = menuController.menu;
@@ -332,20 +350,37 @@ public class Controller {
                         menuController.flash();
                     }
                 }
+                showWarning(btn_CreateMenu);
             }
         }else{
             Menu menu = MenuViewController.menuViewController.menu;
             if(menu == null)
                 return;
 
+            MenuItemGateway menuItemGateway = new MenuItemGateway();
+            LinkedList<MenuItem> menuItems = menuItemGateway.findAllForMenu(menu);
             FoodGateway foodGateway = new FoodGateway();
             LinkedList<Food> foods = foodGateway.findAllFoods();
-            if(foods.isEmpty())
+
+            if(foods.isEmpty() || menuItems.size() == foods.size()) {
+                showWarning(btn_CreateMenu);
                 return;
+            }
 
-            MenuItem menuItem = new MenuItem( 0, menu, foods.get(new Random().nextInt(0, foods.size())), new Random().nextInt(5, 40));
+            Food food = null;
+            while (food == null) {
+                Food foodTmp = foods.get(new Random().nextInt(0, foods.size()));
+                boolean sameFood = false;
+                for(MenuItem menuItem : menuItems){
+                    if(menuItem.getFood().getFoodId() == foodTmp.getFoodId())
+                        sameFood = true;
+                }
+                if(!sameFood)
+                    food = foodTmp;
+            }
 
-            MenuItemGateway menuItemGateway = new MenuItemGateway();
+            MenuItem menuItem = new MenuItem( 0, menu, food, new Random().nextInt(5, 40), food.getCost());
+
             menuItemGateway.create(menuItem);
             MenuViewController.menuViewController.loadMenuItems();
         }
@@ -353,9 +388,15 @@ public class Controller {
 
     @FXML
     public void onCreateOrderClicked(){
+        if(!AppSecurity.haveAuthForCreateOrder()) {
+            logger.log(Level.INFO, "User dont have Authority");
+            showWarning(btn_CreateOrder);
+            return;
+        }
+
         if(currentViewNode instanceof ScrollPane) {
             OrderGateway orderGateway = new OrderGateway();
-            orderGateway.create(new Order(0, new TableGateway().find(1), LocalDate.now(), false));
+            orderGateway.create(new Order(0, new TableGateway().find(1), LocalDate.now(), false, AppSecurity.getSignInUser().getUserId()));
             loadListView();
         }else{
             Order order = OrderViewController.orderViewController.order;
@@ -377,7 +418,7 @@ public class Controller {
             }
 
             MenuItem menuItem = menuItems.get(new Random().nextInt(0, menuItems.size()));
-            OrderItem orderItem = new OrderItem( 0 , order, menuItem, new Random().nextInt(1, 5), "Ordered");
+            OrderItem orderItem = new OrderItem( 0 , order, menuItem, new Random().nextInt(1, 5), "Ordered", AppSecurity.getSignInUser().getUserId());
 
             // Unit of Work
             OrderItemUnitOfWork orderItemUnitOfWork = new OrderItemUnitOfWork();
@@ -402,23 +443,51 @@ public class Controller {
 
     @FXML
     public void onCreateUserClicked(){
-
-        if(!AppSecurity.getSignInUser().getUserRole().getName().equals("Manager"))
+        if(!AppSecurity.haveAuthForCreateUser()) {
+            logger.log(Level.INFO, "User dont have Authority");
+            showWarning(btn_CreateUser);
             return;
+        }
 
-        LinkedList<User> randomUsers = new LinkedList<>();
-        randomUsers.add(new User(0, "Karel", "Random", LocalDate.of(2001, 1, 1), "karel" + new Random().nextInt(99) + "@gmail.com", "1234", new User.UserRole(0, "Manager", "")));
-        randomUsers.add(new User(0, "Laura", "New", LocalDate.of(2001, 1, 1), "laura" + new Random().nextInt(99) + "@gmail.com", "1234", new User.UserRole(1, "Service", "")));
-        randomUsers.add(new User(0, "Michail", "Novak", LocalDate.of(2001, 1, 1), "michail" + new Random().nextInt(99) + "@gmail.com", "1234", new User.UserRole(2, "Chef", "")));
-        randomUsers.add(new User(0, "Emma", "Nobody", LocalDate.of(2001, 1, 1), "emma" + new Random().nextInt(99) + "@gmail.com", "1234", new User.UserRole(1, "Service", "")));
+        try {
+            // Loading FXML
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(Main.class.getResource("user-dialog.fxml"));
+            VBox parent = fxmlLoader.load();
 
-        UserGateway userGateway = new UserGateway();
-        User selectedUser = randomUsers.get(new Random().nextInt(randomUsers.size()));
-        selectedUser.setPassword(selectedUser.getPassword());
-        userGateway.create(selectedUser);
+            // Setting a Controller
+            UserDialogController userDialogController = fxmlLoader.getController();
 
-        if(UserViewController.userViewController != null)
-            UserViewController.userViewController.loadUserItems();
+            // Creating Scene and Stage for Dialog
+            Scene scene = new Scene(parent);
+            scene.getStylesheets().clear();
+            scene.getStylesheets().add(Main.useDarkMode ? Main.darkMode_css : Main.lightMode_css);
+            Stage stage = new Stage();
+            stage.setAlwaysOnTop(true);
+            stage.setResizable(false);
+            stage.setTitle("User Info");
+            stage.setScene(scene);
+
+            // Adding Stage to Controller
+            userDialogController.initAsCreate(stage);
+
+            // Changing style of stage
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.initStyle(StageStyle.DECORATED);
+
+            // Loading App Icon
+            javafx.scene.image.Image icon = new Image("/app_logo.png");
+            if (icon.isError()) {
+                logger.error("Icon Load Failed");
+                logger.error(icon.exceptionProperty().get().getMessage());
+            }
+            stage.getIcons().add( icon);
+
+            // Starting Dialog
+            stage.showAndWait();
+        } catch (IOException e) {
+            logger.error("User Dialog load failed");
+        }
     }
 
     @FXML
@@ -438,8 +507,46 @@ public class Controller {
             return;
         }
 
-        if(!AppSecurity.getSignInUser().getUserRole().getName().equals("Manager")) {
-            showWarning(hbox_UserButton);
+        if(!AppSecurity.haveAuthForCreateUser()) {
+            try {
+                // Loading FXML
+                FXMLLoader fxmlLoader = new FXMLLoader();
+                fxmlLoader.setLocation(Main.class.getResource("user-dialog.fxml"));
+                VBox parent = fxmlLoader.load();
+
+                // Setting a Controller
+                UserDialogController userDialogController = fxmlLoader.getController();
+
+                // Creating Scene and Stage for Dialog
+                Scene scene = new Scene(parent);
+                scene.getStylesheets().clear();
+                scene.getStylesheets().add(Main.useDarkMode ? Main.darkMode_css : Main.lightMode_css);
+                Stage stage = new Stage();
+                stage.setAlwaysOnTop(true);
+                stage.setResizable(false);
+                stage.setTitle("User Info");
+                stage.setScene(scene);
+
+                // Adding Stage to Controller
+                userDialogController.initAsUpdate(stage, AppSecurity.getSignInUser());
+
+                // Changing style of stage
+                stage.initModality(Modality.APPLICATION_MODAL);
+                stage.initStyle(StageStyle.DECORATED);
+
+                // Loading App Icon
+                javafx.scene.image.Image icon = new Image("/app_logo.png");
+                if (icon.isError()) {
+                    logger.error("Icon Load Failed");
+                    logger.error(icon.exceptionProperty().get().getMessage());
+                }
+                stage.getIcons().add( icon);
+
+                // Starting Dialog
+                stage.showAndWait();
+            } catch (IOException e) {
+                logger.error("User Dialog load failed");
+            }
             return;
         }
 
@@ -481,6 +588,8 @@ public class Controller {
         }else{
             hbox_ManagerAuth.setStyle(style + "-fx-background-color: colorDarkGray;");
         }
+
+        updateButtonsByAuth();
     }
 
     @FXML
@@ -505,6 +614,60 @@ public class Controller {
         logger.log(Level.INFO, "IdentityMaps were refreshed");
     }
 
+    @FXML
+    public void onPaymentClicked(){
+        if(OrderViewController.orderViewController == null) {
+            showWarning(btn_Payment);
+            return;
+        }
+
+        LinkedList<OrderItem> selectedOrderItems = new LinkedList<>();
+        LinkedList<OrderItem> allOrderItems = new LinkedList<>();
+        for(OrderItemViewController orderItemViewController : OrderItemViewController.orderItemViewControllers){
+            if(orderItemViewController.selected){
+                selectedOrderItems.add(orderItemViewController.orderItem);
+            }
+            allOrderItems.add(orderItemViewController.orderItem);
+        }
+
+        if(selectedOrderItems.isEmpty()){
+            for(OrderItem orderItem : allOrderItems){
+                if(orderItem.getState().equals("Served"))
+                    selectedOrderItems.add(orderItem);
+            }
+
+            if(selectedOrderItems.isEmpty()) {
+                showWarning(btn_Payment);
+                return;
+            }
+        }
+
+        Payment payment = new Payment(selectedOrderItems.getFirst().getOrder(), selectedOrderItems, allOrderItems);
+        payment.pay();
+        payment.exportPayment();
+
+        OrderViewController.orderViewController.loadOrderItems();
+        OrderViewController.orderViewController.updateStatus();
+
+        for(OrderItemViewController orderItemViewController : OrderItemViewController.orderItemViewControllers){
+            orderItemViewController.unselectItem();
+        }
+    }
+
+    public void updateButtonsByAuth(){
+        if(vBox_Buttons.getChildren().size() > 3)
+            vBox_Buttons.getChildren().remove(3, vBox_Buttons.getChildren().size());
+
+        if(AppSecurity.haveAuthForCreateOrder())
+            vBox_Buttons.getChildren().add(buttons.get(2));
+        if(AppSecurity.haveAuthForCreateMenu())
+            vBox_Buttons.getChildren().add(buttons.get(3));
+        if(AppSecurity.haveAuthForCreateUser())
+            vBox_Buttons.getChildren().add(buttons.get(4));
+
+        vBox_Buttons.getChildren().add(buttons.get(5));
+    }
+
     private void showWarning(Node node){
         String orgStyle = node.getStyle();
         node.setStyle(orgStyle + "-fx-background-color: colorRed;");
@@ -526,6 +689,9 @@ public class Controller {
 
     // On Start
     public void initialize(){
+
+        buttons.addAll(List.of(new HBox[]{ btn_Show, btn_ShowTodayMenu, btn_CreateOrder, btn_CreateMenu, btn_CreateUser, btn_Payment}));
+
         vBox_List.setPrefWidth(scl_List.widthProperty().get());
         vBox_List.setMaxWidth(scl_List.widthProperty().get());
         vBox_List.setMinWidth(scl_List.widthProperty().get());
@@ -558,8 +724,5 @@ public class Controller {
                 vBox_List.setMinHeight(vBox_List.getChildren().size() * OrderController.orderControllers.getFirst().vbox_Root.getHeight());
             }
         });
-
-
-
     }
 }

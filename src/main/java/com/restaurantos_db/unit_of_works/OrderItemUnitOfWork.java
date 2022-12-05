@@ -97,7 +97,10 @@ public class OrderItemUnitOfWork extends UnitOfWork<OrderItem>{
     }
 
     @Override
-    public void commit() {
+    protected void commit() {
+        if(create.isEmpty() && update.isEmpty() && delete.isEmpty())
+            return;
+
         logger.log(Level.INFO, "Committed OrderItem UorW\n" +
                 "[Created] " + create.size() + "\n" +
                 "[Deleted] " + delete.size() + "\n" +

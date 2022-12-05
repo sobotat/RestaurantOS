@@ -24,7 +24,7 @@ public class OrderItemGateway implements Gateway<OrderItem> {
             return orderItem;
 
         // Database
-        try (PreparedStatement statement = Gateway.DBConnection.getConnection().prepareStatement("SELECT order_item_id, order_id, menu_item_id, count, state FROM order_item WHERE order_item_id = ?")){
+        try (PreparedStatement statement = Gateway.DBConnection.getConnection().prepareStatement("SELECT `order_item_id`, `order_id`, `menu_item_id`, `count`, `state`, `cooked_by` FROM `restaurantos-db`.`order_item` WHERE order_item_id = ?")){
             statement.setInt(1, id);
             try(ResultSet resultSet = statement.executeQuery()){
 
@@ -35,10 +35,11 @@ public class OrderItemGateway implements Gateway<OrderItem> {
                     int menuItemId = resultSet.getInt(3);
                     int count = resultSet.getInt(4);
                     String state = resultSet.getString(5);
+                    Integer cookedById = resultSet.getInt(6);
 
                     Order order = new OrderGateway().find(order_id);
 
-                    orderItem = new OrderItem( orderItemId, order, menuItemId, count, state);
+                    orderItem = new OrderItem( orderItemId, order, menuItemId, count, state, cookedById);
                     orderItemIdentityMap.insert(orderItem);
                 }
                 statement.close();
@@ -60,7 +61,7 @@ public class OrderItemGateway implements Gateway<OrderItem> {
             return orderItems;
 
         // Database
-        try (PreparedStatement statement = Gateway.DBConnection.getConnection().prepareStatement("SELECT order_item_id, menu_item_id, count, state FROM order_item WHERE order_id = ?")){
+        try (PreparedStatement statement = Gateway.DBConnection.getConnection().prepareStatement("SELECT `order_item_id`, `menu_item_id`, `count`, `state`, `cooked_by` FROM `restaurantos-db`.`order_item` WHERE `order_id` = ?")){
             statement.setInt(1, order.getOrderId());
             try(ResultSet resultSet = statement.executeQuery()){
 
@@ -70,8 +71,9 @@ public class OrderItemGateway implements Gateway<OrderItem> {
                     int menuItemId = resultSet.getInt(2);
                     int count = resultSet.getInt(3);
                     String state = resultSet.getString(4);
+                    Integer cookedById = resultSet.getInt(5);
 
-                    OrderItem orderItem = new OrderItem( orderItemId, order, menuItemId, count, state);
+                    OrderItem orderItem = new OrderItem( orderItemId, order, menuItemId, count, state, cookedById);
                     orderItems.add(orderItem);
                     orderItemIdentityMap.insert(orderItem);
                 }
@@ -87,7 +89,7 @@ public class OrderItemGateway implements Gateway<OrderItem> {
     @Override
     public boolean create(OrderItem obj) {
 
-        try (PreparedStatement preparedStatement = Gateway.DBConnection.getConnection().prepareStatement("INSERT INTO `order_item` ( `order_id`, `menu_item_id`, `count`) VALUES (?, ?, ?);", Statement.RETURN_GENERATED_KEYS)){
+        try (PreparedStatement preparedStatement = Gateway.DBConnection.getConnection().prepareStatement("INSERT INTO `restaurantos-db`.`order_item` ( `order_id`, `menu_item_id`, `count`) VALUES (?, ?, ?);", Statement.RETURN_GENERATED_KEYS)){
             preparedStatement.setInt( 1, obj.getOrder().getOrderId());
             preparedStatement.setInt(2, obj.getMenuItem().getMenuItemId());
             preparedStatement.setInt( 3, obj.getCount());
@@ -114,7 +116,7 @@ public class OrderItemGateway implements Gateway<OrderItem> {
     @Override
     public boolean update(OrderItem obj) {
 
-        try (PreparedStatement preparedStatement = Gateway.DBConnection.getConnection().prepareStatement("UPDATE `order_item` SET `order_id` = ?, `menu_item_id` = ?, `count` = ?, `state` = ? WHERE `order_item_id` = ?;")){
+        try (PreparedStatement preparedStatement = Gateway.DBConnection.getConnection().prepareStatement("UPDATE `restaurantos-db`.`order_item` SET `order_id` = ?, `menu_item_id` = ?, `count` = ?, `state` = ? WHERE `order_item_id` = ?;")){
             preparedStatement.setInt( 1, obj.getOrder().getOrderId());
             preparedStatement.setInt(2, obj.getMenuItem().getMenuItemId());
             preparedStatement.setInt( 3, obj.getCount());
@@ -131,7 +133,7 @@ public class OrderItemGateway implements Gateway<OrderItem> {
 
     @Override
     public boolean delete(OrderItem obj) {
-        try (PreparedStatement preparedStatement = Gateway.DBConnection.getConnection().prepareStatement("DELETE FROM `order_item` WHERE `order_item_id` = ?")){
+        try (PreparedStatement preparedStatement = Gateway.DBConnection.getConnection().prepareStatement("DELETE FROM `restaurantos-db`.`order_item` WHERE `order_item_id` = ?")){
             preparedStatement.setInt(1, obj.getOrderItemId());
             preparedStatement.execute();
 

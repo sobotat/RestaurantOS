@@ -1,6 +1,9 @@
 package com.restaurantos_db;
 
 import com.lambdaworks.crypto.SCryptUtil;
+import com.restaurantos_db.identity_maps.IdentityMap;
+import com.restaurantos_db.identity_maps.OrderIdentityMap;
+import com.restaurantos_db.identity_maps.UserIdentityMap;
 import com.restaurantos_domain.User;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
@@ -20,6 +23,13 @@ public class UserGateway implements Gateway<User> {
     public User find(int id) {
         User user = null;
 
+        // IdentityMap
+        UserIdentityMap identityMap = new UserIdentityMap();
+        user = identityMap.get(id);
+        if(user != null)
+            return user;
+
+        // Database
         try (PreparedStatement statement = Gateway.DBConnection.getConnection().prepareStatement("SELECT user_id, first_name, last_name, born_date, email, role.role_id, role.name, role.description FROM `restaurantos-db`.`user` JOIN `restaurantos-db`.`role` ON role.role_id = user.role_id WHERE user_id = ?")){
             statement.setInt(1, id);
             try(ResultSet resultSet = statement.executeQuery()){
@@ -39,6 +49,7 @@ public class UserGateway implements Gateway<User> {
                     String roleDescription = resultSet.getString(8);
 
                     user = new User(userId, first_name, last_name, born_date.toLocalDate(), email, password, new User.UserRole(roleId, roleName, roleDescription));
+                    identityMap.insert(user);
                 }
             }
         } catch (SQLException e) {
@@ -51,6 +62,10 @@ public class UserGateway implements Gateway<User> {
     public User findByEmailAndPassword(String email, String password){
         User user = null;
 
+        // IdentityMap
+        UserIdentityMap identityMap = new UserIdentityMap();
+
+        // Database
         try (PreparedStatement statement = Gateway.DBConnection.getConnection().prepareStatement("SELECT user_id, first_name, last_name, born_date, password, role.role_id, role.name, role.description FROM `restaurantos-db`.`user` JOIN `restaurantos-db`.`role` ON role.role_id = user.role_id WHERE user.email = ?")){
             statement.setString( 1, email);
             try(ResultSet resultSet = statement.executeQuery()){
@@ -68,9 +83,10 @@ public class UserGateway implements Gateway<User> {
                     String roleName = resultSet.getString(7);
                     String roleDescription = resultSet.getString(8);
 
-                    if(SCryptUtil.check(password, hashedPassword))
+                    if(SCryptUtil.check(password, hashedPassword)) {
                         user = new User(userId, first_name, last_name, born_date.toLocalDate(), email, hashedPassword, new User.UserRole(roleId, roleName, roleDescription));
-                    else
+                        identityMap.insert(user);
+                    }else
                         logger.log(Level.INFO, "Wrong Password");
                 }
                 statement.close();
@@ -90,6 +106,10 @@ public class UserGateway implements Gateway<User> {
     public LinkedList<User> findAllUsers(){
         LinkedList<User> users = new LinkedList<>();
 
+        // IdentityMap
+        UserIdentityMap identityMap = new UserIdentityMap();
+
+        // Database
         try (Statement statement = Gateway.DBConnection.getConnection().createStatement()){
             try(ResultSet resultSet = statement.executeQuery("SELECT user_id, first_name, last_name, born_date, email, password, role.role_id, role.name, role.description FROM `restaurantos-db`.`user` JOIN `restaurantos-db`.`role` ON role.role_id = user.role_id")){
 
@@ -107,7 +127,9 @@ public class UserGateway implements Gateway<User> {
                     String roleName = resultSet.getString(8);
                     String roleDescription = resultSet.getString(9);
 
-                    users.add(new User(userId, first_name, last_name, born_date.toLocalDate(), email, password, new User.UserRole(roleId, roleName, roleDescription)));
+                    User user = new User(userId, first_name, last_name, born_date.toLocalDate(), email, password, new User.UserRole(roleId, roleName, roleDescription));
+                    users.add(user);
+                    identityMap.insert(user);
                 }
                 statement.close();
             }
@@ -116,6 +138,28 @@ public class UserGateway implements Gateway<User> {
         }
 
         return users;
+    }
+
+    public User.UserRole findUserRoleByName(String roleName){
+        User.UserRole role = null;
+
+        try (PreparedStatement statement = Gateway.DBConnection.getConnection().prepareStatement("SELECT `role_id`, `description` FROM `restaurantos-db`.`role` WHERE `name` = ?")){
+            statement.setString(1, roleName);
+            try(ResultSet resultSet = statement.executeQuery()){
+
+                if(resultSet.next()) {
+                    // Role
+                    int roleId = resultSet.getInt(1);
+                    String roleDescription = resultSet.getString(2);
+
+                    role = new User.UserRole(roleId, roleName, roleDescription);
+                }
+            }
+        } catch (SQLException e) {
+            logger.log(Level.ERROR, "User DB exception :> " + e.getSQLState());
+        }
+
+        return role;
     }
 
     @Override
@@ -157,6 +201,31 @@ public class UserGateway implements Gateway<User> {
             preparedStatement.setInt(7, obj.getUserId());
 
             preparedStatement.execute();
+
+            UserIdentityMap userIdentityMap = new UserIdentityMap();
+            userIdentityMap.clear();
+
+            return true;
+        } catch (SQLException e) {
+            logger.log(Level.ERROR, "User DB exception :> " + e.getSQLState());
+        }
+        return true;
+    }
+
+    public boolean updateWithoutPassword(User obj) {
+        try (PreparedStatement preparedStatement = Gateway.DBConnection.getConnection().prepareStatement("UPDATE `restaurantos-db`.`user` SET `first_name` = ?, `last_name` = ?, `born_date` = ?, `email` = ?, `role_id` = ? WHERE `user_id` = ?;")){
+            preparedStatement.setString( 1, obj.getFirstName());
+            preparedStatement.setString( 2, obj.getLastName());
+            preparedStatement.setDate(3, Date.valueOf(obj.getBornDate()));
+            preparedStatement.setString( 4, obj.getEmail());
+            preparedStatement.setInt( 5, obj.getUserRole().getRoleId());
+            preparedStatement.setInt(6, obj.getUserId());
+
+            preparedStatement.execute();
+
+            UserIdentityMap userIdentityMap = new UserIdentityMap();
+            userIdentityMap.clear();
+
             return true;
         } catch (SQLException e) {
             logger.log(Level.ERROR, "User DB exception :> " + e.getSQLState());
@@ -172,6 +241,10 @@ public class UserGateway implements Gateway<User> {
             preparedStatement.setString( 2, email);
 
             preparedStatement.execute();
+
+            UserIdentityMap userIdentityMap = new UserIdentityMap();
+            userIdentityMap.clear();
+
             return true;
         } catch (SQLException e) {
             logger.log(Level.ERROR, "User DB exception :> " + e.getSQLState());
@@ -185,6 +258,10 @@ public class UserGateway implements Gateway<User> {
             preparedStatement.setInt(1, obj.getUserId());
 
             preparedStatement.execute();
+
+            UserIdentityMap userIdentityMap = new UserIdentityMap();
+            userIdentityMap.clear();
+
             return true;
         } catch (SQLException e) {
             logger.log(Level.ERROR, "User DB exception :> " + e.getSQLState());

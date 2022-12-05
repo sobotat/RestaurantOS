@@ -17,6 +17,11 @@ public class Food {
         this.cost = cost;
     }
 
+    // Setters
+    public void setFoodId(int foodId) {
+        this.foodId = foodId;
+    }
+
     // Getters
     public int getFoodId() {
         return foodId;
@@ -38,12 +43,20 @@ public class Food {
     }
 
     public static class FoodType {
-        int typeId;
-        public String name;
+        private int typeId;
+        private String name;
 
         public FoodType(int typeId, String name) {
             this.typeId = typeId;
             this.name = name;
+        }
+
+        // Getters
+        public int getTypeId() {
+            return typeId;
+        }
+        public String getName() {
+            return name;
         }
     }
 }

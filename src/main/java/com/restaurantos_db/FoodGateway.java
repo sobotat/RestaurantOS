@@ -1,14 +1,12 @@
 package com.restaurantos_db;
 
+import com.restaurantos_db.identity_maps.OrderIdentityMap;
 import com.restaurantos_domain.Food;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.LinkedList;
 
 public class FoodGateway implements Gateway<Food> {
@@ -78,19 +76,61 @@ public class FoodGateway implements Gateway<Food> {
 
     @Override
     public boolean create(Food obj) {
-        logger.log(Level.WARN, "Not Implemented");
+        try (PreparedStatement preparedStatement = Gateway.DBConnection.getConnection().prepareStatement("INSERT INTO `restaurantos-db`.`food` ( `type_id`, `name`, `description`, `allergens`, `cost`) VALUES (?, ?, ?, ?, ?);", Statement.RETURN_GENERATED_KEYS)){
+            preparedStatement.setInt( 1, obj.getFoodType().getTypeId());
+            preparedStatement.setString( 2, obj.getName());
+            preparedStatement.setString( 3, obj.getDescription());
+            preparedStatement.setString( 4, obj.getAllergens());
+            preparedStatement.setDouble( 5, obj.getCost());
+
+            preparedStatement.execute();
+            try(ResultSet resultSet = preparedStatement.getGeneratedKeys()){
+
+                if (resultSet.next()) {
+                    // Food
+                    obj.setFoodId(resultSet.getInt(1));
+                }
+                preparedStatement.close();
+
+                OrderIdentityMap orderIdentityMap = new OrderIdentityMap();
+                orderIdentityMap.clear();
+                return true;
+            }
+        } catch (SQLException e) {
+            logger.log(Level.ERROR, "Food DB exception :> " + e.getSQLState());
+            e.printStackTrace();
+        }
         return false;
     }
 
     @Override
     public boolean update(Food obj) {
-        logger.log(Level.WARN, "Not Implemented");
+        try (PreparedStatement preparedStatement = Gateway.DBConnection.getConnection().prepareStatement("UPDATE `restaurantos-db`.`food` SET `type_id` = ?, `name` = ?, `description` = ?, `allergens` = ?, `cost` = ? WHERE `food_id` = ?;")){
+            preparedStatement.setInt(1, obj.getFoodType().getTypeId());
+            preparedStatement.setString( 2, obj.getName());
+            preparedStatement.setString( 3, obj.getDescription());
+            preparedStatement.setString(4, obj.getAllergens());
+            preparedStatement.setDouble(5, obj.getCost());
+            preparedStatement.setInt(6, obj.getFoodId());
+
+            preparedStatement.execute();
+            return true;
+        } catch (SQLException e) {
+            logger.log(Level.ERROR, "Food DB exception :> " + e.getSQLState());
+        }
         return false;
     }
 
     @Override
     public boolean delete(Food obj) {
-        logger.log(Level.WARN, "Not Implemented");
+        try (PreparedStatement preparedStatement = Gateway.DBConnection.getConnection().prepareStatement("DELETE FROM `restaurantos-db`.`food` WHERE `food_id` = ?")){
+            preparedStatement.setInt(1, obj.getFoodId());
+
+            preparedStatement.execute();
+            return true;
+        } catch (SQLException e) {
+            logger.log(Level.ERROR, "Food DB exception :> " + e.getSQLState());
+        }
         return false;
     }
 }

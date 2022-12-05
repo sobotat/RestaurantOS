@@ -7,6 +7,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 
 import java.io.IOException;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.LinkedList;
 
 public class UserViewController extends ViewController {
@@ -40,6 +43,19 @@ public class UserViewController extends ViewController {
 
         UserGateway userGateway = new UserGateway();
         LinkedList<User> users = userGateway.findAllUsers();
+        users.sort((o1, o2) -> {
+            if(o1.getUserRole().getName().equals("Manager"))
+                return -1;
+            if(o2.getUserRole().getName().equals("Manager"))
+                return 1;
+            if(o1.getUserRole().getName().equals("Service") && o2.getUserRole().getName().equals("Chef"))
+                return -1;
+            if(o1.getUserRole().getName().equals("Chef") && o2.getUserRole().getName().equals("Service")){
+                return 1;
+            }
+            return 0;
+        });
+
         Node[] nodes = new Node[users.size()];
         vbox_List.getChildren().clear();
 

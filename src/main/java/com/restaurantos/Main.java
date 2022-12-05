@@ -23,7 +23,7 @@ public class Main extends Application {
     public static Scene loginScene;
 
     public static boolean useDarkMode = false;
-    protected static String lightMode_css, darkMode_css;
+    public static String lightMode_css, darkMode_css;
 
     @Override
     public void start(Stage stage) throws IOException {

@@ -8,21 +8,24 @@ public class MenuItem {
     private final int foodId;
     private Food food;
     private int count;
+    private double cost;
 
-    public MenuItem(int menuItemId, Menu menu, int foodId, int count) {
+    public MenuItem(int menuItemId, Menu menu, int foodId, int count, double cost) {
         this.menuItemId = menuItemId;
         this.menu = menu;
         this.foodId = foodId;
         this.food = null;
         this.count = count;
+        this.cost = cost;
     }
 
-    public MenuItem(int menuItemId, Menu menu, Food food, int count) {
+    public MenuItem(int menuItemId, Menu menu, Food food, int count, double cost) {
         this.menuItemId = menuItemId;
         this.menu = menu;
         this.foodId = food.getFoodId();
         this.food = food;
         this.count = count;
+        this.cost = cost;
     }
 
     public Food getFood() {
@@ -59,4 +62,5 @@ public class MenuItem {
     public int getCount() {
         return count;
     }
+    public double getCost() { return cost; }
 }

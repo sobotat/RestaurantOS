@@ -10,7 +10,7 @@
    <children>
       <HBox id="box_Gray" fx:id="hbox_Top" alignment="CENTER_LEFT" prefHeight="307.0" prefWidth="800.0" style="-fx-background-radius: 20;">
          <children>
-            <Text fx:id="tv_LeftTitle" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="L Title">
+            <Text id="text_Light" fx:id="tv_LeftTitle" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="L Title">
                <font>
                   <Font size="32.0" />
                </font>
@@ -20,7 +20,7 @@
             </Text>
             <HBox alignment="CENTER_RIGHT" prefHeight="81.0" prefWidth="1920.0">
                <children>
-                  <Text fx:id="tv_RightTitle" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="R Title">
+                  <Text id="text_Light" fx:id="tv_RightTitle" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="R Title">
                      <font>
                         <Font size="32.0" />
                      </font>
@@ -32,7 +32,7 @@
             </HBox>
          </children>
       </HBox>
-      <Text fx:id="tv_Text" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+      <Text id="text_Light" fx:id="tv_Text" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Text">
          <font>
             <Font size="18.0" />
          </font>

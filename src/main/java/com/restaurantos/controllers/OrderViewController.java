@@ -94,7 +94,8 @@ public class OrderViewController extends ViewController {
             case "Preparing"    -> hbox_Top.setStyle("-fx-background-color: colorBlue;" + css);
             case "Prepared"     -> hbox_Top.setStyle("-fx-background-color: colorOrange;" + css);
             case "Served"       -> hbox_Top.setStyle("-fx-background-color: colorGreen;" + css);
-            case "Payed", "Canceled" -> hbox_Top.setStyle("-fx-background-color: colorRed;" + css);
+            case "Paid"         -> hbox_Top.setStyle("-fx-background-color: colorDarkGreen;" + css);
+            case "Canceled" -> hbox_Top.setStyle("-fx-background-color: colorRed;" + css);
         }
     }
 }

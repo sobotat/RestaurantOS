@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<VBox prefHeight="390.0" prefWidth="500.0" spacing="20.0" xmlns="http://javafx.com/javafx/null" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.restaurantos.controllers.UserDialogController">
+   <BorderPane prefHeight="1090.0" prefWidth="500.0">
+      <bottom>
+         <HBox id="box_LightWhite" alignment="CENTER" style="-fx-background-radius: 20;" BorderPane.alignment="CENTER">
+            <children>
+               <HBox id="btn_Black" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" onMouseClicked="#onActionClicked" prefHeight="40.0" prefWidth="195.0">
+                  <children>
+                     <ImageView fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                        <HBox.margin>
+                           <Insets left="30.0" />
+                        </HBox.margin>
+                        <image>
+                           <Image url="@../../res/icons/icon_chevronRight_white.png.png" />
+                        </image>
+                     </ImageView>
+                     <Text fx:id="tv_ActionButton" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Update">
+                        <HBox.margin>
+                           <Insets left="10.0" />
+                        </HBox.margin>
+                     </Text>
+                  </children>
+                  <HBox.margin>
+                     <Insets right="10.0" />
+                  </HBox.margin>
+               </HBox>
+               <HBox id="btn_Black" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" onMouseClicked="#onBackClicked" prefHeight="40.0" prefWidth="195.0">
+                  <children>
+                     <ImageView fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                        <HBox.margin>
+                           <Insets left="30.0" />
+                        </HBox.margin>
+                        <image>
+                           <Image url="@../../res/icons/icon_chevronRight_white.png.png" />
+                        </image>
+                     </ImageView>
+                     <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Back">
+                        <HBox.margin>
+                           <Insets left="10.0" />
+                        </HBox.margin>
+                     </Text>
+                  </children>
+                  <HBox.margin>
+                     <Insets left="10.0" />
+                  </HBox.margin>
+               </HBox>
+            </children>
+            <BorderPane.margin>
+               <Insets bottom="15.0" left="30.0" right="30.0" />
+            </BorderPane.margin>
+            <padding>
+               <Insets bottom="2.0" top="2.0" />
+            </padding>
+         </HBox>
+      </bottom>
+      <center>
+            <VBox id="box_DarkWhite" alignment="TOP_CENTER" prefHeight="525.0" prefWidth="500.0" BorderPane.alignment="TOP_CENTER">
+            <VBox id="box_LightWhite" prefHeight="0.0" prefWidth="439.0" style="-fx-background-radius: 20;">
+               <children>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: colorAccent;" text="User Info" wrappingWidth="139.62858772277832">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="10.0" top="5.0" />
+                     </VBox.margin>
+                  </Text>
+                  <HBox id="box_DarkWhite" alignment="TOP_CENTER" prefHeight="0.0" prefWidth="429.0" style="-fx-background-radius: 20;">
+                     <children>
+                        <VBox prefHeight="100.0" prefWidth="400.0">
+                           <children>
+                              <Text id="text_Dark" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="First Name">
+                                 <VBox.margin>
+                                    <Insets bottom="3.0" left="10.0" />
+                                 </VBox.margin>
+                              </Text>
+                              <TextField fx:id="tf_FirstName" />
+                           </children>
+                           <padding>
+                              <Insets left="5.0" right="5.0" />
+                           </padding>
+                        </VBox>
+                        <VBox prefHeight="200.0" prefWidth="400.0">
+                           <children>
+                              <Text id="text_Dark" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Last Name">
+                                 <VBox.margin>
+                                    <Insets bottom="3.0" left="10.0" />
+                                 </VBox.margin>
+                              </Text>
+                              <TextField fx:id="tf_LastName" />
+                           </children>
+                           <padding>
+                              <Insets left="5.0" right="5.0" />
+                           </padding>
+                        </VBox>
+                     </children>
+                     <padding>
+                        <Insets bottom="10.0" top="10.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox id="box_DarkWhite" alignment="TOP_CENTER" prefHeight="0.0" prefWidth="429.0" style="-fx-background-radius: 20;">
+                     <children>
+                        <VBox prefHeight="100.0" prefWidth="400.0">
+                           <children>
+                              <Text id="text_Dark" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Email">
+                                 <VBox.margin>
+                                    <Insets bottom="3.0" left="10.0" />
+                                 </VBox.margin>
+                              </Text>
+                              <TextField fx:id="tf_Email" />
+                           </children>
+                           <padding>
+                              <Insets left="5.0" right="5.0" />
+                           </padding>
+                        </VBox>
+                        <VBox prefHeight="200.0" prefWidth="400.0">
+                           <children>
+                              <Text id="text_Dark" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Password">
+                                 <VBox.margin>
+                                    <Insets bottom="3.0" left="10.0" />
+                                 </VBox.margin>
+                              </Text>
+                              <TextField fx:id="tf_Password" promptText="********" />
+                           </children>
+                           <padding>
+                              <Insets left="5.0" right="5.0" />
+                           </padding>
+                        </VBox>
+                     </children>
+                     <padding>
+                        <Insets bottom="10.0" top="10.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox id="box_DarkWhite" alignment="TOP_CENTER" prefHeight="0.0" prefWidth="429.0" style="-fx-background-radius: 20;">
+                     <children>
+                        <VBox prefHeight="100.0" prefWidth="400.0">
+                           <children>
+                              <Text id="text_Dark" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Role">
+                                 <VBox.margin>
+                                    <Insets bottom="3.0" left="10.0" />
+                                 </VBox.margin>
+                              </Text>
+                              <TextField fx:id="tf_Role" promptText="Manager/Service/Chef" />
+                           </children>
+                           <padding>
+                              <Insets left="5.0" right="5.0" />
+                           </padding>
+                        </VBox>
+                        <VBox prefHeight="200.0" prefWidth="400.0">
+                           <children>
+                              <Text id="text_Dark" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Born Date">
+                                 <VBox.margin>
+                                    <Insets bottom="3.0" left="10.0" />
+                                 </VBox.margin>
+                              </Text>
+                              <TextField fx:id="tf_BornDate" promptText="DD.MM.YYYY" />
+                           </children>
+                           <padding>
+                              <Insets left="5.0" right="5.0" />
+                           </padding>
+                        </VBox>
+                     </children>
+                     <padding>
+                        <Insets bottom="10.0" top="10.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </HBox>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="15.0" left="30.0" right="30.0" top="30.0" />
+               </VBox.margin>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </VBox>
+            </VBox>
+      </center>
+   </BorderPane>
+</VBox>

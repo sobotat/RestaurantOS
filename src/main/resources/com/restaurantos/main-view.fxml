@@ -48,7 +48,7 @@
                                  <Insets right="5.0" />
                               </HBox.margin>
                               <children>
-                                 <Text fx:id="tv_Role" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Service" textAlignment="CENTER">
+                                 <Text id="text_Light" fx:id="tv_Role" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Service" textAlignment="CENTER">
                                     <font>
                                        <Font name="System Bold" size="14.0" />
                                     </font>
@@ -65,7 +65,7 @@
                                        <Insets left="20.0" right="10.0" />
                                     </HBox.margin>
                                  </ImageView>
-                                 <Text fx:id="tv_UserName" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Name">
+                                 <Text id="text_Light" fx:id="tv_UserName" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Name">
                                     <font>
                                        <Font name="System Bold" size="14.0" />
                                     </font>
@@ -90,7 +90,7 @@
                                  <Insets left="10.0" right="5.0" />
                               </HBox.margin>
                            </HBox>
-                           <HBox id="btn_Black" fx:id="hbox_UserButton" alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onUsersClicked" prefHeight="40.0" prefWidth="40.0" style="-fx-background-radius: 45;">
+                           <HBox id="btn_Black" fx:id="hVox_UserButton" alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onUsersClicked" prefHeight="40.0" prefWidth="40.0" style="-fx-background-radius: 45;">
                               <children>
                                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
@@ -161,7 +161,7 @@
                   </padding>
                </VBox>
                    <VBox alignment="CENTER" maxWidth="-Infinity" prefHeight="724.0" prefWidth="220.0">
-                  <VBox id="box_LightWhite" alignment="TOP_CENTER" prefHeight="700.0" prefWidth="220.0" style="-fx-background-radius: 20;">
+                  <VBox id="box_LightWhite" fx:id="vBox_Buttons" alignment="TOP_CENTER" prefHeight="700.0" prefWidth="220.0" style="-fx-background-radius: 20;">
                      <children>
                         <HBox id="btn_Black" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" onMouseClicked="#onRefreshClicked" prefHeight="40.0" prefWidth="195.0">
                            <children>
@@ -173,7 +173,7 @@
                                     <Image url="@../../res/icons/icon_chevronRight_white.png.png" />
                                  </image>
                               </ImageView>
-                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Refresh">
+                              <Text id="text_Light" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Refresh">
                                  <HBox.margin>
                                     <Insets left="10.0" />
                                  </HBox.margin>
@@ -183,7 +183,7 @@
                               <Insets top="10.0" />
                            </VBox.margin>
                         </HBox>
-                             <HBox id="btn_Black" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" onMouseClicked="#onShowMenuClicked" prefHeight="40.0" prefWidth="195.0">
+                             <HBox id="btn_Black" fx:id="btn_Show" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" onMouseClicked="#onShowMenuClicked" prefHeight="40.0" prefWidth="195.0">
                                  <VBox.margin>
                                      <Insets top="8.0" />
                                  </VBox.margin>
@@ -193,13 +193,13 @@
                                      </HBox.margin>
                                      <Image url="@../../res/icons/icon_chevronRight_white.png.png" />
                                  </ImageView>
-                                 <Text fx:id="tv_Show" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Show Menu">
+                                 <Text id="text_Light" fx:id="tv_Show" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Show Menu">
                                      <HBox.margin>
                                          <Insets left="10.0" />
                                      </HBox.margin>
                                  </Text>
                              </HBox>
-                        <HBox id="btn_Black" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" onMouseClicked="#onShowTodayMenuClicked" prefHeight="40.0" prefWidth="195.0">
+                        <HBox id="btn_Black" fx:id="btn_ShowTodayMenu" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" onMouseClicked="#onShowTodayMenuClicked" prefHeight="40.0" prefWidth="195.0">
                            <children>
                               <ImageView fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                                  <HBox.margin>
@@ -209,7 +209,7 @@
                                     <Image url="@../../res/icons/icon_chevronRight_white.png.png" />
                                  </image>
                               </ImageView>
-                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Show Today Menu">
+                              <Text id="text_Light" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Show Today Menu">
                                  <HBox.margin>
                                     <Insets left="10.0" />
                                  </HBox.margin>
@@ -219,7 +219,7 @@
                               <Insets top="8.0" />
                            </VBox.margin>
                         </HBox>
-                        <HBox id="btn_Black" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" onMouseClicked="#onCreateMenuClicked" prefHeight="40.0" prefWidth="195.0">
+                        <HBox id="btn_Black" fx:id="btn_CreateMenu" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" onMouseClicked="#onCreateMenuClicked" prefHeight="40.0" prefWidth="195.0">
                            <children>
                               <ImageView fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                                  <HBox.margin>
@@ -229,7 +229,7 @@
                                     <Image url="@../../res/icons/icon_chevronRight_white.png.png" />
                                  </image>
                               </ImageView>
-                              <Text fx:id="tv_MenuButton" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Create Menu">
+                              <Text id="text_Light" fx:id="tv_MenuButton" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Create Menu">
                                  <HBox.margin>
                                     <Insets left="10.0" />
                                  </HBox.margin>
@@ -239,7 +239,7 @@
                               <Insets top="8.0" />
                            </VBox.margin>
                         </HBox>
-                             <HBox id="btn_Black" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" onMouseClicked="#onCreateOrderClicked" prefHeight="40.0" prefWidth="195.0">
+                             <HBox id="btn_Black" fx:id="btn_CreateOrder" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" onMouseClicked="#onCreateOrderClicked" prefHeight="40.0" prefWidth="195.0">
                                  <VBox.margin>
                                      <Insets top="8.0" />
                                  </VBox.margin>
@@ -249,13 +249,13 @@
                                      </HBox.margin>
                                      <Image url="@../../res/icons/icon_chevronRight_white.png.png" />
                                  </ImageView>
-                                 <Text fx:id="tv_OrderButton" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Create Order">
+                                 <Text id="text_Light" fx:id="tv_OrderButton" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Create Order">
                                      <HBox.margin>
                                          <Insets left="10.0" />
                                      </HBox.margin>
                                  </Text>
                              </HBox>
-                        <HBox id="btn_Black" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" onMouseClicked="#onCreateUserClicked" prefHeight="40.0" prefWidth="195.0">
+                        <HBox id="btn_Black" fx:id="btn_CreateUser" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" onMouseClicked="#onCreateUserClicked" prefHeight="40.0" prefWidth="195.0">
                            <children>
                               <ImageView fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                                  <HBox.margin>
@@ -265,7 +265,27 @@
                                     <Image url="@../../res/icons/icon_chevronRight_white.png.png" />
                                  </image>
                               </ImageView>
-                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Create User">
+                              <Text id="text_Light" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Create User">
+                                 <HBox.margin>
+                                    <Insets left="10.0" />
+                                 </HBox.margin>
+                              </Text>
+                           </children>
+                           <VBox.margin>
+                              <Insets top="8.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox id="btn_Black" fx:id="btn_Payment" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" onMouseClicked="#onPaymentClicked" prefHeight="40.0" prefWidth="195.0">
+                           <children>
+                              <ImageView fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                                 <HBox.margin>
+                                    <Insets left="30.0" />
+                                 </HBox.margin>
+                                 <image>
+                                    <Image url="@../../res/icons/icon_chevronRight_white.png.png" />
+                                 </image>
+                              </ImageView>
+                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Payment">
                                  <HBox.margin>
                                     <Insets left="10.0" />
                                  </HBox.margin>

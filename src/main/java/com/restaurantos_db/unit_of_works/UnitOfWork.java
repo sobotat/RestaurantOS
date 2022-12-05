@@ -23,7 +23,15 @@ public abstract class UnitOfWork<T> {
         resetTimer();
     }
 
-    public abstract void commit();
+    protected abstract void commit();
+    public void forceCommit(){
+        if(timer != null) {
+            timer.cancel();
+            timer = null;
+        }
+        commit();
+    }
+
     public void resetTimer(){
         if(timer != null)
             timer.cancel();

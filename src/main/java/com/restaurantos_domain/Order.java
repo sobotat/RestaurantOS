@@ -1,6 +1,7 @@
 package com.restaurantos_domain;
 
 import com.restaurantos_db.OrderItemGateway;
+import com.restaurantos_db.UserGateway;
 
 import java.time.LocalDate;
 import java.util.LinkedList;
@@ -10,13 +11,17 @@ public class Order {
     private int orderId;
     private Table table;
     private LocalDate createdDate;
-    private boolean payed;
+    private boolean paid;
+    private int createdById;
+    private User createdBy;
 
-    public Order(int orderId, Table table, LocalDate createdDate, boolean payed) {
+    public Order(int orderId, Table table, LocalDate createdDate, boolean paid, int createdById) {
         this.orderId = orderId;
         this.table = table;
         this.createdDate = createdDate;
-        this.payed = payed;
+        this.paid = paid;
+        this.createdById = createdById;
+        this.createdBy = null;
     }
 
     public double getCost(){
@@ -33,6 +38,9 @@ public class Order {
     }
 
     public String getStatus(){
+        if(paid)
+            return "Paid";
+
         OrderItemGateway orderItemGateway = new OrderItemGateway();
         LinkedList<OrderItem> orderItems = orderItemGateway.findAllForOrder(this);
 
@@ -43,7 +51,7 @@ public class Order {
         int numOfPreparing = 0;
         int numOfPrepared = 0;
         int numOfServed = 0;
-        int numOfPayed = 0;
+        int numOfPaid = 0;
         int numOfActive = orderItems.size();
 
         for(OrderItem item: orderItems){
@@ -52,7 +60,7 @@ public class Order {
                 case "Preparing"    -> numOfPreparing++;
                 case "Prepared"     -> numOfPrepared++;
                 case "Served"       -> numOfServed++;
-                case "Payed"        -> numOfPayed++;
+                case "Paid"         -> numOfPaid++;
                 case "Canceled"     -> numOfActive--;
             }
         }
@@ -66,7 +74,7 @@ public class Order {
         if(numOfOrdered > 0)
             return "Ordered";
 
-        return (numOfPayed == numOfActive ? "Payed" : "Served");
+        return (numOfPaid == numOfActive ? "Paid" : "Served");
     }
 
     public void addOrderItem(OrderItem orderItem){
@@ -87,12 +95,21 @@ public class Order {
         return new OrderItemGateway().find(id);
     }
 
+    public User getCreatedBy(){
+        if(createdBy != null)
+            return createdBy;
+
+        UserGateway userGateway = new UserGateway();
+        createdBy = userGateway.find(createdById);
+        return createdBy;
+    }
+
     // Setters
     public void setOrderId(int orderId) {
         this.orderId = orderId;
     }
-    public void setPayed(boolean payed) {
-        this.payed = payed;
+    public void setPaid(boolean paid) {
+        this.paid = paid;
     }
 
     // Getters
@@ -105,7 +122,10 @@ public class Order {
     public LocalDate getCreatedDate() {
         return createdDate;
     }
-    public boolean isPayed() {
-        return payed;
+    public boolean isPaid() {
+        return paid;
+    }
+    public int getCreatedById() {
+        return createdById;
     }
 }

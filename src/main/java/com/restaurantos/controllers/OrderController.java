@@ -34,7 +34,8 @@ public class OrderController {
             case "Preparing"    -> vbox_Background.setStyle("-fx-background-color: colorBlue;" + css);
             case "Prepared"     -> vbox_Background.setStyle("-fx-background-color: colorOrange;" + css);
             case "Served"       -> vbox_Background.setStyle("-fx-background-color: colorGreen;" + css);
-            case "Payed", "Canceled" -> vbox_Background.setStyle("-fx-background-color: colorRed;" + css);
+            case "Paid"         -> vbox_Background.setStyle("-fx-background-color: colorDarkGreen;" + css);
+            case "Canceled"     -> vbox_Background.setStyle("-fx-background-color: colorRed;" + css);
         }
     }
 }

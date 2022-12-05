@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Cantarell&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Monda&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap');
 
 .root{
     /*-Colors-*/
@@ -10,6 +12,7 @@
     colorLightGray: #717171;
     colorAccent: #4cbae3;
     colorBlue: #3d5a93;
+    colorDarkGreen: #529a94;
     colorGreen: #519754;
     colorRed: #8c3936;
     colorOrange: #c78e4a;
@@ -18,13 +21,24 @@
     -fx-background-color: colorDarkWhite;
     /*-fx-font-family: 'Roboto', sans-serif;*/
     /*-fx-font-family: 'Cantarell', sans-serif;*/
-    -fx-font-family: 'Monda', sans-serif;
+    /*-fx-font-family: 'Monda', sans-serif;*/
+    -fx-font-family: 'Varela Round', sans-serif;
+}
+
+.text{
+    -fx-font-family: 'Varela Round', sans-serif;
+    -fx-fill: colorText;
 }
 
 .button{
     -fx-background-color: colorDarkGray;
     -fx-text-fill: colorText;
     -fx-background-radius : 20;
+}
+
+.button .text{
+    -fx-font-family: 'Varela Round', sans-serif;
+    -fx-fill: colorText;
 }
 
 .check-box .box{
@@ -88,6 +102,14 @@
 .scroll-bar:vertical .thumb {
     -fx-background-color: colorAccent;
     -fx-background-radius: 5em;
+}
+
+#text_Light {
+    -fx-fill: #FFFFFF;
+}
+
+#text_Dark {
+    -fx-fill: #0a0a0a;
 }
 
 #box_LightWhite {

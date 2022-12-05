@@ -1,6 +1,7 @@
 package com.restaurantos_domain;
 
 import com.restaurantos_db.MenuItemGateway;
+import com.restaurantos_db.UserGateway;
 
 public class OrderItem {
     private int orderItemId;
@@ -9,23 +10,29 @@ public class OrderItem {
     private MenuItem menuItem;
     private int count;
     private String state;
+    private Integer cookedById;
+    private User cookedBy;
 
-    public OrderItem(int orderItemId, Order order, int menuItemId, int count, String state) {
+    public OrderItem(int orderItemId, Order order, int menuItemId, int count, String state, Integer cookedById) {
         this.orderItemId = orderItemId;
         this.order = order;
         this.menuItemId = menuItemId;
         this.menuItem = null;
         this.count = count;
         this.state = state;
+        this.cookedById = cookedById;
+        this.cookedBy = null;
     }
 
-    public OrderItem(int orderItemId, Order order, MenuItem menuItem, int count, String state) {
+    public OrderItem(int orderItemId, Order order, MenuItem menuItem, int count, String state, Integer cookedById) {
         this.orderItemId = orderItemId;
         this.order = order;
         this.menuItemId = menuItem.getMenuItemId();
         this.menuItem = menuItem;
         this.count = count;
         this.state = state;
+        this.cookedById = cookedById;
+        this.cookedBy = null;
     }
 
     public MenuItem getMenuItem() {
@@ -37,8 +44,13 @@ public class OrderItem {
         return  menuItem;
     }
 
-    public void setMenuItem(MenuItem menuItem) {
-        this.menuItem = menuItem;
+    public User getCookedBy() {
+        if(cookedBy != null || cookedById == null)
+            return cookedBy;
+
+        UserGateway userGateway = new UserGateway();
+        cookedBy = userGateway.find(cookedById);
+        return cookedBy;
     }
 
     // Setters
@@ -50,6 +62,9 @@ public class OrderItem {
     }
     public void setState(String state) {
         this.state = state;
+    }
+    public void setMenuItem(MenuItem menuItem) {
+        this.menuItem = menuItem;
     }
 
     // Getters
@@ -67,5 +82,8 @@ public class OrderItem {
     }
     public String getState() {
         return state;
+    }
+    public Integer getCookedById(){
+        return cookedById;
     }
 }

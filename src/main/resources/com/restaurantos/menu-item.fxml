@@ -9,7 +9,7 @@
    <children>
       <VBox id="box_Gray" fx:id="vbox_Background" alignment="TOP_CENTER" prefHeight="160.0" prefWidth="220.0" style="-fx-background-radius: 20;">
          <children>
-            <Text fx:id="tv_MenuId" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Order 1">
+            <Text id="text_Dark" fx:id="tv_MenuId" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Order 1">
                <VBox.margin>
                   <Insets bottom="5.0" top="15.0" />
                </VBox.margin>
@@ -20,7 +20,7 @@
             <VBox id="box_Black" prefHeight="17.0" prefWidth="175.0" />
             <VBox alignment="CENTER" prefHeight="113.0" prefWidth="560.0">
                <children>
-                  <Text fx:id="tv_Date" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Ordered">
+                  <Text id="text_Dark" fx:id="tv_Date" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Ordered">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>

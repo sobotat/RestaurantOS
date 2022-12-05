@@ -40,14 +40,31 @@ public class AppSecurity {
         return false;
     }
 
+    // Getters
     public static User getSignInUser() {
         return signInUser;
     }
 
+    // Authority
     public static boolean haveAuthForDelete(){
         return signInUser.getUserRole().getName().equals("Manager");
     }
+    public static boolean haveAuthForCreateUser() {
+        return signInUser.getUserRole().getName().equals("Manager");
+    }
+    public static boolean haveAuthForCreateMenu() {
+        return signInUser.getUserRole().getName().equals("Manager");
+    }
+    public static boolean haveAuthForCreateOrder() {
+        return (signInUser.getUserRole().getName().equals("Manager") ||
+                signInUser.getUserRole().getName().equals("Service") );
+    }
+    public static boolean haveAuthForCookOrder(){
+        return (signInUser.getUserRole().getName().equals("Manager") ||
+                signInUser.getUserRole().getName().equals("Chef") );
+    }
 
+    // Change Password
     public static void changePassword(String email, String password){
         UserGateway userGateway = new UserGateway();
         boolean status = userGateway.updatePassword(email, password);
@@ -57,6 +74,9 @@ public class AppSecurity {
         else
             System.out.println("Password change failed");
     }
+
+
+
 
     public static class ManagerAuth{
         private static final Logger logger = LogManager.getLogger(ManagerAuth.class.getName());

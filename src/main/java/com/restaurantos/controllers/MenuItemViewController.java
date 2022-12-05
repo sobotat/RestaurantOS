@@ -39,7 +39,7 @@ public class MenuItemViewController {
         tv_Num.setText(String.valueOf(menuItem.getCount()));
         tv_Cost.setText(String.valueOf(menuItem.getFood().getCost()));
 
-        switch (menuItem.getFood().getFoodType().name){
+        switch (menuItem.getFood().getFoodType().getName()){
             case "Food"  -> dot_State.setStyle("-fx-fill: colorRed;");
             case "Drink" -> dot_State.setStyle("-fx-fill: colorBlue;");
             default -> dot_State.setStyle("-fx-fill: colorLightGray;");
@@ -49,6 +49,7 @@ public class MenuItemViewController {
     public void deleteItemClicked(){
         if(!AppSecurity.haveAuthForDelete()){
             warning(btn_Delete);
+            logger.log(Level.INFO, "User dont have Authority");
             return;
         }
 
@@ -68,7 +69,7 @@ public class MenuItemViewController {
     }
 
     private void warning(Node node){
-        String orgStyle = btn_Delete.getStyle();
+        String orgStyle = node.getStyle();
         node.setStyle(orgStyle + "-fx-background-color: colorRed;");
 
         Timer timer = new Timer(true);
@@ -78,4 +79,5 @@ public class MenuItemViewController {
                 node.setStyle(orgStyle);
             }
         }, 1000);
-    }}
+    }
+}

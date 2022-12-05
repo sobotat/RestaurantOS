@@ -50,17 +50,6 @@ public class LoginController {
             loginClicked();
     }
 
-    @FXML
-    public void changePasswordClicked(){
-        if(!(tf_Email.getText().equals("") || tf_Password.getText().equals(""))) {
-            AppSecurity.changePassword(tf_Email.getText(), tf_Password.getText());
-            return;
-        }
-
-        System.out.println("Fill email and password");
-        badEmailOrPassword();
-    }
-
     private void badEmailOrPassword(){
         String style = vbox_Login.getStyle();
         vbox_Login.setStyle(style + "-fx-background-color: colorRed;");

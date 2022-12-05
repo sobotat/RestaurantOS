@@ -25,7 +25,7 @@ public class OrderGateway implements Gateway<Order> {
             return order;
 
         // Database
-        try (PreparedStatement statement = Gateway.DBConnection.getConnection().prepareStatement("SELECT order_id, table_id, created_date, payed FROM `order` WHERE order_id = ?;")){
+        try (PreparedStatement statement = Gateway.DBConnection.getConnection().prepareStatement("SELECT `order_id`, `table_id`, `created_date`, `paid`, `createdBy` FROM `restaurantos-db`.`order` WHERE order_id = ?;")){
             statement.setInt(1, id);
             try (ResultSet resultSet = statement.executeQuery()){
 
@@ -34,11 +34,12 @@ public class OrderGateway implements Gateway<Order> {
                     int orderId = resultSet.getInt(1);
                     int tableId = resultSet.getInt(2);
                     Date createdDate = resultSet.getDate(3);
-                    boolean payed = resultSet.getBoolean(4);
+                    boolean paid = resultSet.getBoolean(4);
+                    int createdBy = resultSet.getInt(5);
 
                     Table table = new TableGateway().find(tableId);
 
-                    order = new Order( orderId, table, createdDate.toLocalDate(), payed);
+                    order = new Order( orderId, table, createdDate.toLocalDate(), paid, createdBy);
                     identityMap.insert(order);
                 }
                 statement.close();
@@ -53,7 +54,7 @@ public class OrderGateway implements Gateway<Order> {
     public LinkedList<Order> findAllForDay(LocalDate date) {
         LinkedList<Order> orders = new LinkedList<>();
 
-        try (PreparedStatement statement = Gateway.DBConnection.getConnection().prepareStatement("SELECT order_id, table_id, payed FROM `order` WHERE created_date = ?;")){
+        try (PreparedStatement statement = Gateway.DBConnection.getConnection().prepareStatement("SELECT `order_id`, `table_id`, `paid`, `created_by` FROM `restaurantos-db`.`order` WHERE created_date = ?;")){
             Date dateTmp = Date.valueOf(date);
             statement.setDate(1, dateTmp);
             try(ResultSet resultSet = statement.executeQuery()){
@@ -62,10 +63,11 @@ public class OrderGateway implements Gateway<Order> {
                     // Order
                     int orderId = resultSet.getInt(1);
                     int tableId = resultSet.getInt(2);
-                    boolean payed = resultSet.getBoolean(3);
+                    boolean paid = resultSet.getBoolean(3);
+                    int createdById = resultSet.getInt(4);
 
                     Table table = new TableGateway().find(tableId);
-                    orders.add( new Order( orderId, table, date, payed));
+                    orders.add( new Order( orderId, table, date, paid, createdById));
                 }
                 statement.close();
             }
@@ -80,17 +82,18 @@ public class OrderGateway implements Gateway<Order> {
         LinkedList<Order> orders = new LinkedList<>();
 
         try (Statement statement = Gateway.DBConnection.getConnection().createStatement()){
-            try(ResultSet resultSet = statement.executeQuery("SELECT `order_id`, `table_id`, `created_date`, `payed` FROM `order`;")){
+            try(ResultSet resultSet = statement.executeQuery("SELECT `order_id`, `table_id`, `created_date`, `paid`, `created_by` FROM `restaurantos-db`.`order`;")){
 
                 while (resultSet.next()) {
                     // Order
                     int orderId = resultSet.getInt(1);
                     int tableId = resultSet.getInt(2);
                     Date date = resultSet.getDate(3);
-                    boolean payed = resultSet.getBoolean(4);
+                    boolean paid = resultSet.getBoolean(4);
+                    int createdById = resultSet.getInt(5);
 
                     Table table = new TableGateway().find(tableId);
-                    orders.add( new Order( orderId, table, date.toLocalDate(), payed));
+                    orders.add( new Order( orderId, table, date.toLocalDate(), paid, createdById));
                 }
                 statement.close();
             }
@@ -104,10 +107,11 @@ public class OrderGateway implements Gateway<Order> {
     @Override
     public boolean create(Order obj) {
 
-        try (PreparedStatement preparedStatement = Gateway.DBConnection.getConnection().prepareStatement("INSERT INTO `order` ( `table_id`, `created_date`, `payed`) VALUES (?, ?, ?);", Statement.RETURN_GENERATED_KEYS)){
+        try (PreparedStatement preparedStatement = Gateway.DBConnection.getConnection().prepareStatement("INSERT INTO `restaurantos-db`.`order` ( `table_id`, `created_date`, `paid`, `created_by`) VALUES (?, ?, ?, ?);", Statement.RETURN_GENERATED_KEYS)){
             preparedStatement.setInt( 1, obj.getTable().getTableId());
             preparedStatement.setDate(2, Date.valueOf(obj.getCreatedDate()));
-            preparedStatement.setBoolean( 3, obj.isPayed());
+            preparedStatement.setBoolean( 3, obj.isPaid());
+            preparedStatement.setInt(4, obj.getCreatedById());
 
             preparedStatement.execute();
             try(ResultSet resultSet = preparedStatement.getGeneratedKeys()){
@@ -131,10 +135,10 @@ public class OrderGateway implements Gateway<Order> {
 
     @Override
     public boolean update(Order obj) {
-        try (PreparedStatement preparedStatement = Gateway.DBConnection.getConnection().prepareStatement("UPDATE `order` SET `table_id` = ?, `created_date` = ?, `played` = ? WHERE `order_id` = ?;")){
+        try (PreparedStatement preparedStatement = Gateway.DBConnection.getConnection().prepareStatement("UPDATE `restaurantos-db`.`order` SET `table_id` = ?, `created_date` = ?, `paid` = ? WHERE `order_id` = ?;")){
             preparedStatement.setInt( 1, obj.getTable().getTableId());
             preparedStatement.setDate(2, Date.valueOf(obj.getCreatedDate()));
-            preparedStatement.setBoolean( 3, obj.isPayed());
+            preparedStatement.setBoolean( 3, obj.isPaid());
             preparedStatement.setInt(4, obj.getOrderId());
 
             preparedStatement.execute();
@@ -147,7 +151,7 @@ public class OrderGateway implements Gateway<Order> {
 
     @Override
     public boolean delete(Order obj) {
-        try (PreparedStatement preparedStatement = Gateway.DBConnection.getConnection().prepareStatement("DELETE FROM `order` WHERE `order_id` = ?")){
+        try (PreparedStatement preparedStatement = Gateway.DBConnection.getConnection().prepareStatement("DELETE FROM `restaurantos-db`.`order` WHERE `order_id` = ?")){
             preparedStatement.setInt(1, obj.getOrderId());
             preparedStatement.execute();
 
