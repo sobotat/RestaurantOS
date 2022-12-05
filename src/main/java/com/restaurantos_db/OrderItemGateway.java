@@ -8,6 +8,7 @@ import com.restaurantos_domain.Order;
 import com.restaurantos_domain.OrderItem;
 
 import java.sql.*;
+import java.util.Iterator;
 import java.util.LinkedList;
 
 public class OrderItemGateway implements Gateway<OrderItem> {
@@ -113,6 +114,43 @@ public class OrderItemGateway implements Gateway<OrderItem> {
         return false;
     }
 
+    public boolean createBatch(LinkedList<OrderItem> orderItems){
+        if(orderItems.isEmpty())
+            return false;
+
+        try (PreparedStatement preparedStatement = Gateway.DBConnection.getConnection().prepareStatement("INSERT INTO `order_item` ( `order_id`, `menu_item_id`, `count`) VALUES (?, ?, ?);", Statement.RETURN_GENERATED_KEYS)){
+
+            LinkedList<OrderItem> createdItems = new LinkedList<>();
+            for(OrderItem orderItem: orderItems) {
+                preparedStatement.setInt( 1, orderItem.getOrder().getOrderId());
+                preparedStatement.setInt(2, orderItem.getMenuItem().getMenuItemId());
+                preparedStatement.setInt( 3, orderItem.getCount());
+
+                preparedStatement.addBatch();
+                createdItems.add(orderItem);
+            }
+            if(createdItems.isEmpty())
+                return false;
+
+            preparedStatement.executeBatch();
+            try(ResultSet resultSet = preparedStatement.getGeneratedKeys()){
+
+                OrderItemIdentityMap orderItemIdentityMap = new OrderItemIdentityMap();
+                Iterator<OrderItem> iterator = createdItems.iterator();
+                while (resultSet.next()) {
+                    OrderItem orderItem = iterator.next();
+                    orderItem.setOrderItemId(resultSet.getInt(1));
+                    orderItemIdentityMap.clearForOrder(orderItem.getOrder());
+                }
+            }
+            return true;
+        } catch (SQLException e) {
+            logger.log(Level.ERROR, "OrderItem Batch DB exception :> " + e.getSQLState());
+            e.printStackTrace();
+        }
+        return false;
+    }
+
     @Override
     public boolean update(OrderItem obj) {
 
@@ -131,6 +169,29 @@ public class OrderItemGateway implements Gateway<OrderItem> {
         return false;
     }
 
+    public boolean updateBatch(LinkedList<OrderItem> orderItems){
+        if(orderItems.isEmpty())
+            return false;
+
+        try (PreparedStatement preparedStatement = Gateway.DBConnection.getConnection().prepareStatement("UPDATE `order_item` SET `order_id` = ?, `menu_item_id` = ?, `count` = ?, `state` = ? WHERE `order_item_id` = ?;")){
+
+            for(OrderItem orderItem : orderItems) {
+                preparedStatement.setInt(1, orderItem.getOrder().getOrderId());
+                preparedStatement.setInt(2, orderItem.getMenuItem().getMenuItemId());
+                preparedStatement.setInt(3, orderItem.getCount());
+                preparedStatement.setString(4, orderItem.getState());
+                preparedStatement.setInt(5, orderItem.getOrderItemId());
+
+                preparedStatement.addBatch();
+            }
+            preparedStatement.executeBatch();
+            return true;
+        } catch (SQLException e) {
+            logger.log(Level.ERROR, "OrderItem UofW DB exception :> " + e.getSQLState());
+        }
+        return false;
+    }
+
     @Override
     public boolean delete(OrderItem obj) {
         try (PreparedStatement preparedStatement = Gateway.DBConnection.getConnection().prepareStatement("DELETE FROM `restaurantos-db`.`order_item` WHERE `order_item_id` = ?")){
@@ -142,6 +203,28 @@ public class OrderItemGateway implements Gateway<OrderItem> {
             return true;
         } catch (SQLException e) {
             logger.log(Level.ERROR, "OrderItem DB exception :> " + e.getSQLState());
+        }
+        return false;
+    }
+
+    public boolean deleteBatch(LinkedList<OrderItem> orderItems){
+        if(orderItems.isEmpty())
+            return false;
+
+        try (PreparedStatement preparedStatement = Gateway.DBConnection.getConnection().prepareStatement("DELETE FROM `order_item` WHERE `order_item_id` = ?")){
+
+            OrderItemIdentityMap orderItemIdentityMap = new OrderItemIdentityMap();
+            for(OrderItem orderItem : orderItems) {
+                preparedStatement.setInt(1, orderItem.getOrderItemId());
+                preparedStatement.addBatch();
+
+                orderItemIdentityMap.clearForOrder(orderItem.getOrder());
+            }
+            preparedStatement.executeBatch();
+
+            return true;
+        } catch (SQLException e) {
+            logger.log(Level.ERROR, "OrderItem UofW DB exception :> " + e.getSQLState());
         }
         return false;
     }

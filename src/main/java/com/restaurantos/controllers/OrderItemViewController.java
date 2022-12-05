@@ -3,7 +3,7 @@ package com.restaurantos.controllers;
 import com.restaurantos_domain.AppSecurity;
 import com.restaurantos_domain.Food;
 import com.restaurantos_domain.OrderItem;
-import com.restaurantos_db.unit_of_works.OrderItemUnitOfWork;
+import com.restaurantos_domain.unit_of_works.OrderItemUnitOfWork;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
@@ -14,7 +14,6 @@ import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import javax.swing.text.Style;
 import java.util.LinkedList;
 import java.util.Timer;
 import java.util.TimerTask;

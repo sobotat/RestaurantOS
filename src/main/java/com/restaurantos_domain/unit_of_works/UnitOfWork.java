@@ -1,4 +1,4 @@
-package com.restaurantos_db.unit_of_works;
+package com.restaurantos_domain.unit_of_works;
 
 import java.util.Timer;
 import java.util.TimerTask;

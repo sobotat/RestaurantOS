@@ -1,7 +1,7 @@
 package com.restaurantos_domain;
 
 import com.restaurantos_db.OrderGateway;
-import com.restaurantos_db.unit_of_works.OrderItemUnitOfWork;
+import com.restaurantos_domain.unit_of_works.OrderItemUnitOfWork;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

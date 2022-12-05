@@ -4,7 +4,7 @@ import com.restaurantos_db.*;
 import com.restaurantos_domain.*;
 import com.restaurantos.*;
 import com.restaurantos_db.identity_maps.IdentityMapsHandler;
-import com.restaurantos_db.unit_of_works.OrderItemUnitOfWork;
+import com.restaurantos_domain.unit_of_works.OrderItemUnitOfWork;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
