@@ -64,19 +64,6 @@ public class AppSecurity {
                 signInUser.getUserRole().getName().equals("Chef") );
     }
 
-    // Change Password
-    public static void changePassword(String email, String password){
-        UserGateway userGateway = new UserGateway();
-        boolean status = userGateway.updatePassword(email, password);
-
-        if(status)
-            System.out.println("Password was changed");
-        else
-            System.out.println("Password change failed");
-    }
-
-
-
 
     public static class ManagerAuth{
         private static final Logger logger = LogManager.getLogger(ManagerAuth.class.getName());

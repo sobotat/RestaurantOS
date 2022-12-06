@@ -1,4 +1,4 @@
-package com.restaurantos_domain;
+package com.restaurantos_db;
 
 import java.io.*;
 

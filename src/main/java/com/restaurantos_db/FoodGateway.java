@@ -17,7 +17,7 @@ public class FoodGateway implements Gateway<Food> {
         Food food = null;
 
         try (PreparedStatement statement = Gateway.DBConnection.getConnection().prepareStatement("SELECT food.food_id, food.name, food.description, food.allergens, food.cost, type.type_id, type.name "
-                                                                                      + "FROM food JOIN type ON type.type_id = food.type_id WHERE food_id = ?;")){
+                                                                                                    + "FROM `restaurantos-db`.`food` JOIN `restaurantos-db`.`type` ON type.type_id = food.type_id WHERE food_id = ?;")){
             statement.setInt(1, id);
             try(ResultSet resultSet = statement.executeQuery()){
 
@@ -49,7 +49,7 @@ public class FoodGateway implements Gateway<Food> {
 
         try (Statement statement = Gateway.DBConnection.getConnection().createStatement()){
             try(ResultSet resultSet = statement.executeQuery("SELECT food.food_id, food.name, food.description, food.allergens, food.cost, type.type_id, type.name "
-                                                               + "FROM food JOIN type ON type.type_id = food.type_id;")){
+                                                               + "FROM `restaurantos-db`.`food` JOIN `restaurantos-db`.`type` ON type.type_id = food.type_id;")){
 
                 while (resultSet.next()) {
                     // Food

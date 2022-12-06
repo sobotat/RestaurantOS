@@ -43,8 +43,8 @@ public class Food {
     }
 
     public static class FoodType {
-        private int typeId;
-        private String name;
+        private final int typeId;
+        private final String name;
 
         public FoodType(int typeId, String name) {
             this.typeId = typeId;

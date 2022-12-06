@@ -91,10 +91,6 @@ public class Order {
         return orderItems.get(index);
     }
 
-    public OrderItem getOrderItemById(int id){
-        return new OrderItemGateway().find(id);
-    }
-
     public User getCreatedBy(){
         if(createdBy != null)
             return createdBy;

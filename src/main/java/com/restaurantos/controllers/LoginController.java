@@ -39,6 +39,9 @@ public class LoginController {
         if(!status) {
             badEmailOrPassword();
         }else{
+            Main.switchScene(Main.mainScene);
+            Controller.controller.updateUserInfo();
+
             tf_Email.setText("");
             tf_Password.setText("");
         }

@@ -107,11 +107,6 @@ public class OrderItemViewController {
         OrderItemUnitOfWork orderItemUnitOfWork = new OrderItemUnitOfWork();
         orderItemUnitOfWork.addToUpdate(orderItem);
 
-        // OLD
-        /*
-        OrderItemGateway orderItemGateway = new OrderItemGateway();
-        orderItemGateway.update(orderItem);
-        */
         updateState();
     }
 

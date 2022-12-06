@@ -19,4 +19,6 @@ module com.restaurantos {
     opens com.restaurantos.controllers to javafx.fxml;
     exports com.restaurantos_domain;
     opens com.restaurantos_domain to javafx.fxml;
+    exports com.restaurantos_db;
+    opens com.restaurantos_db to javafx.fxml;
 }

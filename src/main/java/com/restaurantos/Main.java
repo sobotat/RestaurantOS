@@ -38,7 +38,7 @@ public class Main extends Application {
 
         FXMLLoader fxmlLoginLoader = new FXMLLoader(Main.class.getResource("login-view.fxml"));
         loginScene = new Scene(fxmlLoginLoader.load(), Settings.winWidth, Settings.winHeight);
-        setDarkMode(useDarkMode);
+        setDarkMode(Settings.useDarkMode);
 
         mainStage = stage;
         stage.setTitle("RestaurantOS");

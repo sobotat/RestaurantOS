@@ -61,11 +61,15 @@ public class Controller {
         OrderGateway orderGateway = new OrderGateway();
         LinkedList<Order> orders = orderGateway.findAllForDay(LocalDate.now());
 
-        if(orders.isEmpty() || !(currentViewNode instanceof ScrollPane))
+        if(!(currentViewNode instanceof ScrollPane))
+            return;
+
+        vBox_List.getChildren().clear();
+
+        if(orders.isEmpty())
             return;
 
         double curVValue = scl_List.getVvalue();
-        vBox_List.getChildren().clear();
         OrderController.orderControllers = new LinkedList<>();
         Node[] nodes = new Node[orders.size()];
 
@@ -84,9 +88,6 @@ public class Controller {
 
                 OrderController orderController = fxmlLoader.getController();
                 orderController.setItem(orders.get(i));
-
-                //nodes[i].setOnMouseEntered(event -> nodes[h].setStyle("-fx-background-color: colorLightGray"));
-                //nodes[i].setOnMouseExited(event -> nodes[h].setStyle("-fx-background-color: colorDarkGray"));
 
                 final int index = i;
                 nodes[i].setOnMouseClicked(event -> {
@@ -134,11 +135,15 @@ public class Controller {
         MenuGateway menuGateway = new MenuGateway();
         LinkedList<Menu> menus = menuGateway.findAllMenus();
 
-        if(menus.isEmpty() || !(currentViewNode instanceof ScrollPane))
+        if(!(currentViewNode instanceof ScrollPane))
+            return;
+
+        vBox_List.getChildren().clear();
+
+        if(menus.isEmpty())
             return;
 
         double curVValue = scl_List.getVvalue();
-        vBox_List.getChildren().clear();
         MenuController.menuControllers = new LinkedList<>();
         Node[] nodes = new Node[menus.size()];
 
@@ -157,9 +162,6 @@ public class Controller {
 
                 MenuController menuController = fxmlLoader.getController();
                 menuController.setItem(menus.get(i));
-
-                //nodes[i].setOnMouseEntered(event -> nodes[h].setStyle("-fx-background-color: colorLightGray"));
-                //nodes[i].setOnMouseExited(event -> nodes[h].setStyle("-fx-background-color: colorDarkGray"));
 
                 final int index = i;
                 nodes[i].setOnMouseClicked(event -> {
@@ -317,7 +319,9 @@ public class Controller {
         backToMain();
         managerAuth = null;
         LoginController.loginController.initialize();
-        AppSecurity.logout();
+        if(AppSecurity.logout()){
+            Main.switchScene(Main.loginScene);
+        }
         updateUserInfo();
     }
 
@@ -434,12 +438,6 @@ public class Controller {
                 });
                 logger.log(Level.INFO, "OrderItem Created");
             };
-
-            // Old
-            /*
-            OrderItemGateway orderItemGateway = new OrderItemGateway();
-            orderItemGateway.create(orderItem);
-            */
         }
     }
 

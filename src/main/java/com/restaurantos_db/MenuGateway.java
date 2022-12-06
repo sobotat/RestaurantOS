@@ -21,7 +21,7 @@ public class MenuGateway implements Gateway<Menu> {
     public Menu find(int id) {
         Menu menu = null;
 
-        try (PreparedStatement statement = Gateway.DBConnection.getConnection().prepareStatement("SELECT menu_id, date, created_date FROM menu WHERE menu_id = ?")){
+        try (PreparedStatement statement = Gateway.DBConnection.getConnection().prepareStatement("SELECT menu_id, date, created_date FROM `restaurantos-db`.`menu` WHERE menu_id = ?")){
             statement.setInt(1, id);
             try(ResultSet resultSet = statement.executeQuery()){
 
@@ -46,7 +46,7 @@ public class MenuGateway implements Gateway<Menu> {
     public Menu findForDay(LocalDate date){
         Menu menu = null;
 
-        try (PreparedStatement statement = Gateway.DBConnection.getConnection().prepareStatement("SELECT menu_id, created_date FROM menu WHERE date = ?")){
+        try (PreparedStatement statement = Gateway.DBConnection.getConnection().prepareStatement("SELECT menu_id, created_date FROM `restaurantos-db`.`menu` WHERE date = ?")){
             statement.setDate(1, Date.valueOf(date));
             try(ResultSet resultSet = statement.executeQuery()){
 
@@ -70,7 +70,7 @@ public class MenuGateway implements Gateway<Menu> {
         LinkedList<Menu> menus = new LinkedList<>();
 
         try (Statement statement = Gateway.DBConnection.getConnection().createStatement()){
-            try(ResultSet resultSet = statement.executeQuery("SELECT menu_id, date, created_date FROM menu")){
+            try(ResultSet resultSet = statement.executeQuery("SELECT menu_id, date, created_date FROM `restaurantos-db`.`menu`")){
 
                 while (resultSet.next()) {
                     // Menu
@@ -91,7 +91,7 @@ public class MenuGateway implements Gateway<Menu> {
 
     @Override
     public boolean create(Menu obj) {
-        try (PreparedStatement preparedStatement = Gateway.DBConnection.getConnection().prepareStatement("INSERT INTO `menu` ( `date`, `created_date`) VALUES (?, ?);", Statement.RETURN_GENERATED_KEYS)){
+        try (PreparedStatement preparedStatement = Gateway.DBConnection.getConnection().prepareStatement("INSERT INTO `restaurantos-db`.`menu` ( `date`, `created_date`) VALUES (?, ?);", Statement.RETURN_GENERATED_KEYS)){
             preparedStatement.setDate( 1, Date.valueOf(obj.getDate()));
             preparedStatement.setDate(2, Date.valueOf(obj.getCreatedDate()));
 
@@ -117,7 +117,7 @@ public class MenuGateway implements Gateway<Menu> {
 
     @Override
     public boolean update(Menu obj) {
-        try (PreparedStatement preparedStatement = Gateway.DBConnection.getConnection().prepareStatement("UPDATE `menu` SET `date` = ?, `created_date` = ? WHERE `menu_id` = ?;")){
+        try (PreparedStatement preparedStatement = Gateway.DBConnection.getConnection().prepareStatement("UPDATE `restaurantos-db`.`menu` SET `date` = ?, `created_date` = ? WHERE `menu_id` = ?;")){
             preparedStatement.setDate( 1, Date.valueOf(obj.getDate()));
             preparedStatement.setDate(2, Date.valueOf(obj.getCreatedDate()));
             preparedStatement.setInt(3, obj.getMenuId());
@@ -132,7 +132,7 @@ public class MenuGateway implements Gateway<Menu> {
 
     @Override
     public boolean delete(Menu obj) {
-        try (PreparedStatement preparedStatement = Gateway.DBConnection.getConnection().prepareStatement("DELETE FROM `menu` WHERE `menu_id` = ?")){
+        try (PreparedStatement preparedStatement = Gateway.DBConnection.getConnection().prepareStatement("DELETE FROM `restaurantos-db`.`menu` WHERE `menu_id` = ?")){
             preparedStatement.setInt(1, obj.getMenuId());
             preparedStatement.execute();
 

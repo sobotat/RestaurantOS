@@ -1,5 +1,6 @@
 package com.restaurantos_domain;
 
+import com.restaurantos_db.Files;
 import com.restaurantos_db.OrderGateway;
 import com.restaurantos_domain.unit_of_works.OrderItemUnitOfWork;
 import org.apache.logging.log4j.Level;
@@ -14,8 +15,8 @@ import java.util.LinkedList;
 public class Payment {
     private static final Logger logger = LogManager.getLogger(Payment.class.getName());
 
-    Order order;
-    LinkedList<OrderItem> selected, all;
+    private Order order;
+    private LinkedList<OrderItem> selected, all;
 
     public Payment(Order order, LinkedList<OrderItem> selected, LinkedList<OrderItem> all){
         this.order = order;

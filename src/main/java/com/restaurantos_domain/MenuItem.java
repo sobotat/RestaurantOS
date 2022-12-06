@@ -37,16 +37,15 @@ public class MenuItem {
         return food;
     }
 
-    public void setFood(Food food) {
-        this.food = food;
-    }
-
     // Setters
     public void setMenuItemId(int menuItemId) {
         this.menuItemId = menuItemId;
     }
     public void setMenu(Menu menu) {
         this.menu = menu;
+    }
+    public void setFood(Food food) {
+        this.food = food;
     }
 
     // Getters

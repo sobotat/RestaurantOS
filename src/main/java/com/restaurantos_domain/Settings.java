@@ -4,7 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
-import com.restaurantos.Main;
+import com.restaurantos_db.Files;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -19,6 +19,7 @@ public class Settings {
     public static double winHeight = winHeightDefault;
     public static boolean winCanResize = true;
     public static boolean winIsMaximize = false;
+    public static boolean useDarkMode = false;
 
     public static void loadSettings(){
         logger.log(Level.INFO, "Load Settings Started");
@@ -32,7 +33,7 @@ public class Settings {
                 winHeight = windowObj.getDouble("winHeight");
                 winCanResize = windowObj.getBoolean("winCanResize");
                 winIsMaximize = windowObj.getBoolean("winIsMaximize");
-                Main.useDarkMode = windowObj.getBoolean("useDarkMode");
+                useDarkMode = windowObj.getBoolean("useDarkMode");
 
                 logger.log(Level.INFO, "Load Settings Done");
             }catch (org.json.JSONException e){
@@ -52,7 +53,7 @@ public class Settings {
         windowObj.put("winHeightDefault", winHeightDefault);
         windowObj.put("winCanResize", winCanResize);
         windowObj.put("winIsMaximize", winIsMaximize);
-        windowObj.put("useDarkMode", Main.useDarkMode);
+        windowObj.put("useDarkMode", useDarkMode);
 
         settingsObj.put("window", windowObj);
 
