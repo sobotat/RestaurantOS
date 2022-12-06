@@ -4,25 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a554b88f-bf3e-4866-beec-f61e4d0b69a5" name="Changes" comment="v0.5">
+    <list default="true" id="a554b88f-bf3e-4866-beec-f61e4d0b69a5" name="Changes" comment="v0.6">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurantos/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurantos/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurantos/controllers/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurantos/controllers/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurantos/controllers/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurantos/controllers/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurantos/controllers/OrderItemViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurantos/controllers/OrderItemViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurantos_db/FoodGateway.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurantos_db/FoodGateway.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurantos_db/MenuGateway.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurantos_db/MenuGateway.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurantos_domain/AppSecurity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurantos_domain/AppSecurity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurantos_domain/Files.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurantos_db/Files.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurantos_domain/Food.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurantos_domain/Food.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurantos_domain/MenuItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurantos_domain/MenuItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurantos_domain/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurantos_domain/Order.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurantos_domain/Payment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurantos_domain/Payment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurantos_domain/Settings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurantos_domain/Settings.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurantos_domain/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurantos_domain/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/restaurantos/order-item.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/restaurantos/order-item.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,7 +14,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="DarkyenusTimeTracker">
-    <option name="totalTimeSeconds" value="93494" />
+    <option name="totalTimeSeconds" value="93869" />
     <option name="gitIntegration" value="true" />
   </component>
   <component name="ExternalProjectsData">
@@ -265,7 +249,7 @@
       <workItem from="1670325349490" duration="103000" />
       <workItem from="1670328790394" duration="2841000" />
       <workItem from="1670346556604" duration="3080000" />
-      <workItem from="1670359117572" duration="1700000" />
+      <workItem from="1670359117572" duration="2074000" />
     </task>
     <task id="LOCAL-00001" summary="v0.0.1">
       <created>1668290384721</created>
@@ -358,7 +342,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670322626094</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="v0.6">
+      <created>1670361850766</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1670361850766</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -382,7 +373,8 @@
     <MESSAGE value="v0.2" />
     <MESSAGE value="v0.3" />
     <MESSAGE value="v0.5" />
-    <option name="LAST_COMMIT_MESSAGE" value="v0.5" />
+    <MESSAGE value="v0.6" />
+    <option name="LAST_COMMIT_MESSAGE" value="v0.6" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

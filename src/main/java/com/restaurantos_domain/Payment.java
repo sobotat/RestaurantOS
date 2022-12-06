@@ -59,7 +59,7 @@ public class Payment {
 
         double totalCost = 0;
         for (OrderItem orderItem : selected){
-            double cost = (orderItem.getCount() * orderItem.getMenuItem().getCost());
+            double cost = orderItem.getState().equals("Canceled") ? 0 : (orderItem.getCount() * orderItem.getMenuItem().getCost());
             totalCost += cost;
 
             String name = orderItem.getMenuItem().getFood().getName();
