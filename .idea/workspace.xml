@@ -7,14 +7,6 @@
     <list default="true" id="a554b88f-bf3e-4866-beec-f61e4d0b69a5" name="Changes" comment="v0.5">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurantos/controllers/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurantos/controllers/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurantos/controllers/OrderViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurantos/controllers/OrderViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurantos/controllers/UserDialogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurantos/controllers/UserDialogController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurantos/controllers/UserViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurantos/controllers/UserViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurantos_db/UserGateway.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurantos_db/UserGateway.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/restaurantos/dark-mode.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/restaurantos/dark-mode.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/restaurantos/light-mode.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/restaurantos/light-mode.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/restaurantos/user-dialog.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/restaurantos/user-dialog.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/restaurantos/view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/restaurantos/view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,7 +14,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="DarkyenusTimeTracker">
-    <option name="totalTimeSeconds" value="3378" />
+    <option name="totalTimeSeconds" value="90233" />
     <option name="gitIntegration" value="true" />
   </component>
   <component name="ExternalProjectsData">
@@ -251,7 +243,8 @@
       <workItem from="1670167796339" duration="29663000" />
       <workItem from="1670227325997" duration="3944000" />
       <workItem from="1670233513478" duration="758000" />
-      <workItem from="1670240180325" duration="2865000" />
+      <workItem from="1670240180325" duration="3320000" />
+      <workItem from="1670312258336" duration="205000" />
     </task>
     <task id="LOCAL-00001" summary="v0.0.1">
       <created>1668290384721</created>
@@ -330,7 +323,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670234268545</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="v0.5">
+      <created>1670243173596</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1670243173596</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

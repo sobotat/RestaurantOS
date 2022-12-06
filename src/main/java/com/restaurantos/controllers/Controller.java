@@ -629,7 +629,7 @@ public class Controller {
             public void run() {
                 Platform.runLater(() -> refresh());
             }
-        }, 15000);
+        }, 60000);
 
     }
 
@@ -717,7 +717,7 @@ public class Controller {
             public void run() {
                 Platform.runLater(() -> refresh());
             }
-        }, 15000);
+        }, 120000);
 
         vBox_List.setPrefWidth(scl_List.widthProperty().get());
         vBox_List.setMaxWidth(scl_List.widthProperty().get());
