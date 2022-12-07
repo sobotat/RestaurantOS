@@ -50,14 +50,14 @@ public class Controller {
     AppSecurity.ManagerAuth managerAuth;
     LinkedList<HBox> buttons = new LinkedList<>();
 
-    public void loadListView(){
+    public void loadListView() {
         if(!showMenu)
             loadOrderView();
         else
             loadMenuView();
     }
 
-    private void loadOrderView(){
+    private void loadOrderView() {
         OrderGateway orderGateway = new OrderGateway();
         LinkedList<Order> orders = orderGateway.findAllForDay(LocalDate.now());
 

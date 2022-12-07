@@ -101,6 +101,8 @@ public class UserDialogController {
             userGateway.update(user);
         }else
             userGateway.updateWithoutPassword(userTmp);
+
+        Controller.controller.updateUserInfo();
     }
 
     public void initAsUpdate(Stage stage, User user) {

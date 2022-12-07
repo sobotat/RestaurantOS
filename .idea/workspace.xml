@@ -6,7 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="a554b88f-bf3e-4866-beec-f61e4d0b69a5" name="Changes" comment="v0.6">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurantos_domain/Payment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurantos_domain/Payment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurantos/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurantos/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurantos/controllers/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurantos/controllers/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurantos/controllers/UserDialogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurantos/controllers/UserDialogController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurantos/controllers/UserItemViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurantos/controllers/UserItemViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurantos_domain/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurantos_domain/Menu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurantos_domain/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurantos_domain/Order.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/restaurantos/user-item.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/restaurantos/user-item.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -14,7 +20,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="DarkyenusTimeTracker">
-    <option name="totalTimeSeconds" value="93869" />
+    <option name="totalTimeSeconds" value="106579" />
     <option name="gitIntegration" value="true" />
   </component>
   <component name="ExternalProjectsData">
@@ -80,8 +86,9 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;extract.method.default.visibility&quot;: &quot;private&quot;,
     &quot;last_directory_selection&quot;: &quot;C:/Users/tomas/OneDrive - VSB-TUO/R2-S1/VIS/#Code/RestaurantOS/src/main/java/com/restaurant_os/restaurantos&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/tomas/OneDrive - VSB-TUO/R2-S1/VIS/RestaurantOS/src/main/resources&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/tomas/OneDrive - VSB-TUO/R2-S1/VIS/RestaurantOS&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -249,7 +256,12 @@
       <workItem from="1670325349490" duration="103000" />
       <workItem from="1670328790394" duration="2841000" />
       <workItem from="1670346556604" duration="3080000" />
-      <workItem from="1670359117572" duration="2074000" />
+      <workItem from="1670359117572" duration="2422000" />
+      <workItem from="1670362908960" duration="191000" />
+      <workItem from="1670364966487" duration="15000" />
+      <workItem from="1670419411644" duration="495000" />
+      <workItem from="1670420255010" duration="544000" />
+      <workItem from="1670425364870" duration="1811000" />
     </task>
     <task id="LOCAL-00001" summary="v0.0.1">
       <created>1668290384721</created>
@@ -349,7 +361,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670361850766</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="v0.6">
+      <created>1670362234824</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1670362234824</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

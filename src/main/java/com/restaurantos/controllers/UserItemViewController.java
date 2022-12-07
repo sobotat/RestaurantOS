@@ -6,6 +6,7 @@ import com.restaurantos_domain.User;
 import com.restaurantos_db.UserGateway;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -23,6 +24,8 @@ import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
 import java.util.LinkedList;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class UserItemViewController {
     private static final Logger logger = LogManager.getLogger(UserItemViewController.class.getName());
@@ -93,12 +96,27 @@ public class UserItemViewController {
     @FXML
     void removeClicked() {
 
-        if(user.equals(AppSecurity.getSignInUser()))
+        if(user.getUserId() == AppSecurity.getSignInUser().getUserId()) {
+            warning(btn_Remove);
             return;
+        }
 
         UserGateway userGateway = new UserGateway();
         userGateway.delete(user);
 
         UserViewController.userViewController.loadUserItems();
+    }
+
+    private void warning(Node node){
+        String orgStyle = node.getStyle();
+        node.setStyle(orgStyle + "-fx-background-color: colorRed;");
+
+        Timer timer = new Timer(true);
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                node.setStyle(orgStyle);
+            }
+        }, 1000);
     }
 }

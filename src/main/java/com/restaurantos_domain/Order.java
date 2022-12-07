@@ -77,20 +77,6 @@ public class Order {
         return (numOfPaid == numOfActive ? "Paid" : "Served");
     }
 
-    public void addOrderItem(OrderItem orderItem){
-        orderItem.setOrder(this);
-
-        OrderItemGateway orderItemGateway = new OrderItemGateway();
-        orderItemGateway.create(orderItem);
-    }
-
-    public OrderItem getOrderItem(int index){
-        OrderItemGateway orderItemGateway = new OrderItemGateway();
-        LinkedList<OrderItem> orderItems = orderItemGateway.findAllForOrder(this);
-
-        return orderItems.get(index);
-    }
-
     public User getCreatedBy(){
         if(createdBy != null)
             return createdBy;

@@ -27,7 +27,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button id="btn_Gray" fx:id="btn_Remove1" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" mnemonicParsing="false" onMouseClicked="#removeClicked" prefHeight="30.0" prefWidth="30.0" text="Remove">
+            <Button id="btn_Gray" fx:id="btn_Remove" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" mnemonicParsing="false" onMouseClicked="#removeClicked" prefHeight="30.0" prefWidth="30.0" text="Remove">
                <padding>
                   <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" />
                </padding>

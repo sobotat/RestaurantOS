@@ -64,6 +64,7 @@ public class Main extends Application {
             logger.log(Level.INFO, "Shutting down");
 
             Settings.winIsMaximize = stage.isMaximized();
+            Settings.useDarkMode = Main.useDarkMode;
             Settings.winWidth = Math.round((mainScene.getWidth() * 1000)) / (double) 1000;
             Settings.winHeight = Math.round((mainScene.getHeight() * 1000)) / (double) 1000;
             Settings.saveSettings();
